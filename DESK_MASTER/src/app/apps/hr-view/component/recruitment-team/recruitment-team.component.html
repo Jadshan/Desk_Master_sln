@@ -1,0 +1,50 @@
+<div class="row">
+ <div class="col-6">
+
+  <!-- interview-table.component.html -->
+  <form (ngSubmit)="onSubmit()">
+   <mat-card>
+    <mat-card-header>
+     <h1>Select Interviewers</h1>
+    </mat-card-header>
+    <mat-card-content>
+
+
+     <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a Date" (dateChange)="onDateSelected($event)">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+     </mat-form-field>
+     <mat-form-field>
+      <mat-label>Select interviewer</mat-label>
+      <mat-select>
+       <mat-option *ngFor="let employ of employeeList" [value]="employ.name">{{employ.name}}</mat-option>
+
+      </mat-select>
+     </mat-form-field>
+     <!-- <mat-form-field>
+      <mat-chip-list #chipList formControlName="courseIds">
+       <mat-chip *ngFor="let cid of timeList">
+        {{cid.timeSlot}}
+       </mat-chip>
+  
+       <input matInput placeholder="Ids">
+      </mat-chip-list>
+     </mat-form-field> -->
+     <!-- <mat-form-field>
+      <input matInput formControlName="time" placeholder="Time">
+     </mat-form-field> -->
+
+     <button mat-raised-button color="primary" type="submit"> Add</button>
+    </mat-card-content>
+   </mat-card>
+  </form>
+ </div>
+ <div class="col-6">
+  <mat-card>
+   <h1>Interview Board</h1>
+  </mat-card>
+ </div>
+
+</div>

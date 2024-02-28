@@ -1,0 +1,35 @@
+<div *ngIf="isMenuVisible">
+  <mat-toolbar color="primary" class="mat-elevation-z8" [ngClass]="{'fixed': isMenuVisible}">
+    <button (click)="toggleDrawer()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <button mat-button routerLink=""><mat-icon>home</mat-icon></button>
+    <span>DESK_MASTER</span>
+
+    <span class="spacer"></span>
+    <button mat-button routerLink="login" (click)="logout()">Logout</button>
+  </mat-toolbar>
+
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer position="start" mode="side" [opened]="isDrawerOpen" (click)="closeDrawer()">
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-button routerLink=""><mat-icon>home</mat-icon>Home</button>
+        </mat-list-item>
+        <mat-list-item *ngFor="let item of menuList">
+          <button mat-button routerLink="{{item}}"><mat-icon>verified_user</mat-icon>{{item}}</button>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div (click)="onContentClick()" [ngClass]="{'centered-content': !isDrawerOpen}">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
+
+<div style="text-align: center;min-height: 600px;" *ngIf="!isMenuVisible">
+  <router-outlet></router-outlet>
+</div>

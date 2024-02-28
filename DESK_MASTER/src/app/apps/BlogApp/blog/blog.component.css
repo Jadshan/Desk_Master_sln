@@ -1,0 +1,10 @@
+.mat-mdc-card {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 2%;
+  background-color: hsla(0, 0%, 96%, 0.953);
+}
+
+button {
+  margin: 2px;
+}

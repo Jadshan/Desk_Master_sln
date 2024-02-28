@@ -1,0 +1,87 @@
+/* Custom CSS for Material UI */
+
+/* Center the buttons */
+.col-2 button {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Style the table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Style table headers */
+.days {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+/* Style room names */
+.mat-card {
+  padding: 10px;
+  text-align: center;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style time slots */
+.room-card {
+  background-color: #654caf !important; /* Attractive green color */
+  color: #fff; /* White text color for better visibility */
+}
+/* Style time slots */
+.time-card {
+  background-color: #984caf !important; /* Attractive green color */
+  color: #fff; /* White text color for better visibility */
+}
+
+/* Style booking buttons */
+.mat-raised-button {
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* Disable button style */
+.mat-raised-button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.booking-card {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.booking-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.booking-info {
+  flex: 1;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+}
+
+.button-group button {
+  margin-left: 5px;
+}
+
+.no-bookings {
+  text-align: center;
+  margin: 20px 0;
+  color: #888;
+}

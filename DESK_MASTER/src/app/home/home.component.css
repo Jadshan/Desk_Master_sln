@@ -1,0 +1,40 @@
+/* homepage.component.css */
+.container {
+  text-align: center;
+  padding: 8px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.app-heading {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.desk-image {
+  max-width: 76%;
+  height: auto;
+
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+  font-size: 18px;
+  margin-top: 20px;
+  color: #555;
+}

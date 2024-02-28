@@ -1,0 +1,883 @@
+{
+  "TimeSlots": [
+    {
+      "orderId": 1,
+      "timeSlot": "8.00AM-8.30AM",
+      "id": "0e4b"
+    },
+    {
+      "orderId": 2,
+      "timeSlot": "8.30AM-9.00AM",
+      "id": "774c"
+    },
+    {
+      "orderId": 3,
+      "timeSlot": "9.00AM-9.30AM",
+      "id": "6e59"
+    },
+    {
+      "orderId": 4,
+      "timeSlot": "9.30AM-10.00AM",
+      "id": "b50b"
+    },
+    {
+      "orderId": 5,
+      "timeSlot": "10.00AM-10.30AM",
+      "id": "0180"
+    },
+    {
+      "orderId": 6,
+      "timeSlot": "10.30AM-11.00AM",
+      "id": "3e52"
+    },
+    {
+      "orderId": 7,
+      "timeSlot": "11.00AM-11.30AM",
+      "id": "2ce5"
+    },
+    {
+      "orderId": 8,
+      "timeSlot": "11.30AM-12.00PM",
+      "id": "5e2c"
+    },
+    {
+      "orderId": 9,
+      "timeSlot": "12.00PM-12.30PM",
+      "id": "560f"
+    },
+    {
+      "orderId": 10,
+      "timeSlot": "12.30PM-1.00PM",
+      "id": "a217"
+    },
+    {
+      "orderId": 11,
+      "timeSlot": "1.00PM-1.30PM",
+      "id": "5f15"
+    },
+    {
+      "orderId": 12,
+      "timeSlot": "1.30PM-2.00PM",
+      "id": "d3b6"
+    },
+    {
+      "orderId": 13,
+      "timeSlot": "2.00PM-2.30PM",
+      "id": "79e6"
+    },
+    {
+      "orderId": 14,
+      "timeSlot": "2.30PM-3.00PM",
+      "id": "aef3"
+    },
+    {
+      "orderId": 15,
+      "timeSlot": "3.00PM-3.30PM",
+      "id": "ee5b"
+    },
+    {
+      "orderId": 16,
+      "timeSlot": "3.30PM-4.00PM",
+      "id": "be89"
+    },
+    {
+      "orderId": 17,
+      "timeSlot": "4.00PM-4.30PM",
+      "id": "57c5"
+    },
+    {
+      "orderId": 18,
+      "timeSlot": "4.30PM-5.00PM",
+      "id": "6cd2"
+    }
+  ],
+  "Interview": [
+    {
+      "candidateName": "fdfgfdaaaaaaaaaaa",
+      "candidateEmail": "fdfg@dffg",
+      "candidatePhoneNo": "4354",
+      "date": "Feb 17, 2024",
+      "timeSlot": "1.00PM-1.30PM",
+      "interviewer": "fdg",
+      "additionalInfo": "dffg",
+      "status": true,
+      "id": "9201"
+    },
+    {
+      "candidateName": "dfdfg",
+      "candidateEmail": "df@dfg",
+      "candidatePhoneNo": "4354",
+      "date": "Feb 17, 2024",
+      "timeSlot": "3.30PM-4.00PM",
+      "interviewer": "43",
+      "additionalInfo": "sdf",
+      "status": true,
+      "id": "936b"
+    },
+    {
+      "id": "7082",
+      "candidateName": "sdf",
+      "candidateEmail": "df@rf",
+      "candidatePhoneNo": "dsf",
+      "date": "Feb 17, 2024",
+      "timeSlot": "8.00AM-8.30AM",
+      "interviewer": "dsf",
+      "additionalInfo": "dsf",
+      "status": true
+    },
+    {
+      "id": "1375",
+      "candidateName": "dfd",
+      "candidateEmail": "fd@dfg",
+      "candidatePhoneNo": "454",
+      "date": "Feb 18, 2024",
+      "timeSlot": "8.00AM-8.30AM",
+      "interviewer": "tre",
+      "additionalInfo": "trtret",
+      "status": true
+    },
+    {
+      "candidateName": "fdfgfd",
+      "candidateEmail": "fdfg@dffg",
+      "candidatePhoneNo": "4354",
+      "date": "Feb 17, 2024",
+      "timeSlot": "2.30PM-3.00PM",
+      "interviewer": "fdg",
+      "additionalInfo": "dffg",
+      "status": true,
+      "id": "31f5"
+    },
+    {
+      "candidateName": "dsfsdfsdf",
+      "candidateEmail": "sdf@dfsgd",
+      "candidatePhoneNo": "534534",
+      "date": "Feb 19, 2024",
+      "timeSlot": "2.30PM-3.00PM",
+      "interviewer": "fdgdfg",
+      "additionalInfo": "dfgdfg",
+      "status": true,
+      "id": "9197"
+    },
+    {
+      "id": "7384",
+      "candidateName": "dfgfgfgg",
+      "candidateEmail": "fdg@gdffg",
+      "candidatePhoneNo": "43544354",
+      "date": "Feb 19, 2024",
+      "timeSlot": "9.00AM-9.30AM",
+      "interviewer": "dfgfdg",
+      "additionalInfo": "fdgfdg",
+      "status": true
+    },
+    {
+      "id": "e00f",
+      "candidateName": "mukunth",
+      "candidateEmail": "muku@gmail.com",
+      "candidatePhoneNo": "767576576",
+      "date": "Feb 20, 2024",
+      "timeSlot": "1.00PM-1.30PM",
+      "interviewer": "kirish",
+      "additionalInfo": "fg",
+      "status": true
+    },
+    {
+      "candidateName": "sad",
+      "candidateEmail": "sd@dfg",
+      "candidatePhoneNo": "45",
+      "date": "Feb 23, 2024",
+      "timeSlot": "3.00PM-3.30PM",
+      "interviewer": "fdfg",
+      "additionalInfo": "",
+      "status": true,
+      "id": "4baa"
+    },
+    {
+      "candidateName": "drewre",
+      "candidateEmail": "ewr@fdg",
+      "candidatePhoneNo": "435",
+      "date": "Feb 27, 2024",
+      "timeSlot": "3.00PM-3.30PM",
+      "interviewer": "fdds",
+      "additionalInfo": "",
+      "status": true,
+      "id": "a828"
+    },
+    {
+      "candidateName": "sdf",
+      "candidateEmail": "sd@dfg",
+      "candidatePhoneNo": "2343",
+      "date": "Feb 27, 2024",
+      "timeSlot": "2.00PM-2.30PM",
+      "interviewer": "sdf",
+      "additionalInfo": "",
+      "status": true,
+      "id": "c827"
+    },
+    {
+      "candidateName": "fgg",
+      "candidateEmail": "df@fdg",
+      "candidatePhoneNo": "455",
+      "date": "Feb 27, 2024",
+      "timeSlot": "4.30PM-5.00PM",
+      "interviewer": "dsf",
+      "additionalInfo": "",
+      "status": true,
+      "id": "4949"
+    },
+    {
+      "candidateName": "sd",
+      "candidateEmail": "sad@dd",
+      "candidatePhoneNo": "435",
+      "date": "Feb 27, 2024",
+      "timeSlot": "1.30PM-2.00PM",
+      "interviewer": "fdd",
+      "additionalInfo": "",
+      "status": true,
+      "id": "df58"
+    },
+    {
+      "id": "116a",
+      "candidateName": "dsf",
+      "candidateEmail": "dsf@dfdd",
+      "candidatePhoneNo": "3453",
+      "date": "Feb 27, 2024",
+      "timeSlot": "8.00AM-8.30AM",
+      "interviewer": "sdf",
+      "additionalInfo": "",
+      "status": true
+    }
+  ],
+  "associate": [
+    {
+      "id": "1",
+      "name": "Ramesh Kumarsd",
+      "email": "ramesh@in.com",
+      "phone": "899089898",
+      "type": "SUPPLIER",
+      "address": "No 2\nRamraj street, chennai\nIndai",
+      "employeeGroup": "level1",
+      "status": true
+    },
+    {
+      "id": "2",
+      "name": "Akbardfdsf",
+      "email": "akbar@in.com",
+      "phone": "899089898",
+      "type": "SUPPLIER",
+      "address": "No 2\nRamraj street, Delhi\nIndai",
+      "employeeGroup": "level1",
+      "status": true
+    },
+    {
+      "id": "5",
+      "name": "Ramesh Kumar",
+      "email": "ramesh@inc.com",
+      "phone": "899089898",
+      "employeeGroup": "level2",
+      "address": "No 2\nRamraj street, chennai test\nIndai",
+      "type": "SUPPLIER",
+      "status": true
+    },
+    {
+      "id": "7",
+      "name": "Albert Einstien",
+      "email": "albert@in.com",
+      "phone": "78899999",
+      "employeeGroup": "level1",
+      "address": "no 1 ,new street",
+      "type": "SUPPLIER",
+      "status": true
+    },
+    {
+      "id": "8",
+      "name": "NT user",
+      "email": "nt@in.com",
+      "phone": "7899900",
+      "employeeGroup": "level2",
+      "address": "test",
+      "type": "SUPPLIER",
+      "status": true
+    },
+    {
+      "id": "9",
+      "name": "Akbar",
+      "email": "test@in.com",
+      "phone": "33333",
+      "employeeGroup": "level1",
+      "address": "test",
+      "type": "CUSTOMER",
+      "status": true
+    },
+    {
+      "id": "0",
+      "name": "sdfdsfdf",
+      "email": "",
+      "phone": "",
+      "type": "",
+      "address": "",
+      "employeeGroup": "",
+      "status": false
+    }
+  ],
+  "user": [
+    {
+      "id": "1",
+      "name": "Adminus",
+      "username": "a",
+      "password": "a",
+      "email": "ad@in.com",
+      "phone": "678888",
+      "gender": "male",
+      "role": "admin",
+      "status": true
+    },
+    {
+      "id": "2",
+      "name": "e1",
+      "username": "e1",
+      "password": "e1",
+      "email": "nt@in.com",
+      "phone": "678889999",
+      "gender": "female",
+      "role": "employee",
+      "status": true
+    },
+    {
+      "id": "3",
+      "name": "e2",
+      "username": "e2",
+      "password": "e2",
+      "email": "nt1@in.com",
+      "phone": "66888999",
+      "gender": "male",
+      "role": "employee",
+      "status": true
+    },
+    {
+      "id": "4",
+      "name": "e3",
+      "username": "e3",
+      "password": "e3",
+      "email": "ad@in.com",
+      "phone": "678888",
+      "gender": "male",
+      "role": "employee",
+      "status": true
+    },
+    {
+      "id": "5",
+      "name": "e4",
+      "username": "e4",
+      "password": "e4",
+      "email": "nt@in.com",
+      "phone": "678889999",
+      "gender": "female",
+      "role": "employee",
+      "status": true
+    },
+    {
+      "username": "ntuser",
+      "password": "test",
+      "name": "NT User 2",
+      "email": "nt1@in.com",
+      "phone": "66888999",
+      "gender": "male",
+      "role": "admin",
+      "status": true,
+      "id": "6"
+    },
+    {
+      "id": "0",
+      "name": "sdf",
+      "username": "sssssf",
+      "password": "45",
+      "email": "",
+      "phone": "",
+      "gender": "",
+      "role": "",
+      "status": false
+    },
+    {
+      "id": "7",
+      "name": "sdf",
+      "username": "sssssf",
+      "password": "45",
+      "email": "",
+      "phone": "",
+      "gender": "",
+      "role": "admin",
+      "status": false
+    },
+    {
+      "id": "8",
+      "name": "sdf",
+      "username": "sssssf",
+      "password": "45",
+      "email": "",
+      "phone": "",
+      "gender": "",
+      "role": "user",
+      "status": false
+    },
+    {
+      "id": "5",
+      "name": "NT Userr",
+      "username": "testuser",
+      "password": "test",
+      "email": "nt@in.com",
+      "phone": "678889999",
+      "gender": "female",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": "65bf",
+      "name": "dfgdf",
+      "username": "fffs4",
+      "password": "45",
+      "email": "fdfg@fgf",
+      "phone": "345",
+      "gender": "male",
+      "role": "user",
+      "status": true
+    }
+  ],
+  "role": [
+    {
+      "code": "admin",
+      "name": "Admin",
+      "id": "1f70"
+    },
+    {
+      "code": "manager",
+      "name": "Manager",
+      "id": "bad4"
+    },
+    {
+      "code": "user",
+      "name": "User",
+      "id": "a964"
+    }
+  ],
+  "menu": [
+    {
+      "code": "associate",
+      "Name": "Associate",
+      "id": "1783"
+    },
+    {
+      "code": "customer",
+      "Name": "Customer",
+      "id": "192b"
+    },
+    {
+      "code": "user",
+      "Name": "User",
+      "id": "5a99"
+    },
+    {
+      "code": "hr",
+      "Name": "Hr_View",
+      "id": "5da99"
+    }
+  ],
+  "roleaccess": [
+    {
+      "role": "admin",
+      "menu": "counter",
+      "id": "26ea"
+    },
+    {
+      "role": "admin",
+      "menu": "blog",
+      "id": "e586"
+    },
+    {
+      "role": "admin",
+      "menu": "user",
+      "id": "d2Cfd"
+    },
+    {
+      "role": "admin",
+      "menu": "employ",
+      "id": "d2Sfd"
+    },
+    {
+      "role": "admin",
+      "menu": "Schedular",
+      "id": "d2Afd"
+    },
+    {
+      "role": "admin",
+      "menu": "Hr_View",
+      "id": "d2xAfd"
+    },
+    {
+      "role": "admin",
+      "menu": "register",
+      "id": "dxAfd"
+    },
+    {
+      "role": "manager",
+      "menu": "associate",
+      "id": "1500"
+    },
+    {
+      "role": "manager",
+      "menu": "customer",
+      "id": "c758"
+    },
+    {
+      "role": "user",
+      "menu": "associate",
+      "id": "5fd0"
+    }
+  ],
+  "company": [
+    {
+      "code": 1,
+      "name": "NT Infotech",
+      "area": "chennai",
+      "branchcount": 4,
+      "id": "d776"
+    },
+    {
+      "code": 2,
+      "name": "RN Infotech",
+      "area": "Banglore",
+      "branchcount": 5,
+      "id": "2786"
+    },
+    {
+      "code": 3,
+      "name": "TSN Infotech",
+      "area": "Banglore",
+      "branchcount": 0,
+      "id": "3aeb"
+    }
+  ],
+  "companydata": [
+    {
+      "code": 1,
+      "branches": [
+        {
+          "code": "HQ001",
+          "street": "Street 1",
+          "city": "Kansas"
+        },
+        {
+          "code": "HQ002",
+          "street": "Street 2",
+          "city": "Texas"
+        },
+        {
+          "code": "HQ003",
+          "street": "Street 2",
+          "city": "Texas"
+        },
+        {
+          "code": "HQ004",
+          "street": "Street 2",
+          "city": "Texas"
+        },
+        {
+          "code": "HQ005",
+          "street": "Street 2",
+          "city": "Texas"
+        },
+        {
+          "code": "HQ006",
+          "street": "Street 2",
+          "city": "Texas"
+        }
+      ],
+      "employee": [
+        {
+          "code": "HQ001",
+          "name": "Street 1",
+          "age": 95
+        }
+      ],
+      "id": "d1f1"
+    },
+    {
+      "code": 2,
+      "branches": [
+        {
+          "code": "SQ001",
+          "street": "Street 1",
+          "city": "Kansas"
+        },
+        {
+          "code": "SQ002",
+          "street": "Street 2",
+          "city": "Texas"
+        }
+      ],
+      "employee": [
+        {
+          "code": "HQ002",
+          "name": "Rahul",
+          "age": 195
+        }
+      ],
+      "id": "d20c"
+    },
+    {
+      "code": 3,
+      "branches": [],
+      "employee": [
+        {
+          "code": "HQ002",
+          "name": "Rahul",
+          "age": 195
+        },
+        {
+          "code": "HQ0021",
+          "name": "Rahul",
+          "age": 195
+        }
+      ],
+      "id": "eb5f"
+    }
+  ],
+  "Rooms": [
+    {
+      "RoomId": 0,
+      "RoomName": "room1",
+      "RoomLocation": "hall1",
+      "RoomSeatingCapacity": 0,
+      "IsRoomActive": true,
+      "managerId": 0,
+      "createdDate": "",
+      "LastUpdated": "",
+      "id": "7f1b"
+    },
+    {
+      "RoomId": 1,
+      "RoomName": "room2",
+      "RoomLocation": "hall1",
+      "RoomSeatingCapacity": 0,
+      "IsRoomActive": true,
+      "managerId": 0,
+      "createdDate": "",
+      "LastUpdated": "",
+      "id": "906b"
+    },
+    {
+      "RoomId": 2,
+      "RoomName": "room3",
+      "RoomLocation": "hall1",
+      "RoomSeatingCapacity": 0,
+      "IsRoomActive": true,
+      "managerId": 0,
+      "createdDate": "",
+      "LastUpdated": "",
+      "id": "c958"
+    },
+    {
+      "RoomId": 3,
+      "RoomName": "room4",
+      "RoomLocation": "hall1",
+      "RoomSeatingCapacity": 0,
+      "IsRoomActive": true,
+      "managerId": 0,
+      "createdDate": "",
+      "LastUpdated": "",
+      "id": "0c03"
+    },
+    {
+      "RoomId": 4,
+      "RoomName": "room5",
+      "RoomLocation": "hall1",
+      "RoomSeatingCapacity": 0,
+      "IsRoomActive": true,
+      "managerId": 0,
+      "createdDate": "",
+      "LastUpdated": "",
+      "id": "5f07"
+    },
+    {
+      "RoomId": 5,
+      "RoomName": "room6",
+      "RoomLocation": "hall1",
+      "RoomSeatingCapacity": 0,
+      "IsRoomActive": true,
+      "managerId": 0,
+      "createdDate": "",
+      "LastUpdated": "",
+      "id": "0f6c"
+    },
+    {
+      "RoomId": 6,
+      "RoomName": "room7",
+      "RoomLocation": "hall1",
+      "RoomSeatingCapacity": 0,
+      "IsRoomActive": true,
+      "managerId": 0,
+      "createdDate": "",
+      "LastUpdated": "",
+      "id": "c26a"
+    },
+    {
+      "RoomId": 7,
+      "RoomName": "room8",
+      "RoomLocation": "hall1",
+      "RoomSeatingCapacity": 0,
+      "IsRoomActive": true,
+      "managerId": 0,
+      "createdDate": "",
+      "LastUpdated": "",
+      "id": "0dec"
+    }
+  ],
+  "TimeList": [
+    {
+      "timeId": 0,
+      "time": "8.00AM",
+      "id": "1086"
+    },
+    {
+      "timeId": 1,
+      "time": "9.00AM",
+      "id": "5ad4"
+    },
+    {
+      "timeId": 2,
+      "time": "10.00AM",
+      "id": "43e7"
+    },
+    {
+      "timeId": 3,
+      "time": "11.00AM",
+      "id": "771c"
+    },
+    {
+      "timeId": 4,
+      "time": "12.00PM",
+      "id": "0ff7"
+    }
+  ],
+  "bookingDetails": [
+    {
+      "id": "abf1",
+      "roomId": "room2",
+      "userId": "a",
+      "bookingDate": "2024-02-15",
+      "fromTime": "8.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "createdDate": "2024-02-15T19:44:18+0530",
+      "updatedDate": "Feb 15, 2024"
+    },
+    {
+      "id": "4c1d",
+      "roomId": "room1",
+      "userId": "a",
+      "bookingDate": "2024-02-15",
+      "fromTime": "9.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "createdDate": "2024-02-15T19:52:56+0530",
+      "updatedDate": "Feb 15, 2024"
+    },
+    {
+      "id": "d07e",
+      "roomId": "room1",
+      "userId": "a",
+      "bookingDate": "2024-02-15",
+      "fromTime": "8.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "updatedDate": "Feb 15, 2024"
+    },
+    {
+      "id": "0125",
+      "roomId": "room1",
+      "userId": "a",
+      "bookingDate": "2024-02-16",
+      "fromTime": "8.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 1,
+      "createdDate": "Feb 16, 2024",
+      "updatedDate": "Feb 16, 2024"
+    },
+    {
+      "id": "0c38",
+      "roomId": "room2",
+      "userId": "a",
+      "bookingDate": "2024-02-16",
+      "fromTime": "8.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "createdDate": "2024-02-16T15:44:12.650Z",
+      "updatedDate": "2024-02-16T15:44:12.650Z"
+    },
+    {
+      "id": "fc11",
+      "roomId": "room2",
+      "userId": "a",
+      "bookingDate": "2024-02-16",
+      "fromTime": "8.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "createdDate": "Feb 16, 2024",
+      "updatedDate": "Feb 16, 2024"
+    },
+    {
+      "id": "abac",
+      "roomId": "room2",
+      "userId": "a",
+      "bookingDate": "2024-02-15",
+      "fromTime": "9.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "createdDate": "Feb 15, 2024",
+      "updatedDate": "Feb 15, 2024"
+    },
+    {
+      "id": "98c1",
+      "roomId": "room1",
+      "userId": "a",
+      "bookingDate": "2024-02-15",
+      "fromTime": "10.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "createdDate": "Feb 15, 2024",
+      "updatedDate": "Feb 15, 2024"
+    },
+    {
+      "id": "94d1",
+      "roomId": "room2",
+      "userId": "a",
+      "bookingDate": "2024-02-15",
+      "fromTime": "10.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "createdDate": "Feb 15, 2024",
+      "updatedDate": "Feb 15, 2024"
+    },
+    {
+      "id": "89ae",
+      "roomId": "room3",
+      "userId": "a",
+      "bookingDate": "2024-02-15",
+      "fromTime": "8.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "createdDate": "Feb 15, 2024",
+      "updatedDate": "Feb 15, 2024"
+    },
+    {
+      "id": "f3f0",
+      "roomId": "room3",
+      "userId": "a",
+      "bookingDate": "2024-02-15",
+      "fromTime": "9.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "createdDate": "Feb 15, 2024",
+      "updatedDate": "Feb 15, 2024"
+    }
+  ]
+}
