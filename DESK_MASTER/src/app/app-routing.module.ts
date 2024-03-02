@@ -15,6 +15,7 @@ import { RecruitmentComponent } from './apps/hr-view/component/recruitment/recru
 import { InterviewListComponent } from './apps/hr-view/component/interview-list/interview-list.component';
 import { RecruitmentTeamComponent } from './apps/hr-view/component/recruitment-team/recruitment-team.component';
 import { RoomAllocationComponent } from './apps/scheduler/component/Customization/room-allocation/room-allocation.component';
+import { EmployDashboardComponent } from './apps/employ-management/component/employ-dashboard/employ-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
@@ -24,11 +25,21 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent, canActivate: [authGuard] },
   {
     path: 'employ',
-    component: EmployListingComponent,
+    component: EmployDashboardComponent,
     canActivate: [authGuard],
   },
   {
     path: 'Hr_View/employ',
+    component: EmployDashboardComponent,
+    canActivate: [authGuard],
+  },
+   {
+    path: 'employ/employlist',
+    component: EmployListingComponent,
+    canActivate: [authGuard],
+  },
+   {
+    path: 'Hr_View/employ/employlist',
     component: EmployListingComponent,
     canActivate: [authGuard],
   },
