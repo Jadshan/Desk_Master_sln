@@ -5,14 +5,17 @@ import { EmployHandlingComponent } from './component/employ-handling/employ-hand
 import { MaterialModule } from 'src/Material.Module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmployDashboardComponent } from './component/employ-dashboard/employ-dashboard.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [EmployListingComponent, EmployHandlingComponent],
+  declarations: [EmployListingComponent, EmployHandlingComponent, EmployDashboardComponent],
   imports: [
     CommonModule,
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
+    RouterModule
   ],
 })
 export class EmployManagementModule {}
