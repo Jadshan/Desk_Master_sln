@@ -23,3 +23,6 @@
 .mat-drawer-container {
   /* height: 100vh; Set the height of the drawer container to full viewport height  */
 }
+.drawer-container {
+  height: 100vh; /* Set the height of the drawer container to full viewport height */
+}
