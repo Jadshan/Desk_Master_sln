@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { EmployService } from '../../service/employ.service';
 import { loadEmployee } from '../../+Store/Employee/employee.action';
 import { Store } from '@ngrx/store';
-import { employee } from '../../+Store/Model/employee.model';
+import { Employee } from '../../+Store/Model/employee.model';
 import { getEmployList } from '../../+Store/Employee/employee.selector';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployHandlingComponent } from '../employ-handling/employ-handling.component';
@@ -19,7 +18,7 @@ export class EmployListingComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  employList!: employee[];
+  employList!: Employee[];
   dataSource: any;
   displayedColumns: string[] = [
     'code',
@@ -37,7 +36,7 @@ export class EmployListingComponent implements OnInit {
     this.store.dispatch(loadEmployee());
     this.store.select(getEmployList).subscribe((list) => {
       this.employList = list;
-      this.dataSource = new MatTableDataSource<employee>(this.employList);
+      this.dataSource = new MatTableDataSource<Employee>(this.employList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });

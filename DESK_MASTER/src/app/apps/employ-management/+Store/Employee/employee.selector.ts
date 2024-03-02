@@ -1,15 +1,15 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { employee, employeeModel } from '../Model/employee.model';
+import { Employee, EmployeeModel } from '../Model/employee.model';
 
-const getEmployState = createFeatureSelector<employeeModel>('employ');
+const getEmployState = createFeatureSelector<EmployeeModel>('employ');
 
 export const getEmployList = createSelector(getEmployState, (state) => {
-  return state.employList;
+  return state.employeeList;
 });
 
 export const getEmployById = (employId: number) =>
   createSelector(getEmployState, (state) => {
-    return state.employList.find(
-      (employ: employee) => employ.id === employId
-    ) as employee;
+    return state.employeeList.find(
+      (employ: Employee) => employ.id === employId
+    ) as Employee;
   });

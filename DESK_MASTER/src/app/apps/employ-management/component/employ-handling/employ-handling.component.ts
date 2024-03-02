@@ -8,7 +8,7 @@ import {
   addEmployee,
   updateEmployee,
 } from '../../+Store/Employee/employee.action';
-import { employee } from '../../+Store/Model/employee.model';
+import { Employee } from '../../+Store/Model/employee.model';
 
 @Component({
   selector: 'app-employ-handling',
@@ -60,7 +60,7 @@ export class EmployHandlingComponent implements OnInit {
 
   SaveEmployee() {
     if (this.employeeForm.valid) {
-      const _employInput: employee = {
+      const _employInput: Employee = {
         id: 0,
         name: this.employeeForm.value.name,
         email: this.employeeForm.value.email,

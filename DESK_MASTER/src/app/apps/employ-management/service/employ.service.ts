@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { employee } from '../+Store/Model/employee.model';
+import { Employee } from '../+Store/Model/employee.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +11,13 @@ export class EmployService {
 
   constructor(private http: HttpClient) {}
   loadEmployee() {
-    return this.http.get<employee[]>(this.url);
+    return this.http.get<Employee[]>(this.url);
   }
-  addEmployee(employList: employee) {
+  addEmployee(employList: Employee) {
     return this.http.post(this.url, employList);
   }
 
-  updateEmployee(employList: employee) {
+  updateEmployee(employList: Employee) {
     return this.http.put(this.url + '/' + employList.id, employList);
   }
 

@@ -6,40 +6,40 @@ import {
   loadEmployeeSuccess,
   updateEmployeeSuccess,
 } from './employee.action';
-import { employee } from '../Model/employee.model';
+import { Employee } from '../Model/employee.model';
 
 const _employeeReducer = createReducer(
   EmployeeState,
   on(loadEmployeeSuccess, (state, action) => {
     return {
       ...state,
-      employList: [...action.employList],
+      employeeList: [...action.employList],
     };
   }),
   on(addEmployeeSuccess, (state, action) => {
-    const _employ = { ...action.employList };
+    const _employ = { ...action.employeeList };
     return {
       ...state,
-      employList: [...state.employList, _employ],
+      employeeList: [...state.employeeList, _employ],
     };
   }),
   on(updateEmployeeSuccess, (state, action) => {
     const _employ = { ...action.employList };
-    const updatedEmploy = state.employList.map((employ) => {
+    const updatedEmploy = state.employeeList.map((employ) => {
       return employ.id === _employ.id ? _employ : employ;
     });
     return {
       ...state,
-      employList: updatedEmploy,
+      employeeList: updatedEmploy,
     };
   }),
   on(deleteEmployeeSuccess, (state, action) => {
-    const updatedEmploy = state.employList.filter((data: employee) => {
+    const updatedEmploy = state.employeeList.filter((data: Employee) => {
       return data.id !== action.employId;
     });
     return {
       ...state,
-      employList: updatedEmploy,
+      employeeList: updatedEmploy,
     };
   })
 );

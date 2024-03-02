@@ -1,4 +1,4 @@
-export interface employee {
+export interface Employee {
   id: number;
   name: string;
   email: string;
@@ -9,8 +9,14 @@ export interface employee {
   status: boolean;
 }
 
-export interface employeeModel {
-  employList: employee[];
-  employObj: employee;
-  errorMessage: '';
+export class EmployeeModel {
+  employeeList: Employee[];
+  employObj: Employee | undefined;
+  errorMessage: string;
+
+  constructor(){
+    this.employeeList = [];
+    this.errorMessage = '';
+    this.employObj = undefined;
+  }
 }

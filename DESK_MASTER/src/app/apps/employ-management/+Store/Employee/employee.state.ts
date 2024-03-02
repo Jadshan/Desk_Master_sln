@@ -1,16 +1,8 @@
-import { employeeModel } from '../Model/employee.model';
+import { EmployeeModel } from '../Model/employee.model';
 
-export const EmployeeState: employeeModel = {
-  employList: [],
-  errorMessage: '',
-  employObj: {
-    id: 0,
-    name: '',
-    email: '',
-    phone: '',
-    type: '',
-    address: '',
-    employeeGroup: '',
-    status: true,
-  },
-};
+export const EmployeeState: EmployeeModel = {
+  employeeList: [],
+  employObj: undefined,
+  errorMessage: ''
+}
+;

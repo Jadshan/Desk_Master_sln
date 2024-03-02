@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { employee } from '../Model/employee.model';
+import { Employee } from '../Model/employee.model';
 
 export enum actionTypes {
   LOAD_EMPLOYEE = 'LOAD_EMPLOYEE',
@@ -15,23 +15,23 @@ export enum actionTypes {
 export const loadEmployee = createAction(actionTypes.LOAD_EMPLOYEE);
 export const loadEmployeeSuccess = createAction(
   actionTypes.LOAD_EMPLOYEE_SUCCESS,
-  props<{ employList: employee[] }>()
+  props<{ employList: Employee[] }>()
 );
 export const addEmployee = createAction(
   actionTypes.ADD_EMPLOYEE,
-  props<{ employList: employee }>()
+  props<{ employList: Employee }>()
 );
 export const addEmployeeSuccess = createAction(
   actionTypes.ADD_EMPLOYEE_SUCCESS,
-  props<{ employList: employee }>()
+  props<{ employeeList: Employee }>()
 );
 export const updateEmployee = createAction(
   actionTypes.UPDATE_EMPLOYEE,
-  props<{ employList: employee }>()
+  props<{ employList: Employee }>()
 );
 export const updateEmployeeSuccess = createAction(
   actionTypes.UPDATE_EMPLOYEE_SUCCESS,
-  props<{ employList: employee }>()
+  props<{ employList: Employee }>()
 );
 export const deleteEmployee = createAction(
   actionTypes.DELETE_EMPLOYEE,

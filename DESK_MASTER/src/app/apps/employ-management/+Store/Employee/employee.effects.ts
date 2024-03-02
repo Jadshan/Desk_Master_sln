@@ -13,7 +13,7 @@ import {
 } from './employee.action';
 import { EMPTY, catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { showAlert } from 'src/app/shared/store/App.action';
-import { employee } from '../Model/employee.model';
+import { Employee } from '../Model/employee.model';
 //import { deleteBlog } from 'src/app/BlogApp/+Store/blog.action';
 
 @Injectable()
@@ -47,7 +47,7 @@ export class employeeEffects {
         this.service.addEmployee(action.employList).pipe(
           switchMap((data) =>
             of(
-              addEmployeeSuccess({ employList: data as employee }),
+              addEmployeeSuccess({ employeeList: data as Employee }),
               showAlert({
                 message: 'Employ added successfully',
                 alertType: 'success',
