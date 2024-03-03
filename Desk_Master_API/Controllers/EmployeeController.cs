@@ -6,6 +6,7 @@ using Desk_Master_API.Data;
 using Desk_Master_API.DTOs.EmployeeDtos;
 using Desk_Master_API.Mappers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Desk_Master_API.Controllers
 {
@@ -16,16 +17,16 @@ namespace Desk_Master_API.Controllers
         private readonly ApplicationDBContext _context = context;
 
         [HttpGet]
-         public IActionResult GetAll(){
-            var employees = _context.Employees.ToList()
-            .Select(s => s.ToEmployeeViewDTO());
+         public async Task<IActionResult> GetAll(){
+            var employees =await _context.Employees.ToListAsync();
+            var employeeViewDTOs = employees.Select(s => s.ToEmployeeViewDTO());
             return Ok(employees);
          }
 
          [HttpGet("{id}")]
-         public IActionResult GetEmployeeById([FromRoute] int id)
+         public async Task<IActionResult> GetEmployeeById([FromRoute] int id)
          {
-            var employee = _context.Employees.Find(id);
+            var employee = await _context.Employees.FindAsync(id);
             if(employee == null)
             {
                 return NotFound();
@@ -34,19 +35,18 @@ namespace Desk_Master_API.Controllers
          }
 
          [HttpPost]
-         public IActionResult SaveEmployee([FromBody] AddEmployRequestDTO employRequestDTO)
+         public async Task<IActionResult> SaveEmployee([FromBody] AddEmployRequestDTO employRequestDTO)
          {
             var employeeModel = employRequestDTO.ToEmployeeFromAddDTO();
-            _context.Employees.Add(employeeModel);
-            _context.SaveChanges();
+            await _context.Employees.AddAsync(employeeModel);
+            await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetEmployeeById), new {id = employeeModel.Id}, employeeModel.ToEmployeeViewDTO());
          }
 
          [HttpPut("{id}")]
-
-         public IActionResult UpdateEmployee([FromRoute] int id,[FromBody] UpdateEmployRequestDTO updateEmployRequest)
+         public async Task<IActionResult> UpdateEmployee([FromRoute] int id,[FromBody] UpdateEmployRequestDTO updateEmployRequest)
          {
-            var employeeModel = _context.Employees.FirstOrDefault(x => x.Id == id);
+            var employeeModel = await _context.Employees.FirstOrDefaultAsync(x => x.Id == id);
             if(employeeModel == null)
             {
                 return NotFound();
@@ -56,22 +56,22 @@ namespace Desk_Master_API.Controllers
             employeeModel.Position = updateEmployRequest.Position;
             employeeModel.Salary = updateEmployRequest.Salary;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return Ok(employeeModel.ToEmployeeViewDTO());
          }
 
          [HttpDelete("{id}")]
 
-         public IActionResult DeleteEmployee([FromRoute] int id)
+         public async Task<IActionResult> DeleteEmployee([FromRoute] int id)
          {
-            var employeeModel = _context.Employees.FirstOrDefault(x => x.Id == id);
+            var employeeModel = await _context.Employees.FirstOrDefaultAsync(x => x.Id == id);
             if(employeeModel == null)
             {
                 return NotFound();
             }
 
             _context.Employees.Remove(employeeModel);
-            _context.SaveChanges();
+           await _context.SaveChangesAsync();
             return NoContent();
          }
     }
