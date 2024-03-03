@@ -45,5 +45,38 @@ namespace Desk_Master_API.Controllers
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetEmployeeById), new {id = employeeModel.Id}, employeeModel.ToEmployeeViewDTO());
          }
+
+         [HttpPut("{id}")]
+
+         public IActionResult UpdateEmployee([FromRoute] int id,[FromBody] UpdateEmployRequestDTO updateEmployRequest)
+         {
+            var employeeModel = _context.Employees.FirstOrDefault(x => x.Id == id);
+            if(employeeModel == null)
+            {
+                return NotFound();
+            }
+
+            employeeModel.EmpName = updateEmployRequest.EmpName;
+            employeeModel.Position = updateEmployRequest.Position;
+            employeeModel.Salary = updateEmployRequest.Salary;
+
+            _context.SaveChanges();
+            return Ok(employeeModel.ToEmployeeViewDTO());
+         }
+
+         [HttpDelete("{id}")]
+
+         public IActionResult DeleteEmployee([FromRoute] int id)
+         {
+            var employeeModel = _context.Employees.FirstOrDefault(x => x.Id == id);
+            if(employeeModel == null)
+            {
+                return NotFound();
+            }
+
+            _context.Employees.Remove(employeeModel);
+            _context.SaveChanges();
+            return NoContent();
+         }
     }
 }
