@@ -11,15 +11,11 @@ namespace Desk_Master_API.Controllers
 {
     [Route("api/Employee")]
     [ApiController]
-    public class EmployeeController: ControllerBase
+    public class EmployeeController(ApplicationDBContext context) : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
-        public EmployeeController(ApplicationDBContext context)
-        {
-            _context = context;
-        }
+        private readonly ApplicationDBContext _context = context;
 
-         [HttpGet]
+        [HttpGet]
          public IActionResult GetAll(){
             var employees = _context.Employees.ToList()
             .Select(s => s.ToEmployeeViewDTO());
