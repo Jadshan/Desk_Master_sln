@@ -13,7 +13,7 @@ namespace Desk_Master_API.Models
         public string Position { get; set; } = string.Empty;
         [Column(TypeName = "decimal(20,2)")]
         public decimal Salary { get; set; }
-        public List<ContactDetail> ContactDetails {get; set;} = [];
-        public List<BankDetail> BankDetails { get; set; } = [];
+        public List<ContactDetail> ContactDetails {get; set;} = new List<ContactDetail>();
+        public List<BankDetail> BankDetails { get; set; } = new List<BankDetail>();
     }
 }

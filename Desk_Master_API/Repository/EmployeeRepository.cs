@@ -14,7 +14,18 @@ namespace Desk_Master_API.Repository
     public class EmployeeRepository(ApplicationDBContext context) : IEmployeeRepository
     {
         private readonly ApplicationDBContext _context = context;
+        public async Task<List<Employee>> GetAllAsync()
+        {
+            return await _context.Employees.ToListAsync();
+        }
 
+      
+
+        public async Task<Employee?> GetByIdAsync(int id)
+        {
+            return await _context.Employees.Include(e=> e.ContactDetails).FirstOrDefaultAsync(i => i.Id == id);
+            
+        }
         public async Task<Employee> CreateAsync(Employee employeeModel)
         {
            await _context.Employees.AddAsync(employeeModel);
@@ -34,16 +45,7 @@ namespace Desk_Master_API.Repository
              return employeeModel;   
         }
 
-        public async Task<List<Employee>> GetAllAsync()
-        {
-            return await _context.Employees.ToListAsync();
-        }
-
-        public async Task<Employee?> GetByIdAsync(int id)
-        {
-            return await _context.Employees.FindAsync(id);
-            
-        }
+       
 
         public async Task<Employee?> UpdateAsync(int id, UpdateEmployRequestDTO updateEmployRequest)
         {
@@ -59,6 +61,11 @@ namespace Desk_Master_API.Repository
 
             await _context.SaveChangesAsync();
             return employeeModel;
+        }
+
+        public Task<bool> EmployeeExists(int id)
+        {
+           return _context.Employees.AnyAsync(e => e.Id == id);
         }
     }
 }
