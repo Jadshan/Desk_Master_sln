@@ -25,6 +25,12 @@ builder.Services.AddScoped<IEmployeeFullViewRepository, EmployeeFullViewReposito
 
 builder.Services.AddScoped<IContactDetailRepository, ContactDetailRepository>();
 
+builder.Services.AddCors(p => p.AddDefaultPolicy(build =>{
+	build.AllowAnyOrigin();
+	build.AllowAnyMethod();
+	build.AllowAnyHeader();
+}));
+
 
 var app = builder.Build();
 
@@ -36,6 +42,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 
