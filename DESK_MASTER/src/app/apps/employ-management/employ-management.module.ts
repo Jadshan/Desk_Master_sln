@@ -7,9 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployDashboardComponent } from './component/employ-dashboard/employ-dashboard.component';
 import { RouterModule } from '@angular/router';
+import { EmployHomeComponent } from './component/EmployeeSection/employ-home/employ-home.component';
+import { EmployDataEntryComponent } from './component/EmployeeSection/employ-data-entry/employ-data-entry.component';
 
 @NgModule({
-  declarations: [EmployListingComponent, EmployHandlingComponent, EmployDashboardComponent],
+  declarations: [EmployListingComponent, EmployHandlingComponent, EmployDashboardComponent, EmployHomeComponent, EmployDataEntryComponent],
   imports: [
     CommonModule,
     MaterialModule,

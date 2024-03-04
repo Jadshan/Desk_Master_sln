@@ -16,6 +16,8 @@ import { InterviewListComponent } from './apps/hr-view/component/interview-list/
 import { RecruitmentTeamComponent } from './apps/hr-view/component/recruitment-team/recruitment-team.component';
 import { RoomAllocationComponent } from './apps/scheduler/component/Customization/room-allocation/room-allocation.component';
 import { EmployDashboardComponent } from './apps/employ-management/component/employ-dashboard/employ-dashboard.component';
+import { EmployHomeComponent } from './apps/employ-management/component/EmployeeSection/employ-home/employ-home.component';
+import { EmployDataEntryComponent } from './apps/employ-management/component/EmployeeSection/employ-data-entry/employ-data-entry.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
@@ -23,6 +25,16 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'counter', component: CounterComponent, canActivate: [authGuard] },
   { path: 'blog', component: BlogComponent, canActivate: [authGuard] },
+  {
+    path: 'employHome',
+    component: EmployHomeComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'employHome/employData',
+    component: EmployDataEntryComponent,
+    canActivate: [authGuard],
+  },
   {
     path: 'employ',
     component: EmployDashboardComponent,
@@ -33,12 +45,12 @@ const routes: Routes = [
     component: EmployDashboardComponent,
     canActivate: [authGuard],
   },
-   {
+  {
     path: 'employ/employlist',
     component: EmployListingComponent,
     canActivate: [authGuard],
   },
-   {
+  {
     path: 'Hr_View/employ/employlist',
     component: EmployListingComponent,
     canActivate: [authGuard],

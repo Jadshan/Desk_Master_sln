@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Employee } from '../+Store/Model/employee.model';
+import { Employee, EmployeeData } from '../+Store/Model/employee.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ import { Employee } from '../+Store/Model/employee.model';
 export class EmployService {
   // url: string = 'http://localhost:3000/associate';
   url: string = 'https://localhost:7051/api/EmployAPI';
-
+  baseUrl: string = 'http://localhost:5019/api/EmployeeFullView';
   constructor(private http: HttpClient) {}
   loadEmployee() {
     return this.http.get<Employee[]>(this.url);
@@ -23,5 +23,11 @@ export class EmployService {
 
   deleteEmployee(id: number) {
     return this.http.delete(this.url + '/' + id);
+  }
+
+  ///////===========Employee Registration=========///////////
+
+  saveEmployeeData(employeeData: EmployeeData) {
+    return this.http.post(this.baseUrl, employeeData);
   }
 }
