@@ -52,7 +52,7 @@ namespace Desk_Master_API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Adress = table.Column<long>(type: "bigint", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: true)

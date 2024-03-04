@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Desk_Master_API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240303061035_2update_contactTblAddresfield")]
-    partial class _2update_contactTblAddresfield
+    [Migration("20240303142241_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
