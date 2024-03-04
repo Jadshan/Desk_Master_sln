@@ -13,16 +13,15 @@ namespace Desk_Master_API.Controllers
 {
     [Route("api/Employee")]
     [ApiController]
-    public class EmployeeController(ApplicationDBContext context, IEmployeeRepository employeeRepo) : ControllerBase
+    public class EmployeeController(IEmployeeRepository employeeRepo) : ControllerBase
     {
-        private readonly ApplicationDBContext _context = context;
         private readonly IEmployeeRepository _employeeRepo = employeeRepo;
 
         [HttpGet]
          public async Task<IActionResult> GetAll(){
             var employees =await _employeeRepo.GetAllAsync();
             var employeeViewDTOs = employees.Select(s => s.ToEmployeeViewDTO());
-            return Ok(employees);
+            return Ok(employeeViewDTOs);
          }
 
          [HttpGet("{id}")]
