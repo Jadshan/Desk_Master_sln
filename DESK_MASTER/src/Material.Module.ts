@@ -12,7 +12,7 @@ import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 
@@ -57,6 +57,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatChipsModule,
     MatButtonToggleModule,
     MatProgressBarModule,
+    MatStepperModule,
   ],
 })
 export class MaterialModule {}
