@@ -33,6 +33,7 @@ import { DatePipe } from '@angular/common'; // Import DatePipe
 import { HrViewModule } from './apps/hr-view/hr-view.module';
 import { interviewEffects } from './apps/hr-view/+store/hr.effects';
 import { schedularEffects } from './apps/scheduler/+store/schedular.effects';
+import { BlogDashboardComponent } from './apps/BlogApp/components/blog-dashboard/blog-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { schedularEffects } from './apps/scheduler/+store/schedular.effects';
     MenuHeaderComponent,
     AddBlogComponent,
     LoadingSpinnerComponent,
+    BlogDashboardComponent,
   ],
   imports: [
     StoreModule.forRoot(AppState, {}),
