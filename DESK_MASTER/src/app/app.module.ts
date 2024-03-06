@@ -66,7 +66,7 @@ import { BlogDashboardComponent } from './apps/BlogApp/components/blog-dashboard
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() , connectInZone: true}),
     HttpClientModule,
     EmployManagementModule,
     UserManagementModule,
