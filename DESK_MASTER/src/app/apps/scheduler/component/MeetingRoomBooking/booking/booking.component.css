@@ -1,11 +1,27 @@
 /* Custom CSS for Material UI */
-
+.example-container {
+  height: 513px;
+  max-width: 1200px;
+  overflow: auto;
+  margin: 11px;
+  margin-left: 80px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  align-content: center;
+}
 /* Center the buttons */
 .col-2 button {
   display: block;
   margin: 0 auto;
 }
-
+.tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  text-align: center;
+}
 /* Style the table */
 .table {
   width: 100%;

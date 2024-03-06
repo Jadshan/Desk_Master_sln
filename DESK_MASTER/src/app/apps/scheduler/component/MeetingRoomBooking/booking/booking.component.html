@@ -1,64 +1,66 @@
-<div class="row container mt-5">
-  <div class="col-2">
-    <button mat-button color="primary" (click)="showBooking(template)">My Bookings</button>
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a Date" (dateChange)="onDateSelected($event)"
-        [(ngModel)]="selectedDate">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+<section class="example-container mat-elevation-z8" tabindex="0">
+  <div class="row container mt-5">
+    <div class="col-2">
+      <button mat-button color="primary" (click)="showBooking(template)">My Bookings</button>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a Date" (dateChange)="onDateSelected($event)"
+          [(ngModel)]="selectedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-12">
+      <mat-card>
+        <table class="table">
+          <tr>
+            <td class="days">{{bookingDate}}</td>
+            <td class="days" *ngFor="let room of roomDetails">
+              <mat-card class="room-card">{{room.RoomName}}</mat-card>
+            </td>
+          </tr>
+          <tr *ngFor="let time of timeDetails">
+            <td class="days"><mat-card class="time-card">{{time.time}}</mat-card></td>
+            <td *ngFor="let room of roomDetails">
+              <button mat-raised-button color="primary" (click)="onBooking(room,time.time)"
+                [disabled]="isRoomBooked(room.RoomName, time.time)">
+                {{bookingStatus}}</button>
+            </td>
+          </tr>
+        </table>
+      </mat-card>
+    </div>
   </div>
-  <div class="col-12">
-    <mat-card>
-      <table class="table">
-        <tr>
-          <td class="days">{{bookingDate}}</td>
-          <td class="days" *ngFor="let room of roomDetails">
-            <mat-card class="room-card">{{room.RoomName}}</mat-card>
-          </td>
-        </tr>
-        <tr *ngFor="let time of timeDetails">
-          <td class="days"><mat-card class="time-card">{{time.time}}</mat-card></td>
-          <td *ngFor="let room of roomDetails">
-            <button mat-raised-button color="primary" (click)="onBooking(room,time.time)"
-              [disabled]="isRoomBooked(room.RoomName, time.time)">
-              {{bookingStatus}}</button>
-          </td>
-        </tr>
-      </table>
-    </mat-card>
-  </div>
-</div>
 
 
 
-<ng-template #template>
-  <mat-card class="booking-card">
-    <mat-card-header>
-      <mat-card-title>My Bookings</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div *ngIf="bookingsDataByUser && bookingsDataByUser.length > 0; else noBookings">
-        <div class="booking-item" *ngFor="let booking of bookingsDataByUser">
-          <div class="booking-info">
-            <p><strong>Date:</strong> {{ booking.bookingDate | date:'MMM dd, yyyy' }}</p>
-            <p><strong>Room:</strong> {{ booking.roomId }}</p>
-            <p><strong>Time:</strong> {{ booking.fromTime }} </p>
-            <p><strong>Seats:</strong> {{ booking.seatCount }}</p>
-          </div>
-          <div class="button-group">
-            <button mat-icon-button color="primary" (click)="editBooking(booking)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="deleteBooking(booking.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
+  <ng-template #template>
+    <mat-card class="booking-card">
+      <mat-card-header>
+        <mat-card-title>My Bookings</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="bookingsDataByUser && bookingsDataByUser.length > 0; else noBookings">
+          <div class="booking-item" *ngFor="let booking of bookingsDataByUser">
+            <div class="booking-info">
+              <p><strong>Date:</strong> {{ booking.bookingDate | date:'MMM dd, yyyy' }}</p>
+              <p><strong>Room:</strong> {{ booking.roomId }}</p>
+              <p><strong>Time:</strong> {{ booking.fromTime }} </p>
+              <p><strong>Seats:</strong> {{ booking.seatCount }}</p>
+            </div>
+            <div class="button-group">
+              <button mat-icon-button color="primary" (click)="editBooking(booking)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteBooking(booking.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <ng-template #noBookings>
-        <p class="no-bookings">No bookings found.</p>
-      </ng-template>
-    </mat-card-content>
-  </mat-card>
-</ng-template>
+        <ng-template #noBookings>
+          <p class="no-bookings">No bookings found.</p>
+        </ng-template>
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+</section>

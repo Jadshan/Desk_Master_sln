@@ -1,61 +1,63 @@
-<form [formGroup]="userForm" (ngSubmit)="SaveUser()">
- <mat-card>
-  <mat-card-header>
-   <h1>Register</h1>
-  </mat-card-header>
-  <mat-card-content>
+<section class="example-container mat-elevation-z8" tabindex="0">
+ <form [formGroup]="userForm" (ngSubmit)="SaveUser()">
+  <mat-card>
+   <mat-card-header>
+    <h1>Register</h1>
+   </mat-card-header>
+   <mat-card-content>
 
 
-   <mat-form-field>
-    <mat-label>User Name</mat-label>
-    <input (blur)="checkDuplicateUser()" formControlName="username" matInput>
-   </mat-form-field>
-   <mat-form-field class="mat-50">
-    <mat-label>Password</mat-label>
-    <input type="password" formControlName="password" matInput>
-   </mat-form-field>
-   <mat-form-field class="mat-50">
-    <mat-label>Confirm Password</mat-label>
-    <input type="password" formControlName="confirmPassword" matInput>
-   </mat-form-field>
-   <mat-form-field>
-    <mat-label>Full Name</mat-label>
-    <input formControlName="name" matInput>
-   </mat-form-field>
-   <mat-form-field class="mat-50">
-    <mat-label>Email</mat-label>
-    <input formControlName="email" matInput>
-   </mat-form-field>
-   <mat-form-field class="mat-50">
-    <mat-label>Phone</mat-label>
-    <input formControlName="phone" matInput>
-   </mat-form-field>
-   <div>
-    <mat-radio-group formControlName="gender">
-     <mat-radio-button color="primary" value="male">MALE</mat-radio-button>
-     <mat-radio-button value="female">FEMALE</mat-radio-button>
-     <mat-radio-button value="other">OTHERS</mat-radio-button>
-    </mat-radio-group>
-   </div>
+    <mat-form-field>
+     <mat-label>User Name</mat-label>
+     <input (blur)="checkDuplicateUser()" formControlName="username" matInput>
+    </mat-form-field>
+    <mat-form-field class="mat-50">
+     <mat-label>Password</mat-label>
+     <input type="password" formControlName="password" matInput>
+    </mat-form-field>
+    <mat-form-field class="mat-50">
+     <mat-label>Confirm Password</mat-label>
+     <input type="password" formControlName="confirmPassword" matInput>
+    </mat-form-field>
+    <mat-form-field>
+     <mat-label>Full Name</mat-label>
+     <input formControlName="name" matInput>
+    </mat-form-field>
+    <mat-form-field class="mat-50">
+     <mat-label>Email</mat-label>
+     <input formControlName="email" matInput>
+    </mat-form-field>
+    <mat-form-field class="mat-50">
+     <mat-label>Phone</mat-label>
+     <input formControlName="phone" matInput>
+    </mat-form-field>
+    <div>
+     <mat-radio-group formControlName="gender">
+      <mat-radio-button color="primary" value="male">MALE</mat-radio-button>
+      <mat-radio-button value="female">FEMALE</mat-radio-button>
+      <mat-radio-button value="other">OTHERS</mat-radio-button>
+     </mat-radio-group>
+    </div>
 
-   <div class="div-50">
+    <div class="div-50">
 
-    <mat-radio-group formControlName="role">
-     <mat-label class="">Role:- </mat-label>
-     <mat-radio-button color="primary" value="admin">Admin</mat-radio-button>
-     <mat-radio-button color="accent" value="officer">Officer</mat-radio-button>
-     <mat-radio-button color="accent" value="user">User</mat-radio-button>
+     <mat-radio-group formControlName="role">
+      <mat-label class="">Role:- </mat-label>
+      <mat-radio-button color="primary" value="admin">Admin</mat-radio-button>
+      <mat-radio-button color="accent" value="officer">Officer</mat-radio-button>
+      <mat-radio-button color="accent" value="user">User</mat-radio-button>
 
-    </mat-radio-group>
-   </div>
-   <!-- <div class="div-50">
+     </mat-radio-group>
+    </div>
+    <!-- <div class="div-50">
     <mat-checkbox formControlName="status">Is Active</mat-checkbox>
    </div> -->
-  </mat-card-content>
-  <mat-card-actions>
-   <button mat-raised-button color="primary" type="submit">Save</button>
-   <a (click)="ClosePopup()" mat-raised-button color="accent" href="/login">Back to Login</a>
-  </mat-card-actions>
+   </mat-card-content>
+   <mat-card-actions>
+    <button mat-raised-button color="primary" type="submit">Save</button>
+    <a (click)="ClosePopup()" mat-raised-button color="accent" href="/login">Back to Login</a>
+   </mat-card-actions>
 
- </mat-card>
-</form>
+  </mat-card>
+ </form>
+</section>

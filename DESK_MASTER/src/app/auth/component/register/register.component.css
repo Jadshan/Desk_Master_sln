@@ -1,8 +1,17 @@
+.example-container {
+  height: 592px;
+  max-width: 860px;
+  overflow: auto;
+  margin-left: 248px;
+  margin-top: -61px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
 mat-card {
+  height: 513px;
   margin: 2%;
   text-align: left;
-  width: 50%;
-  margin-left: 25%;
+
   border: 1px solid #ccc;
 }
 
