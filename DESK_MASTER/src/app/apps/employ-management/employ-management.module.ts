@@ -5,19 +5,27 @@ import { EmployHandlingComponent } from './component/employ-handling/employ-hand
 import { MaterialModule } from 'src/Material.Module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EmployDashboardComponent } from './component/employ-dashboard/employ-dashboard.component';
+import { EmployDashboardComponent } from './component/AdminSection/employ-dashboard/employ-dashboard.component';
 import { RouterModule } from '@angular/router';
 import { EmployHomeComponent } from './component/EmployeeSection/employ-home/employ-home.component';
 import { EmployDataEntryComponent } from './component/EmployeeSection/employ-data-entry/employ-data-entry.component';
+import { AdminViewEmployDataComponent } from './component/AdminSection/admin-view-employ-data/admin-view-employ-data.component';
 
 @NgModule({
-  declarations: [EmployListingComponent, EmployHandlingComponent, EmployDashboardComponent, EmployHomeComponent, EmployDataEntryComponent],
+  declarations: [
+    EmployListingComponent,
+    EmployHandlingComponent,
+    EmployDashboardComponent,
+    EmployHomeComponent,
+    EmployDataEntryComponent,
+    AdminViewEmployDataComponent,
+  ],
   imports: [
     CommonModule,
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
   ],
 })
 export class EmployManagementModule {}

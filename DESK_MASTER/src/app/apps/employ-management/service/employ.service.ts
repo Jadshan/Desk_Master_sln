@@ -27,6 +27,9 @@ export class EmployService {
 
   ///////===========Employee Registration=========///////////
 
+  getEmployeeData() {
+    return this.http.get<EmployeeData[]>(this.baseUrl);
+  }
   saveEmployeeData(employeeData: EmployeeData) {
     return this.http.post(this.baseUrl, employeeData);
   }
