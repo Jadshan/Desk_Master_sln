@@ -15,16 +15,24 @@ import { RecruitmentComponent } from './apps/hr-view/component/recruitment/recru
 import { InterviewListComponent } from './apps/hr-view/component/interview-list/interview-list.component';
 import { RecruitmentTeamComponent } from './apps/hr-view/component/recruitment-team/recruitment-team.component';
 import { RoomAllocationComponent } from './apps/scheduler/component/Customization/room-allocation/room-allocation.component';
-import { EmployDashboardComponent } from './apps/employ-management/component/employ-dashboard/employ-dashboard.component';
+import { EmployDashboardComponent } from './apps/employ-management/component/AdminSection/employ-dashboard/employ-dashboard.component';
 import { EmployHomeComponent } from './apps/employ-management/component/EmployeeSection/employ-home/employ-home.component';
 import { EmployDataEntryComponent } from './apps/employ-management/component/EmployeeSection/employ-data-entry/employ-data-entry.component';
+import { AdminViewEmployDataComponent } from './apps/employ-management/component/AdminSection/admin-view-employ-data/admin-view-employ-data.component';
+import { BlogDashboardComponent } from './apps/BlogApp/components/blog-dashboard/blog-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'counter', component: CounterComponent, canActivate: [authGuard] },
-  { path: 'blog', component: BlogComponent, canActivate: [authGuard] },
+  { path: 'blog', component: BlogDashboardComponent, canActivate: [authGuard] },
+  {
+    path: 'blog/localBlog',
+    component: BlogComponent,
+    canActivate: [authGuard],
+  },
+
   {
     path: 'employHome',
     component: EmployHomeComponent,
@@ -52,7 +60,7 @@ const routes: Routes = [
   },
   {
     path: 'Hr_View/employ/employlist',
-    component: EmployListingComponent,
+    component: AdminViewEmployDataComponent,
     canActivate: [authGuard],
   },
   { path: 'user', component: UserListingComponent, canActivate: [authGuard] },
