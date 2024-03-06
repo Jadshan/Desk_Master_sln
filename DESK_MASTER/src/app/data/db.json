@@ -207,7 +207,7 @@
       "candidateEmail": "sd@dfg",
       "candidatePhoneNo": "2343",
       "date": "Feb 27, 2024",
-      "timeSlot": "2.00PM-2.30PM",
+      "timeSlot": "8.00AM-8.30AM",
       "interviewer": "sdf",
       "additionalInfo": "",
       "status": true,
@@ -236,15 +236,15 @@
       "id": "df58"
     },
     {
-      "id": "116a",
       "candidateName": "dsf",
       "candidateEmail": "dsf@dfdd",
       "candidatePhoneNo": "3453",
       "date": "Feb 27, 2024",
-      "timeSlot": "8.00AM-8.30AM",
+      "timeSlot": "12.30PM-1.00PM",
       "interviewer": "sdf",
       "additionalInfo": "",
-      "status": true
+      "status": true,
+      "id": "116a"
     }
   ],
   "associate": [
@@ -440,6 +440,9 @@
       "gender": "male",
       "role": "user",
       "status": true
+    },
+    {
+      "id": "9c3e"
     }
   ],
   "role": [
@@ -499,7 +502,7 @@
     },
     {
       "role": "admin",
-      "menu": "employ",
+      "menu": "employHome",
       "id": "d2Sfd"
     },
     {
@@ -771,17 +774,6 @@
       "updatedDate": "Feb 15, 2024"
     },
     {
-      "id": "4c1d",
-      "roomId": "room1",
-      "userId": "a",
-      "bookingDate": "2024-02-15",
-      "fromTime": "9.00AM",
-      "toTime": "11:11 PM",
-      "seatCount": 2,
-      "createdDate": "2024-02-15T19:52:56+0530",
-      "updatedDate": "Feb 15, 2024"
-    },
-    {
       "id": "d07e",
       "roomId": "room1",
       "userId": "a",
@@ -878,6 +870,17 @@
       "seatCount": 2,
       "createdDate": "Feb 15, 2024",
       "updatedDate": "Feb 15, 2024"
+    },
+    {
+      "id": "217f",
+      "roomId": "room1",
+      "userId": "a",
+      "bookingDate": "2024-03-05",
+      "fromTime": "8.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 5,
+      "createdDate": "Mar 05, 2024",
+      "updatedDate": "Mar 05, 2024"
     }
   ]
 }
