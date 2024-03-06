@@ -1,0 +1,27 @@
+<button mat-raised-button color="accent"><mat-select (valueChange)="selectCalculation()" [(ngModel)]="calculationType">
+    <mat-option value="simpleChange">Simple change</mat-option>
+    <mat-option value="calculator">Calculator</mat-option>
+  </mat-select> </button>
+<h3>Custom change</h3>
+<mat-card *ngIf="calculationType == 'simpleChange'">
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>
+        Counter input
+      </mat-label>
+      <input matInput [(ngModel)]="counterInput">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Action type</mat-label>
+      <mat-select [(ngModel)]="actionType">
+        <mat-option value="add">Add</mat-option>
+        <mat-option value="remove">Remove</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="customChange()">Proceed</button>
+  </mat-card-content>
+
+
+
+</mat-card>

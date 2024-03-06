@@ -1,0 +1,109 @@
+<div class="container">
+ <mat-card class="employDataCard">
+  <form [formGroup]="empRegForm">
+   <mat-stepper [linear]="isLinear" #stepper>
+
+    <mat-step [stepControl]="basicDetailForm">
+     <div formGroupName="basicDetails">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field>
+       <mat-label>Name</mat-label>
+       <input matInput placeholder="First name" formControlName="firstName">
+      </mat-form-field>
+      <mat-form-field>
+       <mat-label>position</mat-label>
+       <input matInput placeholder="position" formControlName="position">
+      </mat-form-field>
+      <mat-form-field>
+       <mat-label>salary</mat-label>
+       <input matInput placeholder="salary" formControlName="salary">
+      </mat-form-field>
+      <div>
+       <button mat-button matStepperNext>Next</button>
+      </div>
+     </div>
+    </mat-step>
+    <mat-step [stepControl]="contactDetailsForm" label="Fill out your address">
+     <div formGroupName="contactDetails">
+      <mat-form-field>
+       <mat-label>Address</mat-label>
+       <input matInput formControlName="address" placeholder="Ex. 1 Main St, New York, NY">
+      </mat-form-field>
+      <mat-form-field>
+       <mat-label>phoneNo</mat-label>
+       <input matInput formControlName="phoneNo" placeholder="phoneNo">
+      </mat-form-field>
+      <mat-form-field>
+       <mat-label>Email</mat-label>
+       <input matInput formControlName="email" placeholder="email">
+      </mat-form-field>
+      <div>
+       <button mat-button matStepperPrevious>Back</button>
+       <button mat-button matStepperNext>Next</button>
+      </div>
+     </div>
+    </mat-step>
+    <mat-step [stepControl]="bankDetailsForm" label="Fill out your Bank Details">
+     <div formGroupName="bankDetails">
+      <mat-form-field>
+       <mat-label>bankName</mat-label>
+       <input matInput formControlName="bankName" placeholder="bankName">
+      </mat-form-field>
+      <mat-form-field>
+       <mat-label>branch</mat-label>
+       <input matInput formControlName="branch" placeholder="branch">
+      </mat-form-field>
+      <mat-form-field>
+       <mat-label>accountNo</mat-label>
+       <input matInput formControlName="accountNo" placeholder="accountNo">
+      </mat-form-field>
+      <div>
+       <button mat-button matStepperPrevious>Back</button>
+       <button mat-button matStepperNext>Next</button>
+      </div>
+     </div>
+    </mat-step>
+    <mat-step>
+     <ng-template matStepLabel>Done</ng-template>
+     <p>You are now done.</p>
+     <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-raised-button color="primary" (click)="onSubmit()" matStepperNext>Submit</button>
+
+     </div>
+    </mat-step>
+    <mat-step>
+     <ng-template matStepLabel>Confirm</ng-template>
+     <mat-card *ngIf="submittedEmployeeData != null" class="summarizedcard">
+      <mat-card-header>
+       <h1>Confirm your summarized Data</h1>
+      </mat-card-header>
+      <mat-card-content>
+       <h3>Basic Info</h3>
+       Name: {{submittedEmployeeData.empName}} <br>
+       Position: {{submittedEmployeeData.position}} <br><br>
+       <h3>Contact Info</h3>
+       Email: {{submittedEmployeeData.contactDetails.email}} <br>
+       P.NO: {{submittedEmployeeData.contactDetails.phoneNo}} <br>
+       Address: {{submittedEmployeeData.contactDetails.address}} <br> <br>
+       <h3>Bank Details</h3>
+       Bank: {{submittedEmployeeData.bankDetails.bankName}} <br>
+       Branch: {{submittedEmployeeData.bankDetails.branch}} <br>
+       AccNo: {{submittedEmployeeData.bankDetails.accountNo}} <br>
+
+
+      </mat-card-content>
+     </mat-card>
+     <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-raised-button color="primary" (click)="onConfirm()">Confirm & Submit</button>
+
+     </div>
+    </mat-step>
+
+   </mat-stepper>
+  </form>
+ </mat-card>
+</div>

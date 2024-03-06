@@ -1,0 +1,37 @@
+.example-container {
+  height: 592px;
+  max-width: 860px;
+  overflow: auto;
+  margin-left: 248px;
+  margin-top: -61px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+mat-card {
+  height: 513px;
+  margin: 2%;
+  text-align: left;
+
+  border: 1px solid #ccc;
+}
+
+.mat-mdc-form-field {
+  width: 98%;
+  margin: 1%;
+}
+.mat-50 {
+  width: 48%;
+  margin: 1%;
+}
+.div-50 {
+  width: 48%;
+  margin: 1%;
+  display: inline;
+}
+
+button {
+  margin: 2px;
+}
+.mat-mdc-raised-button {
+  width: 100%;
+}

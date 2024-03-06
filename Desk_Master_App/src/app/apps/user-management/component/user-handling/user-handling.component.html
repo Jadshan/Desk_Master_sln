@@ -1,0 +1,58 @@
+<form [formGroup]="userForm" (ngSubmit)="SaveUser()">
+ <mat-card>
+  <mat-card-header>
+   <h1>{{title}}</h1>
+  </mat-card-header>
+  <mat-card-content>
+   <mat-form-field *ngIf="isEdit">
+    <mat-label>Id</mat-label>
+    <input formControlName="id" matInput>
+   </mat-form-field>
+   <mat-form-field *ngIf="!isRoleChange">
+    <mat-label>Name</mat-label>
+    <input formControlName="name" matInput>
+   </mat-form-field>
+   <mat-form-field>
+    <mat-label>User Name</mat-label>
+    <input formControlName="username" matInput>
+   </mat-form-field>
+   <mat-form-field *ngIf="!isRoleChange">
+    <mat-label>Password</mat-label>
+    <input formControlName="password" matInput>
+   </mat-form-field>
+
+   <mat-form-field class="mat-50" *ngIf="!isRoleChange">
+    <mat-label>Email</mat-label>
+    <input formControlName="email" matInput>
+   </mat-form-field>
+   <mat-form-field class="mat-50" *ngIf="!isRoleChange">
+    <mat-label>Phone</mat-label>
+    <input formControlName="phone" matInput>
+   </mat-form-field>
+   <mat-form-field *ngIf="!isRoleChange">
+    <mat-label>Gender</mat-label>
+    <textarea formControlName="gender" matInput></textarea>
+   </mat-form-field>
+
+   <div class="div-50">
+
+    <mat-radio-group formControlName="role">
+     <mat-label class="">Role:- </mat-label>
+     <mat-radio-button color="primary" value="admin">ADMIN</mat-radio-button>
+     <mat-radio-button color="accent" value="manager">MANAGER</mat-radio-button>
+     <mat-radio-button color="accent" value="user">USER</mat-radio-button>
+     <mat-radio-button color="accent" value="employee">EMPLOYEE</mat-radio-button>
+
+    </mat-radio-group>
+   </div>
+   <div class="div-50">
+    <mat-checkbox formControlName="status">Is Active</mat-checkbox>
+   </div>
+  </mat-card-content>
+  <mat-card-actions>
+   <button mat-raised-button color="primary" type="submit">Save</button>
+   <a (click)="ClosePopup()" mat-raised-button color="accent">Close</a>
+  </mat-card-actions>
+
+ </mat-card>
+</form>
