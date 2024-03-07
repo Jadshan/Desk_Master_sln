@@ -487,11 +487,6 @@
   "roleaccess": [
     {
       "role": "admin",
-      "menu": "counter",
-      "id": "26ea"
-    },
-    {
-      "role": "admin",
       "menu": "blog",
       "id": "e586"
     },

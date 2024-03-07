@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './apps/CounterApp/counter/counter.component';
 import { BlogComponent } from './apps/BlogApp/blog/blog.component';
 import { authGuard } from './auth/Guard/auth.guard';
 import { EmployListingComponent } from './apps/employ-management/component/employ-listing/employ-listing.component';
@@ -25,7 +24,6 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'counter', component: CounterComponent, canActivate: [authGuard] },
   { path: 'blog', component: BlogDashboardComponent, canActivate: [authGuard] },
   {
     path: 'blog/localBlog',

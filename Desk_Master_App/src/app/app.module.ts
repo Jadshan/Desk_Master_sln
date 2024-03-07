@@ -3,10 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CounterButtonComponent } from './apps/CounterApp/counter-button/counter-button.component';
-import { CounterDisplayComponent } from './apps/CounterApp/counter-display/counter-display.component';
-import { CustomCounterComponent } from './apps/CounterApp/custom-counter/custom-counter.component';
-import { CounterComponent } from './apps/CounterApp/counter/counter.component';
 import { BlogComponent } from './apps/BlogApp/blog/blog.component';
 import { HomeComponent } from './home/home.component';
 import { MenuHeaderComponent } from './shared/Menu/menu-header/menu-header.component';
@@ -37,10 +33,6 @@ import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
-    CounterButtonComponent,
-    CounterDisplayComponent,
-    CustomCounterComponent,
-    CounterComponent,
     BlogComponent,
     HomeComponent,
     MenuHeaderComponent,
