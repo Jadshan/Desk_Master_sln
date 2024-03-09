@@ -9,40 +9,33 @@ export interface Employee {
   status: boolean;
 }
 
+export interface BasicDetails {
+  firstName: string;
+  secondName: string;
+  email: string;
+  designation: string;
+  role: string;
+  contactNo: string;
+  alternativeContactNo: string;
+  personalEmail: string;
+  totalYears: number;
+  totalMonths: number;
+  currentAddress: Address;
+  permanentAddress: Address;
+}
+
+export interface Address {
+  city: string;
+  state: string;
+  pinCode: string;
+  address: string;
+}
+
 export class EmployeeData {
-  basicDetails: {
-    firstName: string;
-    secondName: string;
-    email: string;
-    designation: string;
-    role: string;
-    contactNo: string;
-    alternativeContactNo: string;
-    personalEmail: string;
-    totalYears: number;
-    totalMonths: number;
-    currentAddress: {
-      city: string;
-      state: string;
-      pinCode: string;
-      address: string;
-    };
-    permanentAddress: {
-      city: string;
-      state: string;
-      pinCode: string;
-      address: string;
-    };
-  };
+  basicDetails: BasicDetails;
   skillsArr: Skills[];
   experienceArr: Experience[];
-  bankDetails: {
-    accountHolderName: string;
-    bankName: string;
-    branch: string;
-    accountNo: string;
-    accountType: string;
-  };
+  bankDetails: BankDetails;
 
   constructor() {
     this.basicDetails = {
@@ -95,6 +88,14 @@ export interface Experience {
   endDate: string;
   designation: string;
   project: string;
+}
+
+export interface BankDetails {
+  accountHolderName: string;
+  bankName: string;
+  branch: string;
+  accountNo: string;
+  accountType: string;
 }
 
 export class EmployeeModel {
