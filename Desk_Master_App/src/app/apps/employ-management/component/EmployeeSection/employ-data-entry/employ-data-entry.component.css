@@ -1,3 +1,13 @@
+.example-container {
+  height: 525px;
+  max-width: 1330px;
+  overflow: auto;
+  margin: 2px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 4px;
+}
 .mat-stepper-horizontal {
   margin-top: 8px;
 }
@@ -8,10 +18,4 @@
   width: 80%;
 }
 .employDataCard {
-  margin: 2%;
-}
-
-.container {
-  min-width: 1200px;
-  max-height: 90%;
 }

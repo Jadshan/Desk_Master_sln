@@ -1,109 +1,414 @@
-<div class="container">
- <mat-card class="employDataCard">
-  <form [formGroup]="empRegForm">
-   <mat-stepper [linear]="isLinear" #stepper>
+<section class="example-container mat-elevation-z8" tabindex="0">
+  <mat-card class="employDataCard">
+    <form [formGroup]="empRegForm">
+      <mat-stepper [linear]="isLinear" #stepper>
 
-    <mat-step [stepControl]="basicDetailForm">
-     <div formGroupName="basicDetails">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-       <mat-label>Name</mat-label>
-       <input matInput placeholder="First name" formControlName="firstName">
-      </mat-form-field>
-      <mat-form-field>
-       <mat-label>position</mat-label>
-       <input matInput placeholder="position" formControlName="position">
-      </mat-form-field>
-      <mat-form-field>
-       <mat-label>salary</mat-label>
-       <input matInput placeholder="salary" formControlName="salary">
-      </mat-form-field>
-      <div>
-       <button mat-button matStepperNext>Next</button>
-      </div>
-     </div>
-    </mat-step>
-    <mat-step [stepControl]="contactDetailsForm" label="Fill out your address">
-     <div formGroupName="contactDetails">
-      <mat-form-field>
-       <mat-label>Address</mat-label>
-       <input matInput formControlName="address" placeholder="Ex. 1 Main St, New York, NY">
-      </mat-form-field>
-      <mat-form-field>
-       <mat-label>phoneNo</mat-label>
-       <input matInput formControlName="phoneNo" placeholder="phoneNo">
-      </mat-form-field>
-      <mat-form-field>
-       <mat-label>Email</mat-label>
-       <input matInput formControlName="email" placeholder="email">
-      </mat-form-field>
-      <div>
-       <button mat-button matStepperPrevious>Back</button>
-       <button mat-button matStepperNext>Next</button>
-      </div>
-     </div>
-    </mat-step>
-    <mat-step [stepControl]="bankDetailsForm" label="Fill out your Bank Details">
-     <div formGroupName="bankDetails">
-      <mat-form-field>
-       <mat-label>bankName</mat-label>
-       <input matInput formControlName="bankName" placeholder="bankName">
-      </mat-form-field>
-      <mat-form-field>
-       <mat-label>branch</mat-label>
-       <input matInput formControlName="branch" placeholder="branch">
-      </mat-form-field>
-      <mat-form-field>
-       <mat-label>accountNo</mat-label>
-       <input matInput formControlName="accountNo" placeholder="accountNo">
-      </mat-form-field>
-      <div>
-       <button mat-button matStepperPrevious>Back</button>
-       <button mat-button matStepperNext>Next</button>
-      </div>
-     </div>
-    </mat-step>
-    <mat-step>
-     <ng-template matStepLabel>Done</ng-template>
-     <p>You are now done.</p>
-     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-      <button mat-raised-button color="primary" (click)="onSubmit()" matStepperNext>Submit</button>
+        <mat-step [stepControl]="basicDetailForm" label="Fill out your Basic Data">
+          <div>
+            <div class="section-content step1 active" formGroupName="basicDetails">
+              <div class="contaner-fluid">
+                <div class="row">
+                  <div class="form-group text-start col-md-4">
+                    <label>First Name :</label>
+                    <input type="text" placeholder="Enter Name" class="form-control" formControlName="firstName">
+                  </div>
+                  <div class="form-group text-start col-md-4">
+                    <label>Second Name :</label>
+                    <input type="text" placeholder="Enter Name" class="form-control" formControlName="secondName">
+                  </div>
+                  <div class="form-group text-start col-md-4">
+                    <label>Email :</label>
+                    <input type="text" placeholder="Enter Email" class="form-control" formControlName="email">
+                  </div>
 
-     </div>
-    </mat-step>
-    <mat-step>
-     <ng-template matStepLabel>Confirm</ng-template>
-     <mat-card *ngIf="submittedEmployeeData != null" class="summarizedcard">
-      <mat-card-header>
-       <h1>Confirm your summarized Data</h1>
-      </mat-card-header>
-      <mat-card-content>
-       <h3>Basic Info</h3>
-       Name: {{submittedEmployeeData.empName}} <br>
-       Position: {{submittedEmployeeData.position}} <br><br>
-       <h3>Contact Info</h3>
-       Email: {{submittedEmployeeData.contactDetails.email}} <br>
-       P.NO: {{submittedEmployeeData.contactDetails.phoneNo}} <br>
-       Address: {{submittedEmployeeData.contactDetails.address}} <br> <br>
-       <h3>Bank Details</h3>
-       Bank: {{submittedEmployeeData.bankDetails.bankName}} <br>
-       Branch: {{submittedEmployeeData.bankDetails.branch}} <br>
-       AccNo: {{submittedEmployeeData.bankDetails.accountNo}} <br>
+                </div>
+                <div class="row pb-2">
+                  <div class="form-group text-start col-md-2">
+                    <label>Designation :</label>
+                    <select class="form-select" formControlName="designation">
+                      @for (item of designationList; track $index) {
+                      <option [value]="item"> {{item}}</option>
+                      }
+                    </select>
+                  </div>
+                  <div class="form-group text-start col-md-2">
+                    <label>Role :</label>
+                    <select class="form-select" formControlName="role">
+
+                      <option *ngFor="let item of roleList" [value]="item"> {{item}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group text-start col-md-3">
+                    <label>Contact No :</label>
+                    <input type="text" placeholder="Enter Contact No" class="form-control" formControlName="contactNo">
+                  </div>
+                  <div class="form-group text-start col-md-3">
+                    <label>Alternate Contact No :</label>
+                    <input type="text" placeholder="Alternate Contact No." class="form-control"
+                      formControlName="alternativeContactNo">
+                  </div>
+                  <div class="form-group text-start col-md-3">
+                    <label>Personal Email ID :</label>
+                    <input type="text" placeholder="Enter Personal EmailID" class="form-control"
+                      formControlName="personalEmail">
+                  </div>
+                </div>
 
 
-      </mat-card-content>
-     </mat-card>
-     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-      <button mat-raised-button color="primary" (click)="onConfirm()">Confirm & Submit</button>
+                <div class="row">
+                  <div class="col-6">
+                    <h6>Experience</h6>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row" formGroupName="experience">
+                  <div class="form-group text-start col-md-3">
+                    <label>Total Years :</label>
+                    <input type="number" placeholder="Enter total Years of Experience" class="form-control"
+                      formControlName="totalYears">
+                  </div>
+                  <div class="form-group text-start col-md-3">
+                    <label>Total Month :</label>
+                    <input type="number" placeholder="Enter month of Experience" class="form-control"
+                      formControlName="totalMonths">
+                  </div>
+                </div>
 
-     </div>
-    </mat-step>
 
-   </mat-stepper>
-  </form>
- </mat-card>
-</div>
+
+                <div class="row pt-2" formGroupName="Address">
+                  <div class="col-6" formGroupName="currentAddress">
+                    <h6>Current Address</h6>
+                    <hr>
+                    <div class="row">
+                      <div class="form-group text-start col-md-4">
+                        <label>City :</label>
+                        <input type="text" placeholder="Enter City" class="form-control" formControlName="city">
+                      </div>
+                      <div class="form-group text-start col-md-4">
+                        <label>State :</label>
+                        <input type="text" placeholder="Enter State" class="form-control" formControlName="state">
+                      </div>
+                      <div class="form-group text-start col-md-4">
+                        <label>Pin Code :</label>
+                        <input type="text" placeholder="Enter Pin code" class="form-control" formControlName="pinCode">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group text-start col-md-12">
+                        <label>Address :</label>
+                        <textarea placeholder="Enter Address" class="form-control" formControlName="address"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6" formGroupName="permanentAddress">
+                    <h6>Permanent Address</h6>
+                    <label class="form-check-label">
+                      <input type="checkbox" (change)="isSameAddress=!isSameAddress; onTogglePermanentAddress()"
+                        [(ngModel)]="isSameAddress">
+
+                      Same as Current Address
+                    </label>
+                    <hr>
+                    <div class="row">
+                      <div class="form-group text-start col-md-4">
+                        <label>City :</label>
+                        <input type="text" placeholder="Enter City" class="form-control" formControlName="city">
+                      </div>
+                      <div class="form-group text-start col-md-4">
+                        <label>State :</label>
+                        <input type="text" placeholder="Enter State" class="form-control" formControlName="state">
+                      </div>
+                      <div class="form-group text-start col-md-4">
+                        <label>Pin Code :</label>
+                        <input type="text" placeholder="Enter Pin code" class="form-control" formControlName="pinCode">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group text-start col-md-12">
+                        <label>Address :</label>
+                        <textarea placeholder="Enter Address" class="form-control" formControlName="address"></textarea>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+          <br>
+          <div>
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperNext (click)="onNext()">Next</button>
+          </div>
+
+        </mat-step>
+
+        <mat-step [stepControl]="skillsForm" label="Add your skills">
+          <div class="section-content step2 active">
+            <div class="contaner-fluid">
+              <div class="form-group text-start mt-2" id="tblSkill">
+                <div class=" ">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5> Skills </h5>
+                    </div>
+
+                  </div>
+
+                  <div id="table-container">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Skill Name</th>
+                          <th>Proficiency</th>
+                          <th>Total Experience</th>
+                          <th>Last Version</th>
+                          <th>Certifications</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr formGroupName="skillObj">
+                          <td>
+                            <input type="text" placeholder="Skill" class="form-control" formControlName="skill">
+                          </td>
+                          <mat-select class="form-control" formControlName="proficiency">
+                            <mat-option *ngFor="let proficiency of proficiencyList"
+                              [value]="proficiency">{{proficiency}}</mat-option>
+                          </mat-select>
+                          <td>
+                            <input type="text" placeholder="Total Experience" class="form-control"
+                              formControlName="experience">
+                          </td>
+                          <td>
+                            <input type="text" placeholder="Last Version" class="form-control"
+                              formControlName="version">
+                          </td>
+                          <td>
+                            <input type="file" class="form-control-file" formControlName="certificationFile">
+                          </td>
+                          <td class="btn-container">
+                            <button class="btn btn-sm btn-success" (click)="onPushSkill()"><i class="fa fa-save"></i>
+                              Save</button>
+                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
+                          </td>
+                        </tr>
+                        <tr formGroupName="skillObj" *ngFor="let skill of employeeData.skillsArr">
+                          <td>
+                            <input type="text" placeholder="Skill" class="form-control" value="{{skill.skill}}"
+                              disabled>
+                          </td>
+                          <mat-select value="{{skill.proficiency}}" class="form-control" disabled="true">
+                            <mat-option *ngFor="let proficiency of proficiencyList"
+                              [value]="proficiency">{{proficiency}}</mat-option>
+                          </mat-select>
+                          <td>
+                            <input type="text" placeholder="Total Experience" class="form-control"
+                              value="{{skill.experience}}" disabled>
+                          </td>
+                          <td>
+                            <input type="text" placeholder="Last Version" class="form-control" value="{{skill.version}}"
+                              disabled>
+                          </td>
+                          <td>
+                            <input type="file" class="form-control-file" value="{{skill.certificationFile}}" disabled>
+                          </td>
+                          <td class="btn-container">
+                            <button class="btn btn-sm btn-success"><i class="fa fa-save"></i>
+                              Edit</button>
+                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                      <tfoot>
+                      </tfoot>
+                    </table>
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                    <div class="btn-container d-flex justify-content-end">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-step>
+
+        <mat-step [stepControl]="experienceForm" label="Add your Experience">
+          <div class="section-content step3 active">
+            <div class="contaner-fluid">
+              <div class="form-group text-start mt-2" id="tblExperience">
+                <div class=" ">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5>Experience</h5>
+                    </div>
+                  </div>
+                  <div id="table-container">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Company</th>
+                          <th>Start Date</th>
+                          <th>End Date</th>
+                          <th>Designation</th>
+                          <th>Project</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr formGroupName="ExperienceObj">
+                          <td>
+                            <input type="text" class="form-control " placeholder="Company" formControlName="company">
+                          </td>
+                          <td>
+                            <input type="date" class="form-control" placeholder="Start Date"
+                              formControlName="startDate">
+                          </td>
+                          <td>
+                            <input type="date" class="form-control" placeholder="End Date" formControlName="endDate">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" placeholder="Designation"
+                              formControlName="designation">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" placeholder="Project" formControlName="project">
+                          </td>
+
+                          <td class="btn-container">
+                            <button class="btn btn-sm btn-success" (click)="onPushExperience()"><i
+                                class="fa fa-save"></i>
+                              Save</button>
+                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
+                          </td>
+                        </tr>
+
+                        <tr *ngFor="let data of employeeData.experienceArr ">
+                          <td>
+                            <input type="text" class="form-control " placeholder="Company" value="{{data.company}}"
+                              disabled>
+                          </td>
+                          <td>
+                            <input type="date" class="form-control" placeholder="Start Date" value="{{data.startDate}}"
+                              disabled>
+                          </td>
+                          <td>
+                            <input type="date" class="form-control" placeholder="End Date" value="{{data.endDate}}"
+                              disabled>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" placeholder="Designation"
+                              value="{{data.designation}}" disabled>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" placeholder="Project" value="{{data.project}}"
+                              disabled>
+                          </td>
+
+                          <td class="btn-container">
+                            <button class="btn btn-sm btn-success"><i class="fa fa-save"></i>
+                              Edit</button>
+                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                      <tfoot>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </mat-step>
+
+        <mat-step [stepControl]="bankDetailsForm" label="Fill out your Bank Details">
+          <div formGroupName="bankDetails">
+            <mat-form-field>
+              <mat-label>Bank Name</mat-label>
+              <input matInput formControlName="bankName" placeholder="Bank Name">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Branch</mat-label>
+              <input matInput formControlName="branch" placeholder="Branch">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Account Number</mat-label>
+              <input matInput formControlName="accountNo" placeholder="Account Number">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Account Type</mat-label>
+              <input matInput formControlName="accountType" placeholder="Account Type">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Account Holder Name</mat-label>
+              <input matInput formControlName="accountHolderName" placeholder="Account Holder Name">
+            </mat-form-field>
+
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-raised-button color="primary" (click)="onSubmit()" matStepperNext>Submit</button>
+
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Confirm</ng-template>
+          <mat-card *ngIf="submittedEmployeeData != null" class="summarizedcard">
+            <mat-card-header>
+              <h1>Confirm your summarized Data</h1>
+            </mat-card-header>
+            <mat-card-content>
+              <h3>Basic Info</h3>
+              Name: <br>
+              Position: <br><br>
+              <h3>Contact Info</h3>
+              Email: <br>
+              P.NO: <br>
+              Address: <br> <br>
+              <h3>Bank Details</h3>
+              Bank: {{submittedEmployeeData.bankDetails.bankName}} <br>
+              Branch: {{submittedEmployeeData.bankDetails.branch}} <br>
+              AccNo: {{submittedEmployeeData.bankDetails.accountNo}} <br>
+
+
+            </mat-card-content>
+          </mat-card>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-raised-button color="primary" (click)="onConfirm()">Confirm & Submit</button>
+
+          </div>
+        </mat-step>
+
+      </mat-stepper>
+    </form>
+  </mat-card>
+</section>
