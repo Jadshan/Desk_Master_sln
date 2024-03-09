@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { EmployService } from '../../../service/employ.service';
 import {
   EmployeeData,
   Experience,
   Skills,
 } from '../../../+Store/Model/employee.model';
-import { EmployService } from '../../../service/employ.service';
 
 @Component({
   selector: 'app-employ-data-entry',
@@ -14,17 +14,22 @@ import { EmployService } from '../../../service/employ.service';
 })
 export class EmployDataEntryComponent implements OnInit {
   empRegForm!: FormGroup;
-  isLinear: boolean = true;
-  isSameAddress: boolean = false;
-  employeeData!: EmployeeData;
-  submittedEmployeeData!: EmployeeData;
-  employeeObj: any;
-  proficiencyList: string[] = ['Beginner', 'Intermediate', 'Advanced'];
-  designationList: string[] = ['jaffna', 'colombo'];
-  roleList: string[] = ['SE', 'ASE', 'SSE', 'QA', 'AQA'];
+  isLinear = true;
+  isSameAddress = false;
+  employeeData = new EmployeeData();
+  submittedEmployeeData: EmployeeData | undefined;
+  proficiencyList = ['Beginner', 'Intermediate', 'Advanced'];
+  designationList = ['jaffna', 'colombo'];
+  roleList = ['SE', 'ASE', 'SSE', 'QA', 'AQA'];
+
   constructor(private FB: FormBuilder, private service: EmployService) {}
+
   ngOnInit(): void {
     this.employeeData = new EmployeeData();
+    this.buildForm();
+  }
+
+  buildForm(): void {
     this.empRegForm = this.FB.group({
       basicDetails: this.FB.group({
         firstName: this.FB.control(''),
@@ -35,10 +40,9 @@ export class EmployDataEntryComponent implements OnInit {
         contactNo: this.FB.control(''),
         alternativeContactNo: this.FB.control(''),
         personalEmail: this.FB.control(''),
-
         experience: this.FB.group({
-          totalYears: this.FB.control(0),
-          totalMonths: this.FB.control(0),
+          totalYears: 0,
+          totalMonths: 0,
         }),
         Address: this.FB.group({
           currentAddress: this.FB.group({
@@ -57,7 +61,7 @@ export class EmployDataEntryComponent implements OnInit {
       }),
       skillObj: this.FB.group({
         skill: this.FB.control(''),
-        proficiency: this.FB.control(this.proficiencyList[0]),
+        proficiency: this.proficiencyList[0],
         experience: this.FB.control(''),
         version: this.FB.control(''),
         certificationFile: this.FB.control(''),
@@ -80,53 +84,71 @@ export class EmployDataEntryComponent implements OnInit {
     });
   }
 
-  copyCurrentAddressToPermanent() {
+  copyCurrentAddressToPermanent(): void {
     if (this.isSameAddress) {
-      this.permanentAddressForm.patchValue({
-        city: this.currentAddressForm.value.city,
-        state: this.currentAddressForm.value.state,
-        pinCode: this.currentAddressForm.value.pinCode,
-        address: this.currentAddressForm.value.address,
-      });
+      this.permanentAddressForm.patchValue(this.currentAddressForm.value);
     } else {
       this.permanentAddressForm.reset();
     }
   }
 
-  onTogglePermanentAddress() {
-    this.copyCurrentAddressToPermanent();
-    // else {
-    //   // Optionally clear the permanent address fields if the checkbox is unchecked
-    //   const permanentAddressGroup = this.empRegForm.get(
-    //     'basicDetails.permanentAddress'
-    //   );
-    //   if (permanentAddressGroup) {
-    //     permanentAddressGroup.reset();
-    //   }
-    // }
-  }
-
-  onNext() {
+  onNext(): void {
     console.log(this.empRegForm.value);
   }
-  get basicDetailForm() {
+
+  onSubmit(): void {
+    if (this.empRegForm.valid) {
+      this.submittedEmployeeData = {
+        basicDetails: {
+          firstName: this.basicDetailForm.value.firstName,
+          secondName: this.basicDetailForm.value.secondName,
+          email: this.basicDetailForm.value.email,
+          designation: this.basicDetailForm.value.designation,
+          role: this.basicDetailForm.value.role,
+          contactNo: this.basicDetailForm.value.contactNo,
+          alternativeContactNo: this.basicDetailForm.value.alternativeContactNo,
+          personalEmail: this.basicDetailForm.value.personalEmail,
+          totalYears: this.experienceDetailsForm.value.totalYears,
+          totalMonths: this.experienceDetailsForm.value.totalMonths,
+          currentAddress: { ...this.currentAddressForm.value },
+          permanentAddress: { ...this.permanentAddressForm.value },
+        },
+        skillsArr: [...this.employeeData.skillsArr],
+        experienceArr: [...this.employeeData.experienceArr],
+        bankDetails: { ...this.bankDetailsForm.value },
+      };
+      console.log(this.submittedEmployeeData);
+    }
+  }
+
+  onConfirm(): void {
+    // this.service.saveEmployeeData(this.submittedEmployeeData)
+    //   .subscribe((res) => {
+    //     console.log(res);
+    //   });
+  }
+
+  get basicDetailForm(): FormGroup {
     return this.empRegForm.get('basicDetails') as FormGroup;
   }
-  get experienceDetailsForm() {
+
+  get experienceDetailsForm(): FormGroup {
     return this.basicDetailForm.get('experience') as FormGroup;
   }
-  get currentAddressForm() {
+
+  get currentAddressForm(): FormGroup {
     return (this.basicDetailForm.get('Address') as FormGroup).get(
       'currentAddress'
     ) as FormGroup;
   }
-  get permanentAddressForm() {
+
+  get permanentAddressForm(): FormGroup {
     return (this.basicDetailForm.get('Address') as FormGroup).get(
       'permanentAddress'
     ) as FormGroup;
   }
 
-  get bankDetailsForm() {
+  get bankDetailsForm(): FormGroup {
     return this.empRegForm.get('bankDetails') as FormGroup;
   }
   get skillsForm() {
@@ -136,7 +158,7 @@ export class EmployDataEntryComponent implements OnInit {
     return this.empRegForm.get('ExperienceObj') as FormGroup;
   }
 
-  addExp() {
+  addExp(): void {
     const experienceObj: Experience = {
       company: '',
       startDate: '',
@@ -147,7 +169,7 @@ export class EmployDataEntryComponent implements OnInit {
     this.employeeData.experienceArr.push(experienceObj);
   }
 
-  onPushSkill() {
+  onPushSkill(): void {
     const skillFormGroup = this.empRegForm.get('skillObj') as FormGroup;
     const experienceObj: Skills = {
       skill: skillFormGroup.get('skill')?.value || '',
@@ -163,8 +185,7 @@ export class EmployDataEntryComponent implements OnInit {
     this.empRegForm.get('skillObj')?.reset();
   }
 
-  onPushExperience() {
-    // Push experience from form to ExperienceArr of empRegForm
+  onPushExperience(): void {
     const experienceFormGroup = this.empRegForm.get(
       'ExperienceObj'
     ) as FormGroup;
@@ -184,7 +205,7 @@ export class EmployDataEntryComponent implements OnInit {
     this.empRegForm.get('ExperienceObj')?.reset();
   }
 
-  onAddSkill() {
+  onAddSkill(): void {
     const skillObj: Skills = {
       skill: '',
       experience: '',
@@ -193,54 +214,5 @@ export class EmployDataEntryComponent implements OnInit {
       certificationFile: '',
     };
     this.employeeData.skillsArr.unshift(skillObj);
-  }
-
-  onSubmit() {
-    if (this.empRegForm.valid) {
-      this.submittedEmployeeData = {
-        basicDetails: {
-          firstName: this.basicDetailForm.value.firstName,
-          secondName: this.basicDetailForm.value.secondName,
-          email: this.basicDetailForm.value.email,
-          designation: this.basicDetailForm.value.designation,
-          role: this.basicDetailForm.value.role,
-          contactNo: this.basicDetailForm.value.contactNo,
-          alternativeContactNo: this.basicDetailForm.value.alternativeContactNo,
-          personalEmail: this.basicDetailForm.value.personalEmail,
-          totalYears: this.experienceDetailsForm.value.totalYears,
-          totalMonths: this.experienceDetailsForm.value.totalMonths,
-          currentAddress: {
-            city: this.currentAddressForm.value.city,
-            state: this.currentAddressForm.value.state,
-            pinCode: this.currentAddressForm.value.pinCode,
-            address: this.currentAddressForm.value.address,
-          },
-          permanentAddress: {
-            city: this.permanentAddressForm.value.city,
-            state: this.permanentAddressForm.value.state,
-            pinCode: this.permanentAddressForm.value.pinCode,
-            address: this.permanentAddressForm.value.address,
-          },
-        },
-        skillsArr: this.employeeData.skillsArr,
-        experienceArr: this.employeeData.experienceArr,
-        bankDetails: {
-          accountHolderName: this.bankDetailsForm.value.accountHolderName,
-          bankName: this.bankDetailsForm.value.bankName,
-          branch: this.bankDetailsForm.value.branch,
-          accountNo: this.bankDetailsForm.value.accountNo,
-          accountType: this.bankDetailsForm.value.accountType,
-        },
-      };
-      console.log(this.submittedEmployeeData);
-    }
-  }
-
-  onConfirm() {
-    // this.service
-    //   .saveEmployeeData(this.submittedEmployeeData)
-    //   .subscribe((res) => {
-    //     console.log(res);
-    //   });
   }
 }
