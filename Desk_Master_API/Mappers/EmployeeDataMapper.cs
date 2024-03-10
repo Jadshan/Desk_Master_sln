@@ -58,7 +58,11 @@ namespace Desk_Master_API.Mappers
                 Per_State = employeeModel.Per_State,
                 Per_PinCode = employeeModel.Per_PinCode,
                 Per_Address = employeeModel.Per_Address,
-                BankDetails = employeeModel.BankDetailsList.Select(b => b.ToBankDetailViewDTO()).ToList()
+                BankDetails = employeeModel.BankDetailsList.Select(b => b.ToBankDetailViewDTO()).ToList(),
+                Experience = employeeModel.ExperienceList.Select(b => b.ToExperienceViewDTO()).ToList(),
+                Skill = employeeModel.SkillList.Select(b => b.ToSkillViewDTO()).ToList()
+
+
                 
                 
             };
