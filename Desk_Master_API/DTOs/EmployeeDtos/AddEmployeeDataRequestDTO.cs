@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Desk_Master_API.DTOs.BankDTOs;
+using Desk_Master_API.DTOs.ExperienceDTOs;
+using Desk_Master_API.DTOs.SkillDTOs;
 using Desk_Master_API.Models;
 
 namespace Desk_Master_API.DTOs.EmployeeDTOs
@@ -21,7 +23,8 @@ namespace Desk_Master_API.DTOs.EmployeeDTOs
         public int TotalMonths { get; set; } 
         public AddressModel CurrentAddress {get; set;} = new AddressModel();
         public AddressModel PermanentAddress {get; set;} = new AddressModel();      
-         public List<AddBankRequestDTO>? BankDetails { get; set; } 
-       
+         public List<AddBankRequestDTO>? BankDetails { get; set; }
+         public List<AddExperienceRequestDTO>? Experience { get; set; } 
+         public List<AddSkillRequestDTO>? Skill { get; set; }        
     }
 }

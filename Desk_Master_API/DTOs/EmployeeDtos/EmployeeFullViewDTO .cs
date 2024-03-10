@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Desk_Master_API.DTOs.BankDTOs;
+using Desk_Master_API.DTOs.ExperienceDTOs;
+using Desk_Master_API.DTOs.SkillDTOs;
 
 
 namespace Desk_Master_API.DTOs.EmployeeDtos
@@ -28,8 +30,9 @@ namespace Desk_Master_API.DTOs.EmployeeDtos
          public string Per_State { get; set; } = string.Empty;
         public string Per_PinCode { get; set; } = string.Empty;
         public string Per_Address { get; set; } = string.Empty;
-        //public List<Skills> SkillList {get; set;} = new List<Skills>();
-        //public List<Experience> ExperienceList {get; set;} = new List<Experience>();
         public List<BankDetailViewDTO>? BankDetails {get; set;}
+        public List<ExperienceViewDTO>? Experience {get; set;}
+        public List<SkillViewDTO>? Skill {get; set;}
+
     }
 }
