@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Desk_Master_API.DTOs;
+using Desk_Master_API.DTOs.BankDTOs;
 
-using Desk_Master_API.DTOs.ContactDtos;
 using Desk_Master_API.Models;
 
 namespace Desk_Master_API.Mappers
@@ -16,9 +16,11 @@ namespace Desk_Master_API.Mappers
             return new BankDetailViewDTO
             {
                 Id = bankDetail.Id,
+                AccountHolderName = bankDetail.AccountHolderName,
                 BankName = bankDetail.BankName,
                 Branch = bankDetail.Branch,
                 AccountNo = bankDetail.AccountNo,
+                AccountType = bankDetail.AccountType,
                 EmployeeId = bankDetail.EmployeeId
             };
         }
@@ -26,9 +28,11 @@ namespace Desk_Master_API.Mappers
         {
             return new BankDetail
             {
+              AccountHolderName = requestDTO.AccountHolderName,
               BankName = requestDTO.BankName,
               Branch= requestDTO.Branch,
               AccountNo = requestDTO.AccountNo,
+              AccountType = requestDTO.AccountType,
               EmployeeId = EmployId
             };
         }

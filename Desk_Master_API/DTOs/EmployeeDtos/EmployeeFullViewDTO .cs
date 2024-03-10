@@ -2,20 +2,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Desk_Master_API.DTOs.ContactDtos;
-using Desk_Master_API.DTOs.ContactDtos;
-using Desk_Master_API.Models;
+using Desk_Master_API.DTOs.BankDTOs;
+
 
 namespace Desk_Master_API.DTOs.EmployeeDtos
 {
     public class EmployeeFullViewDTO
     {
-        public int Id { get; set; } 
-        public string EmpName { get; set; } = string.Empty;
-        public string Position { get; set; } = string.Empty;
-        public decimal Salary { get; set; }
-        public List<ContactDetaillViewDTO>? ContactDetails {get; set;}
+       public int Id { get; set; } 
+        public string FirstName { get; set; } = string.Empty;
+         public string SecondName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Designation { get; set; } = string.Empty;
+        public string Role { get; set; } = string.Empty;
+        public string ContactNo { get; set; } = string.Empty;
+        public string AlternativeContactNo { get; set; } = string.Empty;
+        public string PersonalEmail { get; set; } = string.Empty;
+        public int TotalYears { get; set; } 
+        public int TotalMonths { get; set; }  
+        public string City { get; set; } = string.Empty;
+         public string State { get; set; } = string.Empty;
+        public string PinCode { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
+       public string Per_City { get; set; } = string.Empty;
+         public string Per_State { get; set; } = string.Empty;
+        public string Per_PinCode { get; set; } = string.Empty;
+        public string Per_Address { get; set; } = string.Empty;
+        //public List<Skills> SkillList {get; set;} = new List<Skills>();
+        //public List<Experience> ExperienceList {get; set;} = new List<Experience>();
         public List<BankDetailViewDTO>? BankDetails {get; set;}
-
     }
 }

@@ -20,10 +20,10 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
 	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSqlConnection"));
 });
 
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
 builder.Services.AddScoped<IEmployeeFullViewRepository, EmployeeFullViewRepository>();
 
-builder.Services.AddScoped<IContactDetailRepository, ContactDetailRepository>();
+
 
 builder.Services.AddCors(p => p.AddDefaultPolicy(build =>{
 	build.AllowAnyOrigin();

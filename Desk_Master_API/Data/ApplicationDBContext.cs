@@ -7,16 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Desk_Master_API.Data
 {
-    public class ApplicationDBContext: DbContext
+    public class ApplicationDBContext(DbContextOptions dbContextOptions) : DbContext(dbContextOptions)
     {
-     public ApplicationDBContext(DbContextOptions dbContextOptions)
-     : base(dbContextOptions)
-     {
-        
-     }   
-
-     public DbSet<Employee> Employees {get; set;}
-     public DbSet<ContactDetail> ContactDetails {get; set;}
-     public DbSet<BankDetail> BankDetails {get; set;}
+     public DbSet<Employee> EmployeesTbl {get; set;}
+     public DbSet<Skills> SkillsTbl {get; set;}
+     public DbSet<Experience> ExperienceTbl {get; set;}
+     public DbSet<BankDetail> BankDetailsTbl {get; set;}
     }
 }

@@ -17,36 +17,29 @@ namespace Desk_Master_API.Repository
         public async Task<Employee> CreateAsync(AddEmployeeDataRequestDTO employeeModel)
         {
             var _employeeModel= employeeModel.ToEmployeeDataFromAddDTO();
-            await _context.Employees.AddAsync(_employeeModel);
+            await _context.EmployeesTbl.AddAsync(_employeeModel);
             await _context.SaveChangesAsync();
-              if (employeeModel.ContactDetails != null){
-                var contactDetail = employeeModel.ContactDetails.ToContactDetailFromAddDTO(_employeeModel.Id);
-                _context.ContactDetails.Add(contactDetail);
-              }
-               if (employeeModel.BankDetails != null){
-                var bankDetails = employeeModel.BankDetails.ToBankDetailFromAddDTO(_employeeModel.Id);
-                _context.BankDetails.Add(bankDetails);
-              }
+            
+               employeeModel.BankDetails?.ForEach(bank =>{
+                     var bankDetails = bank.ToBankDetailFromAddDTO(_employeeModel.Id);
+                _context.BankDetailsTbl.Add(bankDetails);
+                });
                 await _context.SaveChangesAsync(); 
             
             return _employeeModel;
-        }
-
-        
+        }     
 
         public async Task<List<Employee>> GetFullViewAsync()
         {
-            return await _context.Employees
-            .Include(e=> e.ContactDetails)
-            .Include(e => e.BankDetails)
+            return await _context.EmployeesTbl  
+            .Include(e => e.BankDetailsList)
             .ToListAsync();
         }
 
         public async Task<Employee?> GetByIdAsync(int id)
         {
-            return await _context.Employees
-            .Include(e=> e.ContactDetails)
-            .Include(e => e.BankDetails)
+            return await _context.EmployeesTbl
+            .Include(e => e.BankDetailsList)
             .FirstOrDefaultAsync(i => i.Id == id);
         }
     }
