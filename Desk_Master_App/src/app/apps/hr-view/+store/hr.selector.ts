@@ -3,6 +3,12 @@ import { Interview, InterviewModel, TimeSlot } from './Model';
 
 const getInterviewState = createFeatureSelector<InterviewModel>('interview');
 
+export const getTimeAllocation = createSelector(getInterviewState, (state) => {
+  return state.TimeAllocation;
+});
+export const getTimeSlotsList = createSelector(getInterviewState, (state) => {
+  return state.TimeSlotsList;
+});
 export const getInterviewList = createSelector(getInterviewState, (state) => {
   return sortInterview(state.InterviewList);
 });

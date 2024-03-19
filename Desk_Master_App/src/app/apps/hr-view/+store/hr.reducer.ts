@@ -3,12 +3,26 @@ import { InterviewState } from './hr.state';
 import {
   addInterviewSuccess,
   loadInterviewSuccess,
+  loadTimeAllocationSuccess,
   loadTimeSlotSuccess,
+  loadTimeSlots,
   updateInterviewSuccess,
 } from './hr.action';
 
 const _interviewReducer = createReducer(
   InterviewState,
+  on(loadTimeAllocationSuccess, (state, action) => {
+    return {
+      ...state,
+      TimeAllocation: [...action.timeAllocationList],
+    };
+  }),
+  on(loadTimeSlots, (state, action) => {
+    return {
+      ...state,
+      TimeSlotsList: [...action.timeSlotsList],
+    };
+  }),
   on(loadInterviewSuccess, (state, action) => {
     return {
       ...state,

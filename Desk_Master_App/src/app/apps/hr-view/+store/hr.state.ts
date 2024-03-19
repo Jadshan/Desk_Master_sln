@@ -1,6 +1,8 @@
 import { InterviewModel } from './Model';
 
 export const InterviewState: InterviewModel = {
+  TimeAllocation: [],
+  TimeSlotsList: [],
   TimeSlotList: [],
   InterviewObj: {
     id: '',
@@ -13,4 +15,5 @@ export const InterviewState: InterviewModel = {
     status: true,
   },
   InterviewList: [],
+  InterviewBoard: [],
 };

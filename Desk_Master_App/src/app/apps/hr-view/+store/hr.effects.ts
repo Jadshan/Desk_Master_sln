@@ -6,19 +6,52 @@ import {
   addInterviewSuccess,
   loadInterview,
   loadInterviewSuccess,
+  loadTimeAllocation,
+  loadTimeAllocationSuccess,
   loadTimeSlot,
   loadTimeSlotSuccess,
+  loadTimeSlots,
   updateInterview,
   updateInterviewSuccess,
 } from './hr.action';
 import { EMPTY, catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 
-import { Interview } from './Model';
+import { ITimeAllocation, Interview } from './Model';
 import { showAlert } from '../../../shared/store/App.action';
 
 @Injectable()
 export class interviewEffects {
   constructor(private action$: Actions, private service: HrService) {}
+
+  _loadTimeAllocation = createEffect(() =>
+    this.action$.pipe(
+      ofType(loadTimeAllocation),
+      switchMap((action) =>
+        this.service.getTimeAllocation().pipe(
+          switchMap((data) => {
+            const timeAllocation: ITimeAllocation = data[0];
+            const timeSlots: string[] = this.service.generateTimeSlots(
+              timeAllocation.startTime,
+              timeAllocation.endTime,
+              timeAllocation.timeSlotRange
+            );
+            return of(
+              loadTimeAllocationSuccess({ timeAllocationList: data }),
+              loadTimeSlots({ timeSlotsList: timeSlots })
+            );
+          }),
+          catchError((_error) =>
+            of(
+              showAlert({
+                message: 'loading failed - Due to' + _error.message,
+                alertType: 'fail',
+              })
+            )
+          )
+        )
+      )
+    )
+  );
 
   _loadInterview = createEffect(() =>
     this.action$.pipe(

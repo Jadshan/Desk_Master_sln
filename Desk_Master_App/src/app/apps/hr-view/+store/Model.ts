@@ -1,3 +1,12 @@
+import { IInterviewer } from '../../employ-management/+Store/Model/employee.model';
+
+export interface ITimeAllocation {
+  id?: number;
+  startTime: string;
+  endTime: string;
+  timeSlotRange: number;
+}
+
 export interface Candidate {
   id?: number; // Optional ID, may be assigned by the backend
   fullName: string;
@@ -42,7 +51,16 @@ export interface TimeSlot {
 }
 
 export interface InterviewModel {
+  TimeSlotsList: string[];
   TimeSlotList: TimeSlot[];
   InterviewObj: Interview;
   InterviewList: Interview[];
+  TimeAllocation: ITimeAllocation[];
+
+  InterviewBoard: IInterviewBoard[];
+}
+
+export interface IInterviewBoard {
+  date: string;
+  interviewers: IInterviewer[];
 }
