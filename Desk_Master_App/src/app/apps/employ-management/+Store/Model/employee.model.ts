@@ -10,6 +10,7 @@ export interface Employee {
 }
 
 export interface BasicDetails {
+  id: number;
   firstName: string;
   secondName: string;
   email: string;
@@ -32,46 +33,36 @@ export interface Address {
 }
 
 export class EmployeeData {
-  basicDetails: BasicDetails;
-  skillsArr: Skills[];
-  experienceArr: Experience[];
-  bankDetails: BankDetails;
-
-  constructor() {
-    this.basicDetails = {
-      firstName: '',
-      secondName: '',
-      email: '',
-      designation: '',
-      role: '',
-      contactNo: '',
-      alternativeContactNo: '',
-      personalEmail: '',
-      totalYears: 0,
-      totalMonths: 0,
-      currentAddress: {
-        city: '',
-        state: '',
-        pinCode: '',
-        address: '',
-      },
-      permanentAddress: {
-        city: '',
-        state: '',
-        pinCode: '',
-        address: '',
-      },
-    };
-    this.skillsArr = [];
-    this.experienceArr = [];
-    this.bankDetails = {
-      accountHolderName: '',
-      bankName: '',
-      branch: '',
-      accountNo: '',
-      accountType: '',
-    };
-  }
+  basicDetails: BasicDetails = {
+    id: 0,
+    firstName: '',
+    secondName: '',
+    email: '',
+    designation: '',
+    role: '',
+    contactNo: '',
+    alternativeContactNo: '',
+    personalEmail: '',
+    totalYears: 0,
+    totalMonths: 0,
+    currentAddress: {
+      city: '',
+      state: '',
+      pinCode: '',
+      address: '',
+    },
+    permanentAddress: {
+      city: '',
+      state: '',
+      pinCode: '',
+      address: '',
+    },
+  };
+  skillList: Skills[] = [];
+  experienceList: Experience[] = [];
+  bankDetailsList: BankDetails[] = [];
+  basicDetailsList?: BasicDetails[] = [];
+  interviewersList?: IInterviewer[] = [];
 }
 
 export interface Skills {
@@ -99,13 +90,15 @@ export interface BankDetails {
 }
 
 export class EmployeeModel {
-  employeeList: Employee[];
-  employObj: Employee | undefined;
-  errorMessage: string;
+  employeeList: Employee[] = [];
+  employObj?: Employee;
+  errorMessage: string = '';
 
-  constructor() {
-    this.employeeList = [];
-    this.errorMessage = '';
-    this.employObj = undefined;
-  }
+  constructor() {}
+}
+
+export interface IInterviewer {
+  interviewerId: number;
+  name: string;
+  role: string;
 }

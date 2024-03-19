@@ -3,22 +3,106 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EmployService } from '../../service/employ.service';
 import {
   addEmployee,
+  addEmployeeData,
+  addEmployeeDataSuccess,
   addEmployeeSuccess,
   deleteEmployee,
   deleteEmployeeSuccess,
   loadEmployee,
+  loadEmployeeData,
+  loadEmployeeDataSuccess,
   loadEmployeeSuccess,
+  setInterviewers,
   updateEmployee,
   updateEmployeeSuccess,
 } from './employee.action';
 import { EMPTY, catchError, exhaustMap, map, of, switchMap } from 'rxjs';
-import { Employee } from '../Model/employee.model';
+import {
+  BasicDetails,
+  Employee,
+  EmployeeData,
+  IInterviewer,
+} from '../Model/employee.model';
 import { showAlert } from '../../../../shared/store/App.action';
 //import { deleteBlog } from 'src/app/BlogApp/+Store/blog.action';
 
 @Injectable()
 export class employeeEffects {
   constructor(private action$: Actions, private service: EmployService) {}
+
+  _loadEmployeeData = createEffect(() =>
+    this.action$.pipe(
+      ofType(loadEmployeeData),
+      switchMap((action) =>
+        this.service.getEmployeeData().pipe(
+          switchMap((data) => {
+            const basicDetailsList: BasicDetails[] = [];
+            const interviewersList: IInterviewer[] = [];
+
+            data.forEach((employ) => {
+              basicDetailsList.push(employ.basicDetails);
+            });
+
+            basicDetailsList.forEach((employ) => {
+              // Filter basicDetails by role 'SE' or 'SSE'
+              if (employ.role === 'SE' || employ.role === 'SSE') {
+                // Push relevant information to interviewersList
+                interviewersList.push({
+                  interviewerId: employ.id,
+                  name: employ.firstName,
+                  role: employ.role,
+                });
+              }
+            });
+
+            return of(
+              loadEmployeeDataSuccess({
+                employDataList: data,
+                basicDetailsList: basicDetailsList,
+              }),
+              setInterviewers({ interviewersList: interviewersList })
+            );
+          }),
+          catchError((_error) =>
+            of(
+              showAlert({
+                message: 'Loading failed - Due to' + _error.message,
+                alertType: 'fail',
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  _addEmployData = createEffect(() =>
+    this.action$.pipe(
+      ofType(addEmployeeData),
+      switchMap((action) =>
+        this.service.saveEmployeeData(action.employData).pipe(
+          switchMap((data) =>
+            of(
+              addEmployeeDataSuccess({ employData: data as EmployeeData }),
+              showAlert({
+                message: 'Your Details added successfully',
+                alertType: 'success',
+              })
+            )
+          ),
+          catchError((_error) =>
+            of(
+              showAlert({
+                message: 'Adding failed - Due to' + _error.message,
+                alertType: 'fail',
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
   _loadEmployee = createEffect(() =>
     this.action$.pipe(
       ofType(loadEmployee),
