@@ -181,6 +181,57 @@ namespace Desk_Master_API.Migrations
                     b.ToTable("ExperienceTbl");
                 });
 
+            modelBuilder.Entity("Desk_Master_API.Models.Interview.InterviewBoardModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Interviewer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("InterviewerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("InterviewerRole")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InterviewBoardTbl");
+                });
+
+            modelBuilder.Entity("Desk_Master_API.Models.Interview.TimeAllocation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("EndTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StartTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TimeSlotRange")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TimeAllocationTbl");
+                });
+
             modelBuilder.Entity("Desk_Master_API.Models.Skills", b =>
                 {
                     b.Property<int>("Id")
