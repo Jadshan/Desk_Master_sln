@@ -1,5 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Interview, InterviewModel, TimeSlot } from './Model';
+import { IInterviewBoard, Interview, InterviewModel, TimeSlot } from './Model';
+import { IInterviewer } from '../../employ-management/+Store/Model/employee.model';
+import moment from 'moment';
 
 const getInterviewState = createFeatureSelector<InterviewModel>('interview');
 
@@ -9,9 +11,38 @@ export const getTimeAllocation = createSelector(getInterviewState, (state) => {
 export const getTimeSlotsList = createSelector(getInterviewState, (state) => {
   return state.TimeSlotsList;
 });
+export const getInterviewBoardList = createSelector(
+  getInterviewState,
+  (state) => {
+    let _interviewBL: IInterviewBoard[] = [...state.InterviewBoardList];
+    _interviewBL.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      // Reverse the comparison to sort in descending order
+      return dateB.getTime() - dateA.getTime();
+    });
+    return _interviewBL;
+  }
+);
 export const getInterviewList = createSelector(getInterviewState, (state) => {
   return sortInterview(state.InterviewList);
 });
+export const getInterviewersListByDate = (date: string) =>
+  createSelector(getInterviewState, (state) => {
+    // Get all time slots for the provided date
+    const interviewBoardsForDate: IInterviewBoard[] =
+      state.InterviewBoardList.filter((intB) => {
+        // Filter time slots that match the provided date
+        return moment(intB.date).format('MMM DD, YYYY') === date;
+      });
+
+    // Extract interviewers from the filtered interview boards
+    const interviewersForDate: IInterviewer[] = interviewBoardsForDate.flatMap(
+      (intB) => intB.interviewers
+    );
+
+    return interviewersForDate;
+  });
 
 export const getInterviewById = (interviewId: string) =>
   createSelector(getInterviewState, (state) => {
@@ -60,13 +91,12 @@ export const getTimeSlotListByDate = (date: string) =>
       return interview.date == date;
     });
 
-    const availableTimeSlots = state.TimeSlotList.filter((timeSlot) => {
+    const availableTimeSlots = state.TimeSlotsList.filter((timeSlot) => {
       // Check if the time slot is not occupied by any interview for the provided date
       return !interviewsForDate.some(
-        (interview) => interview.timeSlot === timeSlot.timeSlot
+        (interview) => interview.timeSlot === timeSlot
       );
     });
-    console.log(availableTimeSlots);
 
     return availableTimeSlots;
   });

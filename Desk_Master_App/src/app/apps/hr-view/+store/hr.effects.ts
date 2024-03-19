@@ -3,8 +3,14 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { HrService } from '../service/hr.service';
 import {
   addInterview,
+  addInterviewBoard,
+  addInterviewBoardSuccess,
   addInterviewSuccess,
+  addTimeAllocation,
+  addTimeAllocationSuccess,
   loadInterview,
+  loadInterviewBoard,
+  loadInterviewBoardSuccess,
   loadInterviewSuccess,
   loadTimeAllocation,
   loadTimeAllocationSuccess,
@@ -16,12 +22,54 @@ import {
 } from './hr.action';
 import { EMPTY, catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 
-import { ITimeAllocation, Interview } from './Model';
+import { IInterviewBoard, ITimeAllocation, Interview } from './Model';
 import { showAlert } from '../../../shared/store/App.action';
 
 @Injectable()
 export class interviewEffects {
   constructor(private action$: Actions, private service: HrService) {}
+
+  _loadInterviewBoard = createEffect(() =>
+    this.action$.pipe(
+      ofType(loadInterviewBoard),
+      switchMap((action) =>
+        this.service.getInterviewBoard().pipe(
+          switchMap((data) => {
+            return of(loadInterviewBoardSuccess({ interviewBoardList: data }));
+          }),
+          catchError((_error) =>
+            of(
+              showAlert({
+                message: 'loading failed - Due to' + _error.message,
+                alertType: 'fail',
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  _addInterviewBoard = createEffect(() =>
+    this.action$.pipe(
+      ofType(addInterviewBoard),
+      switchMap((action) =>
+        this.service.addInterviewBoard(action.interviewBoard).pipe(
+          switchMap((data) => {
+            return of(loadInterviewBoardSuccess({ interviewBoardList: data }));
+          }),
+          catchError((_error) =>
+            of(
+              showAlert({
+                message: 'addinghhhhhhhhhhhhh failed - Due to' + _error.message,
+                alertType: 'fail',
+              })
+            )
+          )
+        )
+      )
+    )
+  );
 
   _loadTimeAllocation = createEffect(() =>
     this.action$.pipe(
@@ -29,7 +77,7 @@ export class interviewEffects {
       switchMap((action) =>
         this.service.getTimeAllocation().pipe(
           switchMap((data) => {
-            const timeAllocation: ITimeAllocation = data[0];
+            const timeAllocation: ITimeAllocation = data[data.length - 1];
             const timeSlots: string[] = this.service.generateTimeSlots(
               timeAllocation.startTime,
               timeAllocation.endTime,
@@ -44,6 +92,38 @@ export class interviewEffects {
             of(
               showAlert({
                 message: 'loading failed - Due to' + _error.message,
+                alertType: 'fail',
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  _addTimeAllocation = createEffect(() =>
+    this.action$.pipe(
+      ofType(addTimeAllocation),
+      switchMap((action) =>
+        this.service.addTimeAllocation(action.timeAllocation).pipe(
+          switchMap((data) => {
+            const timeAllocation: ITimeAllocation = data as ITimeAllocation;
+            const timeSlots: string[] = this.service.generateTimeSlots(
+              timeAllocation.startTime,
+              timeAllocation.endTime,
+              timeAllocation.timeSlotRange
+            );
+            return of(
+              addTimeAllocationSuccess({
+                timeAllocation: data as ITimeAllocation,
+              }),
+              loadTimeSlots({ timeSlotsList: timeSlots })
+            );
+          }),
+          catchError((_error) =>
+            of(
+              showAlert({
+                message: 'adding failed - Due to' + _error.message,
                 alertType: 'fail',
               })
             )

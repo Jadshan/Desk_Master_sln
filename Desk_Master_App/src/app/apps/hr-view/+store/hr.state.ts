@@ -15,5 +15,5 @@ export const InterviewState: InterviewModel = {
     status: true,
   },
   InterviewList: [],
-  InterviewBoard: [],
+  InterviewBoardList: [],
 };

@@ -1,13 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
 import { InterviewState } from './hr.state';
 import {
+  addInterviewBoardSuccess,
   addInterviewSuccess,
+  addTimeAllocationSuccess,
+  loadInterviewBoardSuccess,
   loadInterviewSuccess,
   loadTimeAllocationSuccess,
   loadTimeSlotSuccess,
   loadTimeSlots,
   updateInterviewSuccess,
 } from './hr.action';
+import { ITimeAllocation } from './Model';
 
 const _interviewReducer = createReducer(
   InterviewState,
@@ -17,12 +21,44 @@ const _interviewReducer = createReducer(
       TimeAllocation: [...action.timeAllocationList],
     };
   }),
+  on(addTimeAllocationSuccess, (state, action) => {
+    const _addedTimeAllocation = { ...action.timeAllocation };
+    let updatedTimeAllocation: ITimeAllocation[] = [];
+    if (state.TimeAllocation.length > 0) {
+      updatedTimeAllocation = state.TimeAllocation.map((t) => {
+        return (t = _addedTimeAllocation);
+      });
+    } else {
+      updatedTimeAllocation.push(_addedTimeAllocation);
+    }
+    return {
+      ...state,
+      TimeAllocation: updatedTimeAllocation,
+    };
+  }),
   on(loadTimeSlots, (state, action) => {
     return {
       ...state,
       TimeSlotsList: [...action.timeSlotsList],
     };
   }),
+
+  on(loadInterviewBoardSuccess, (state, action) => {
+    return {
+      ...state,
+      InterviewBoardList: [...action.interviewBoardList],
+    };
+  }),
+  on(addInterviewBoardSuccess, (state, action) => {
+    return {
+      ...state,
+      InterviewBoardList: [
+        ...state.InterviewBoardList,
+        { ...action.interviewBoard },
+      ],
+    };
+  }),
+  /////////
   on(loadInterviewSuccess, (state, action) => {
     return {
       ...state,

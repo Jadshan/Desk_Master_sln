@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ITimeAllocation, Interview, TimeSlot } from './Model';
+import { IInterviewBoard, ITimeAllocation, Interview, TimeSlot } from './Model';
 
 export enum actionTypes {
   LOAD_TIME_ALLOCATION = 'LOAD_TIME_ALLOCATION',
@@ -9,6 +9,11 @@ export enum actionTypes {
   UPDATE_TIME_ALLOCATION = 'UPDATE_TIME_ALLOCATION',
   UPDATE_TIME_ALLOCATION_SUCCESS = 'UPDATE_TIME_ALLOCATION_SUCCESS',
   LOAD_TIME_SLOTS = 'LOAD_TIME_SLOTS',
+
+  LOAD_INTERVIEW_BOARD = 'LOAD_INTERVIEW_BOARD',
+  LOAD_INTERVIEW_BOARD_SUCCESS = 'LOAD_INTERVIEW_BOARD_SUCCESS',
+  ADD_INTERVIEW_BOARD = 'ADD_INTERVIEW_BOARD',
+  ADD_INTERVIEW_BOARD_SUCCESS = 'ADD_INTERVIEW_BOARD_SUCCESS',
 
   LOAD_INTERVIEW = 'LOAD_INTERVIEW',
   LOAD_INTERVIEW_SUCCESS = 'LOAD_INTERVIEW _SUCCESS',
@@ -54,6 +59,24 @@ export const loadTimeSlots = createAction(
   props<{ timeSlotsList: string[] }>()
 );
 
+///////////////
+export const loadInterviewBoard = createAction(
+  actionTypes.LOAD_INTERVIEW_BOARD
+);
+export const loadInterviewBoardSuccess = createAction(
+  actionTypes.LOAD_INTERVIEW_BOARD_SUCCESS,
+  props<{ interviewBoardList: IInterviewBoard[] }>()
+);
+export const addInterviewBoard = createAction(
+  actionTypes.ADD_TIME_ALLOCATION,
+  props<{ interviewBoard: IInterviewBoard }>()
+);
+
+export const addInterviewBoardSuccess = createAction(
+  actionTypes.ADD_TIME_ALLOCATION_SUCCESS,
+  props<{ interviewBoard: IInterviewBoard }>()
+);
+////////////////
 export const loadInterview = createAction(actionTypes.LOAD_INTERVIEW);
 
 export const loadInterviewSuccess = createAction(
