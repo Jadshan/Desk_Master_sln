@@ -1,50 +1,100 @@
 <div class="row">
  <div class="col-6">
+  <mat-card class="board-card">
+   <mat-card-header>
+    <h1>Select Interviewers</h1>
+   </mat-card-header>
+   <mat-card-content>
+    <mat-form-field>
+     <input matInput [matDatepicker]="picker" placeholder="Choose a Date" (dateChange)="onDateSelected($event)"
+      [(ngModel)]="interviewDate">
+     <mat-hint>MM/DD/YYYY</mat-hint>
+     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+     <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-  <!-- interview-table.component.html -->
-  <form (ngSubmit)="onSubmit()">
-   <mat-card>
-    <mat-card-header>
-     <h1>Select Interviewers</h1>
-    </mat-card-header>
-    <mat-card-content>
+    <mat-form-field class="example-chip-list">
+     <mat-label>Interviewers</mat-label>
+     <mat-chip-grid #chipGrid aria-label="Fruit selection">
+      <mat-chip-row (removed)="remove(interviewer)" *ngFor="let interviewer of interviewers">
+       {{interviewer}}
+       <button matChipRemove [attr.aria-label]="'remove ' + interviewer">
+        <mat-icon>cancel</mat-icon>
+       </button>
+      </mat-chip-row>
+     </mat-chip-grid>
+     <input placeholder="New Fruit..." #fruitInput [formControl]="fruitCtrl" [matChipInputFor]="chipGrid"
+      [matAutocomplete]="auto" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)" />
+     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let interviewer of filteredInterviewers | async" [value]="interviewer.name">
+       {{interviewer.name}}
+      </mat-option>
+     </mat-autocomplete>
+    </mat-form-field>
 
-
-     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a Date" (dateChange)="onDateSelected($event)">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-     </mat-form-field>
-     <mat-form-field>
-      <mat-label>Select interviewer</mat-label>
-      <mat-select>
-       <mat-option *ngFor="let employ of employeeList" [value]="employ.name">{{employ.name}}</mat-option>
-
-      </mat-select>
-     </mat-form-field>
-     <!-- <mat-form-field>
-      <mat-chip-list #chipList formControlName="courseIds">
-       <mat-chip *ngFor="let cid of timeList">
-        {{cid.timeSlot}}
-       </mat-chip>
-  
-       <input matInput placeholder="Ids">
-      </mat-chip-list>
-     </mat-form-field> -->
-     <!-- <mat-form-field>
-      <input matInput formControlName="time" placeholder="Time">
-     </mat-form-field> -->
-
-     <button mat-raised-button color="primary" type="submit"> Add</button>
-    </mat-card-content>
-   </mat-card>
-  </form>
- </div>
- <div class="col-6">
-  <mat-card>
-   <h1>Interview Board</h1>
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"> Add</button>
+   </mat-card-content>
   </mat-card>
  </div>
+ <div class="col-6">
+  <mat-card class="board-card">
+   <h1>Interview Board</h1>
+   <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Interviewers</th>
+      <th scope="col">Handle</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let IB of interViewBoardList">
+      <th scope="row">1</th>
+      <td>{{IB.date | date}}</td>
+      <td>
+       <ul *ngFor="let int of IB.interviewers">
+        <li>
+         {{int.name}}
+        </li>
+       </ul>
+      </td>
+      <td><button>Delete</button></td>
+     </tr>
 
+    </tbody>
+   </table>
+  </mat-card>
+ </div>
 </div>
+
+<mat-card class="board-card">
+ <div class="container">
+  <h2>Time Slots</h2>
+  <div class="input-container">
+   <mat-form-field appearance="fill">
+    <mat-label>Start Time</mat-label>
+    <input matInput [ngxMatTimepicker]="startTimePicker" [(ngModel)]="startTime" placeholder="Start Time">
+    <ngx-mat-timepicker-toggle matSuffix [for]="startTimePicker"></ngx-mat-timepicker-toggle>
+    <ngx-mat-timepicker #startTimePicker [enableKeyboardInput]=true></ngx-mat-timepicker>
+   </mat-form-field>
+   <mat-form-field appearance="fill">
+    <mat-label>End Time</mat-label>
+    <input matInput [ngxMatTimepicker]="endTimePicker" [(ngModel)]="endTime" placeholder="End Time">
+    <ngx-mat-timepicker-toggle matSuffix [for]="endTimePicker"></ngx-mat-timepicker-toggle>
+    <ngx-mat-timepicker #endTimePicker [enableKeyboardInput]=true></ngx-mat-timepicker>
+   </mat-form-field>
+   <mat-form-field appearance="fill">
+    <mat-label>Slot Length (minutes)</mat-label>
+    <input matInput type="number" [(ngModel)]="slotLengthInMinutes" min="1">
+   </mat-form-field>
+   <button mat-raised-button (click)="onSet()">{{buttonStatus}}</button>
+  </div>
+  <div class="time-slots" *ngIf="timeSlots.length > 0">
+   <div *ngFor="let slot of timeSlots" class="time-slot">
+    {{ slot }}
+   </div>
+  </div>
+ </div>
+</mat-card>
