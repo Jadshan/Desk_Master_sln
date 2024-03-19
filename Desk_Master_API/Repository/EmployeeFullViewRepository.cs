@@ -36,15 +36,15 @@ namespace Desk_Master_API.Repository
             await _context.EmployeesTbl.AddAsync(_employeeModel);
             await _context.SaveChangesAsync();
             
-               employeeModel.BankDetails?.ForEach(bank =>{
+               employeeModel.BankDetailsList?.ForEach(bank =>{
                      var bankDetails = bank.ToBankDetailFromAddDTO(_employeeModel.Id);
                 _context.BankDetailsTbl.Add(bankDetails);
                 });
-                 employeeModel.Experience?.ForEach(exp =>{
+                 employeeModel.ExperienceList?.ForEach(exp =>{
                      var experience = exp.ToExperienceFromAddDTO(_employeeModel.Id);
                 _context.ExperienceTbl.Add(experience);
                 });
-                 employeeModel.Skill?.ForEach(skill =>{
+                 employeeModel.SkillList?.ForEach(skill =>{
                      var _skill = skill.ToSkillFromAddDTO(_employeeModel.Id);
                 _context.SkillsTbl.Add(_skill);
                 });

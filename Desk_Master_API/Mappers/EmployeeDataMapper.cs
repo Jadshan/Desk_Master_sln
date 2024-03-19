@@ -39,7 +39,7 @@ namespace Desk_Master_API.Mappers
         {
             return new EmployeeFullViewDTO
             {
-                Id = employeeModel.Id,
+                BasicDetails = {Id = employeeModel.Id,
                 FirstName = employeeModel.FirstName,
                 SecondName = employeeModel.SecondName,
                 Email = employeeModel.Email,
@@ -50,21 +50,22 @@ namespace Desk_Master_API.Mappers
                 PersonalEmail = employeeModel.PersonalEmail,
                 TotalYears =employeeModel.TotalYears,
                 TotalMonths = employeeModel.TotalMonths,
+                CurrentAddress = {
                 City = employeeModel.City,
                 State = employeeModel.State,
                 PinCode = employeeModel.PinCode,
                 Address = employeeModel.Address,
-                Per_City = employeeModel.Per_City,
-                Per_State = employeeModel.Per_State,
-                Per_PinCode = employeeModel.Per_PinCode,
-                Per_Address = employeeModel.Per_Address,
-                BankDetails = employeeModel.BankDetailsList.Select(b => b.ToBankDetailViewDTO()).ToList(),
+                },
+                PermanentAddress = {
+                City = employeeModel.Per_City,
+                State = employeeModel.Per_State,
+                PinCode = employeeModel.Per_PinCode,
+                Address = employeeModel.Per_Address,
+                },     
+                },
+                 BankDetails = employeeModel.BankDetailsList.Select(b => b.ToBankDetailViewDTO()).ToList(),
                 Experience = employeeModel.ExperienceList.Select(b => b.ToExperienceViewDTO()).ToList(),
                 Skill = employeeModel.SkillList.Select(b => b.ToSkillViewDTO()).ToList()
-
-
-                
-                
             };
         }
     }

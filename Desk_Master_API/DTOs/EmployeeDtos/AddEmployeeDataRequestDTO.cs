@@ -23,8 +23,8 @@ namespace Desk_Master_API.DTOs.EmployeeDTOs
         public int TotalMonths { get; set; } 
         public AddressModel CurrentAddress {get; set;} = new AddressModel();
         public AddressModel PermanentAddress {get; set;} = new AddressModel();      
-         public List<AddBankRequestDTO>? BankDetails { get; set; }
-         public List<AddExperienceRequestDTO>? Experience { get; set; } 
-         public List<AddSkillRequestDTO>? Skill { get; set; }        
+         public List<AddBankRequestDTO>? BankDetailsList { get; set; }
+         public List<AddExperienceRequestDTO>? ExperienceList { get; set; } 
+         public List<AddSkillRequestDTO>? SkillList { get; set; }        
     }
 }
