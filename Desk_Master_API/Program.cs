@@ -22,6 +22,10 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
 
 
 builder.Services.AddScoped<IEmployeeFullViewRepository, EmployeeFullViewRepository>();
+builder.Services.AddScoped<ITimeAllocationRepository, TimeAllocationRepository>();
+builder.Services.AddScoped<IInterviewBoardRepository, InterviewBoardRepository>();
+
+
 
 
 
