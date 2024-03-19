@@ -21,11 +21,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatListModule } from '@angular/material/list';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocompleteModule,
+} from '@angular/material/autocomplete';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   exports: [
@@ -56,6 +60,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     MatButtonToggleModule,
     MatProgressBarModule,
     MatStepperModule,
+    MatAutocompleteModule,
   ],
 })
 export class MaterialModule {}
