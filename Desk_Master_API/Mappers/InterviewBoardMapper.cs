@@ -9,20 +9,20 @@ namespace Desk_Master_API.Mappers
 {
     public static class InterviewBoardMapper
     {
-         public static InterviewBoardModel ToInterviewBoardFromAddDTO(this AddInterviewBoardDTO requestDTO, InterviewerModel interviewer)
+         public static InterviewBoardModel ToInterviewBoardFromAddDTO(this AddInterviewBoardDTO requestDTO, AddInterviewerDTO interviewer)
         {
             return new InterviewBoardModel
             {
               Date = requestDTO.Date,
               Interviewer = interviewer.Name,
               InterviewerRole = interviewer.Role,
-              InterviewerId = interviewer.InterviewerId
+              InterviewerId = interviewer.EmployeeId
             };
         }
 
            public static AddInterviewBoardDTO ToInterviewBoardView(this InterviewBoardModel requestDTO, List<InterviewBoardModel> interviewBoards)
         {
-            var interviewers = new List<InterviewerModel>();
+            var interviewers = new List<AddInterviewerDTO>();
             return new AddInterviewBoardDTO
             {
               Date = requestDTO.Date,

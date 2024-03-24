@@ -16,7 +16,7 @@ namespace Desk_Master_API.Repository
     {
         private readonly ApplicationDBContext _context = context;
       public async Task<List<InterviewBoardModel>> CreateAsync(AddInterviewBoardDTO addInterviewBoardDTO)
-{   
+    {   
     var interviewBoardModels = new List<InterviewBoardModel>();
 
     addInterviewBoardDTO.Interviewers?.ForEach(async intV =>

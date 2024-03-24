@@ -11,6 +11,6 @@ namespace Desk_Master_API.Models.Interview
         public DateTime Date {get; set;}
         public string Interviewer {get; set;} = string.Empty;
         public string InterviewerRole {get; set;} = string.Empty;
-         public int? InterviewerId { get; set; }
+        public int? InterviewerId { get; set; }
     }
 }
