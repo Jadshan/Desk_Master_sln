@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Desk_Master_API.Data;
 using Desk_Master_API.DTOs.EmployeeDTOs;
 using Desk_Master_API.Interfaces;
@@ -16,9 +13,9 @@ namespace Desk_Master_API.Repository
          public async Task<List<Employee>> GetFullViewAsync()
         {
             return await _context.EmployeesTbl 
-             .Include(e => e.BankDetailsList) 
+            .Include(e => e.BankDetailsList) 
             .Include(e => e.ExperienceList)
-             .Include(e => e.SkillList)
+            .Include(e => e.SkillList)
             .ToListAsync();
         }
 
@@ -26,8 +23,8 @@ namespace Desk_Master_API.Repository
         {
             return await _context.EmployeesTbl
             .Include(e => e.BankDetailsList)
-              .Include(e => e.ExperienceList)
-             .Include(e => e.SkillList)
+            .Include(e => e.ExperienceList)
+            .Include(e => e.SkillList)
             .FirstOrDefaultAsync(i => i.Id == id);
         }
         public async Task<Employee> CreateAsync(AddEmployeeDataRequestDTO employeeModel)

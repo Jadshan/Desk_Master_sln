@@ -23,7 +23,8 @@ namespace Desk_Master_API.Controllers
             return Ok(timeAllocationDTO);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("{id:int}")]
          public async Task<IActionResult> GetTimeAllocationById([FromRoute] int id)
          {
             var timeAllocation = await _timeAllocationRepo.GetByIdAsync(id);
@@ -40,7 +41,8 @@ namespace Desk_Master_API.Controllers
               return CreatedAtAction(nameof(GetTimeAllocationById), new {id = timeAllocation.Id}, timeAllocation.ToTimeAllocationViewDTO());
          }
 
-         [HttpPut("{id}")]
+        [HttpPut]
+        [Route("{id:int}")]
          public async Task<IActionResult> Update(int id, [FromBody] UpdateTimeAllocationDTO updatedTimeAllocation)
          {
             var timeAllocation = await _timeAllocationRepo.UpdateAsync(id,updatedTimeAllocation);
@@ -50,7 +52,8 @@ namespace Desk_Master_API.Controllers
             return Ok(timeAllocation.ToTimeAllocationDTO());
          }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
             var timeAllocation = await _timeAllocationRepo.DeleteAsync(id);

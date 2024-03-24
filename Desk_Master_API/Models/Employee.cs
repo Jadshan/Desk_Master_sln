@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Desk_Master_API.Models
 {
@@ -24,8 +20,8 @@ namespace Desk_Master_API.Models
          public string State { get; set; } = string.Empty;
         public string PinCode { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
-       public string Per_City { get; set; } = string.Empty;
-         public string Per_State { get; set; } = string.Empty;
+        public string Per_City { get; set; } = string.Empty;
+        public string Per_State { get; set; } = string.Empty;
         public string Per_PinCode { get; set; } = string.Empty;
         public string Per_Address { get; set; } = string.Empty;
         public List<Skills> SkillList {get; set;} = new List<Skills>();

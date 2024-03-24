@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Desk_Master_API.DTOs;
+
 using Desk_Master_API.DTOs.BankDTOs;
 
 using Desk_Master_API.Models;
@@ -24,7 +20,7 @@ namespace Desk_Master_API.Mappers
                 EmployeeId = bankDetail.EmployeeId
             };
         }
-              public static BankDetail ToBankDetailFromAddDTO(this AddBankRequestDTO requestDTO, int EmployId)
+        public static BankDetail ToBankDetailFromAddDTO(this AddBankRequestDTO requestDTO, int EmployId)
         {
             return new BankDetail
             {

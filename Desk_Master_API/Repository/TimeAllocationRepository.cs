@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Desk_Master_API.Data;
 using Desk_Master_API.DTOs.InterviewDTOs;
 using Desk_Master_API.Interfaces;
@@ -31,8 +28,6 @@ namespace Desk_Master_API.Repository
         {
              return await _context.TimeAllocationTbl.FirstOrDefaultAsync(i => i.Id == id);
         }
-
-       
 
         public async Task<TimeAllocation?> UpdateAsync(int id, UpdateTimeAllocationDTO updatedTimeAllocation)
         {
