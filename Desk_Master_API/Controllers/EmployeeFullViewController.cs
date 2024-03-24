@@ -1,15 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Desk_Master_API.Data;
-using Desk_Master_API.DTOs.EmployeeDtos;
+
 using Desk_Master_API.DTOs.EmployeeDTOs;
 using Desk_Master_API.Interfaces;
 using Desk_Master_API.Mappers;
-using Desk_Master_API.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Desk_Master_API.Controllers
 
@@ -26,7 +19,8 @@ namespace Desk_Master_API.Controllers
             return Ok(employeeViewDTOs);
          } 
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("{id:int}")]
          public async Task<IActionResult> GetEmployeeById([FromRoute] int id)
          {
             var employee = await _employeeRepo.GetByIdAsync(id);
