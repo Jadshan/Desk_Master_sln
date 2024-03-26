@@ -1,55 +1,68 @@
-<!-- interview-table.component.html -->
+<!-- add-interview.component.html -->
+
 <form [formGroup]="interviewForm" (ngSubmit)="onSubmit()">
- <mat-card>
-  <mat-card-header>
-   <h1>{{title}}</h1>
-  </mat-card-header>
-  <mat-card-content>
-   <span *ngIf="!(title == 'Change')">
-    <mat-form-field>
-     <input matInput formControlName="candidateName" placeholder="Candidate Name">
-    </mat-form-field>
-    <mat-form-field>
-     <input matInput formControlName="candidateEmail" placeholder="Candidate Email">
-    </mat-form-field>
-    <mat-form-field>
-     <input matInput formControlName="candidatePhoneNo" placeholder="Candidate Phone Number">
-    </mat-form-field>
-    <mat-form-field>
-     <input matInput formControlName="interviewer" placeholder="Interviewer">
-    </mat-form-field>
-   </span>
+  <mat-card>
+    <mat-card-header>
+      <h1>{{ title }}</h1>
+    </mat-card-header>
+    <mat-card-content>
+      <span *ngIf="!(title == 'Change')">
+        <mat-form-field>
+          <input matInput formControlName="candidateName" placeholder="Candidate Name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="candidateEmail" placeholder="Candidate Email">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="candidatePhoneNo" placeholder="Candidate Phone Number">
+        </mat-form-field>
 
-   <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a Date" (dateChange)="onDateSelected($event)"
-     formControlName="date">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-   </mat-form-field>
-   <mat-form-field>
-    <mat-label>Time</mat-label>
-    <mat-select formControlName="timeSlot">
-     <mat-option *ngFor="let time of timeList" [value]="time.timeSlot">{{time.timeSlot}}</mat-option>
+        <mat-form-field class="example-chip-list">
+          <mat-label>Interviewers</mat-label>
+          <mat-chip-grid #chipGrid aria-label="Interviewer selection">
+            <!-- <button mat-raised-button *ngIf="(filteredInterviewers$ | async)?.length < 1">Allocate Interviewers for this
+            Date</button> -->
+            <mat-chip-row (removed)="remove(interviewer)" *ngFor="let interviewer of interviewers">
+              {{interviewer.name + ' - ' + interviewer.role}}
+              <button matChipRemove [attr.aria-label]="'remove ' + interviewer">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+          </mat-chip-grid>
+          <input placeholder="Select Interviewer..." #interviewerInput formControlName="interviewer"
+            [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" />
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <ng-container *ngIf="filteredInterviewers$ | async as interviewers">
+              <mat-option *ngFor="let interviewer of interviewers" [value]="interviewer">
+                {{interviewer.name + ' - ' + interviewer.role}}
+              </mat-option>
+            </ng-container>
+          </mat-autocomplete>
 
-    </mat-select>
-   </mat-form-field>
-   <!-- <mat-form-field>
-    <mat-chip-list #chipList formControlName="courseIds">
-     <mat-chip *ngFor="let cid of timeList">
-      {{cid.timeSlot}}
-     </mat-chip>
+        </mat-form-field>
+      </span>
 
-     <input matInput placeholder="Ids">
-    </mat-chip-list>
-   </mat-form-field> -->
-   <!-- <mat-form-field>
-    <input matInput formControlName="time" placeholder="Time">
-   </mat-form-field> -->
-   <mat-form-field>
-    <textarea matInput formControlName="additionalInfo" placeholder="Additional Info"></textarea>
-   </mat-form-field>
-   <button mat-raised-button color="primary" type="submit">{{buttonStatus}} Interview</button>
-  </mat-card-content>
- </mat-card>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a Date" (dateChange)="onDateSelected($event)"
+          formControlName="date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Time</mat-label>
+        <mat-select formControlName="timeSlot">
+          <mat-option *ngFor="let time of timeSlots" [value]="time">{{time}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput formControlName="additionalInfo" placeholder="Additional Info"></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="interviewForm.invalid">{{ buttonStatus }}
+        Interview</button>
+    </mat-card-content>
+  </mat-card>
 </form>
