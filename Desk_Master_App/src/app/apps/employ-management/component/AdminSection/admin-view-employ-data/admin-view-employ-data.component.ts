@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployService } from '../../../service/employ.service';
-import { EmployeeData } from '../../../+Store/Model/employee.model';
+import {
+  BasicDetails,
+  EmployeeData,
+} from '../../../+Store/Model/employee.model';
 import {
   animate,
   state,
@@ -8,6 +11,10 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { Store } from '@ngrx/store';
+import { AppStateModel } from '../../../../../shared/store/AppState.Model';
+import { getBasicDetailList } from '../../../+Store/Employee/employee.selector';
+import { loadEmployeeData } from '../../../+Store/Employee/employee.action';
 
 @Component({
   selector: 'app-admin-view-employ-data',
@@ -25,23 +32,43 @@ import {
   ],
 })
 export class AdminViewEmployDataComponent implements OnInit {
+  shuffle() {
+    throw new Error('Method not implemented.');
+  }
+  removeColumn() {
+    throw new Error('Method not implemented.');
+  }
+  addColumn() {
+    throw new Error('Method not implemented.');
+  }
   isExpanded: boolean = false;
-  employeeData: EmployeeData[] = [];
-  columnsToDisplay: string[] = ['empName', 'position', 'salary'];
-  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
-  expandedElement!: EmployeeData | null;
-  columnsWithContactDetails: string[] = ['address', 'phoneNo', 'email'];
-  columnsWithBankDetails: string[] = ['bankName', 'branch', 'accountNo'];
-  constructor(private service: EmployService) {}
+  employeeData: BasicDetails[] = [];
+  employColumns: string[] = ['firstName', 'role', 'email', 'contactNo'];
+  employColumnsToDisplay: string[] = this.employColumns.slice();
+  // columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
+  // expandedElement!: EmployeeData | null;
+  // columnsWithContactDetails: string[] = ['address', 'phoneNo', 'email'];
+  // columnsWithBankDetails: string[] = ['bankName', 'branch', 'accountNo'];
+  constructor(
+    private service: EmployService,
+    private store: Store<AppStateModel>
+  ) {}
   ngOnInit(): void {
-    this.service.getEmployeeData().subscribe((data: EmployeeData[]) => {
-      console.log(data);
-      this.employeeData = data;
+    // this.service.getEmployeeData().subscribe((data: EmployeeData[]) => {
+    //   data.map((employ) => {
+    //     this.employeeData.push(employ.basicDetails);
+    //   });
+
+    // });
+    this.store.dispatch(loadEmployeeData());
+    this.store.select(getBasicDetailList).subscribe((list) => {
+      this.employeeData = list ? list : [];
+      console.log(this.employeeData);
     });
   }
 
-  toggle(element: EmployeeData) {
-    this.expandedElement = this.expandedElement === element ? null : element;
-    this.isExpanded = true;
-  }
+  // toggle(element: EmployeeData) {
+  //   this.expandedElement = this.expandedElement === element ? null : element;
+  //   this.isExpanded = true;
+  // }
 }
