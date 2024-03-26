@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import moment from 'moment';
 import { getInterviewListByDate } from '../../+store/hr.selector';
-import { Interview } from '../../+store/Model';
+import { IInterview } from '../../+store/Model';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { loadInterview } from '../../+store/hr.action';
 import { interval } from 'rxjs';
@@ -31,7 +31,7 @@ import { interval } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
   interviewDate: any = moment().format('MMM DD, YYYY');
-  todayInterviews: Interview[] = [];
+  todayInterviews: IInterview[] = [];
   currentIndex: number = 0;
   constructor(private store: Store) {}
   ngOnInit(): void {
