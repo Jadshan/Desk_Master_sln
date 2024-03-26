@@ -10,6 +10,7 @@ import { InterviewListComponent } from './component/interview-list/interview-lis
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { RecruitmentTeamComponent } from './component/recruitment-team/recruitment-team.component';
 import { MaterialModule } from '../../../Material.Module';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { MaterialModule } from '../../../Material.Module';
     ReactiveFormsModule,
     RouterModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [
+    { provide: { MAT_DATE_LOCALE, MatDialogRef }, useValue: 'en-GB' },
+  ],
 })
 export class HrViewModule {}

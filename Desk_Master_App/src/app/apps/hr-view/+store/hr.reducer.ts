@@ -11,7 +11,7 @@ import {
   loadTimeSlots,
   updateInterviewSuccess,
 } from './hr.action';
-import { ITimeAllocation } from './Model';
+import { IInterview, ITimeAllocation } from './Model';
 
 const _interviewReducer = createReducer(
   InterviewState,
@@ -79,9 +79,12 @@ const _interviewReducer = createReducer(
   }),
   on(updateInterviewSuccess, (state, action) => {
     const id = action.id;
-    const _updateInterview = { ...action.interviewData };
+    const _updateInterview: IInterview = { ...action.interviewData };
+    _updateInterview.id = action.id;
     const _updatedInterviewList = state.InterviewList.map((interview) => {
-      return interview.id === action.id ? _updateInterview : interview;
+      return interview.id === _updateInterview.id
+        ? _updateInterview
+        : interview;
     });
     return {
       ...state,

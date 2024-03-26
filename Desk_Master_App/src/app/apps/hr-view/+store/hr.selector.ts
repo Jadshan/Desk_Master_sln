@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { IInterviewBoard, Interview, InterviewModel, TimeSlot } from './Model';
+import { IInterviewBoard, IInterview, InterviewModel, TimeSlot } from './Model';
 import { IInterviewer } from '../../employ-management/+Store/Model/employee.model';
 import moment from 'moment';
 
@@ -26,6 +26,7 @@ export const getInterviewBoardList = createSelector(
 );
 export const getInterviewList = createSelector(getInterviewState, (state) => {
   return sortInterview(state.InterviewList);
+  // return state.InterviewList;
 });
 export const getInterviewersListByDate = (date: string) =>
   createSelector(getInterviewState, (state) => {
@@ -47,20 +48,23 @@ export const getInterviewersListByDate = (date: string) =>
 export const getInterviewById = (interviewId: string) =>
   createSelector(getInterviewState, (state) => {
     return state.InterviewList.find(
-      (interview: Interview) => interview.id == interviewId
-    ) as Interview;
+      (interview: IInterview) => interview.id == interviewId
+    ) as IInterview;
   });
 
-function sortInterview(data: Interview[]) {
+function sortInterview(data: IInterview[]) {
   const copiedData = [...data]; // Create a copy of the array
-  const sortedInterviews = copiedData.sort((a, b) => {
+  const formattedInterviews = copiedData.map((interview) => ({
+    ...interview,
+    date: moment(interview.date).format('MMM DD, YYYY'),
+  }));
+  const sortedInterviews = formattedInterviews.sort((a, b) => {
     const dateComparison =
       new Date(b.date).getTime() - new Date(a.date).getTime();
     if (dateComparison !== 0) {
-      return dateComparison; // If dates are different, sort by date
+      return dateComparison;
     } else {
-      // If dates are the same, sort by timeSlot
-      return compareTimeSlots(a.timeSlot, b.timeSlot);
+      return compareTimeSlots(a.time, b.time);
     }
   });
   return sortedInterviews;
@@ -79,22 +83,20 @@ function compareTimeSlots(a: string, b: string): number {
   return startA - startB;
 }
 
-export const getTimeSlotList = createSelector(getInterviewState, (state) => {
-  return state.TimeSlotList;
-});
+// export const getTimeSlotList = createSelector(getInterviewState, (state) => {
+//   return state.TimeSlotList;
+// });
 
 export const getTimeSlotListByDate = (date: string) =>
   createSelector(getInterviewState, (state) => {
-    // Get all time slots for the provided date
     const interviewsForDate = state.InterviewList.filter((interview) => {
-      // Filter time slots that do not match the provided date
-      return interview.date == date;
+      const interviewDate = moment(interview.date).format('MMM DD, YYYY');
+      return interviewDate == date;
     });
-
     const availableTimeSlots = state.TimeSlotsList.filter((timeSlot) => {
       // Check if the time slot is not occupied by any interview for the provided date
       return !interviewsForDate.some(
-        (interview) => interview.timeSlot === timeSlot
+        (interview) => interview.time === timeSlot
       );
     });
 

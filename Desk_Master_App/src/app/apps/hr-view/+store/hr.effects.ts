@@ -22,7 +22,7 @@ import {
 } from './hr.action';
 import { EMPTY, catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 
-import { IInterviewBoard, ITimeAllocation, Interview } from './Model';
+import { IInterviewBoard, ITimeAllocation, IInterview } from './Model';
 import { showAlert } from '../../../shared/store/App.action';
 
 @Injectable()
@@ -59,12 +59,11 @@ export class interviewEffects {
             return of(loadInterviewBoardSuccess({ interviewBoardList: data }));
           }),
           catchError((_error) =>
-            of(
-              showAlert({
-                message: 'addinghhhhhhhhhhhhh failed - Due to' + _error.message,
-                alertType: 'fail',
-              })
-            )
+            of()
+            // showAlert({
+            //   message: 'addinghhhhhhhhhhhhh failed - Due to' + _error.message,
+            //   alertType: 'fail',
+            // })
           )
         )
       )
@@ -147,7 +146,7 @@ export class interviewEffects {
                 return dateComparison; // If dates are different, sort by date
               } else {
                 // If dates are the same, sort by timeSlot
-                return compareTimeSlots(a.timeSlot, b.timeSlot);
+                return compareTimeSlots(a.time, b.time);
               }
             });
             return loadInterviewSuccess({ interviewList: sortedInterviews });
@@ -165,26 +164,26 @@ export class interviewEffects {
     )
   );
 
-  _LoadTimeSlot = createEffect(() =>
-    this.action$.pipe(
-      ofType(loadTimeSlot),
-      exhaustMap(() => {
-        return this.service.getTimeSlot().pipe(
-          map((data) => {
-            return loadTimeSlotSuccess({ timeSlotList: data });
-          }),
-          catchError((_error) =>
-            of(
-              showAlert({
-                message: 'Loading failed - Due to' + _error.message,
-                alertType: 'fail',
-              })
-            )
-          )
-        );
-      })
-    )
-  );
+  // _LoadTimeSlot = createEffect(() =>
+  //   this.action$.pipe(
+  //     ofType(loadTimeSlot),
+  //     exhaustMap(() => {
+  //       return this.service.getTimeSlot().pipe(
+  //         map((data) => {
+  //           return loadTimeSlotSuccess({ timeSlotList: data });
+  //         }),
+  //         catchError((_error) =>
+  //           of(
+  //             showAlert({
+  //               message: 'Loading failed - Due to' + _error.message,
+  //               alertType: 'fail',
+  //             })
+  //           )
+  //         )
+  //       );
+  //     })
+  //   )
+  // );
 
   _addInterView = createEffect(() =>
     this.action$.pipe(
@@ -193,7 +192,7 @@ export class interviewEffects {
         this.service.addInterview(action.interviewData).pipe(
           switchMap((data) =>
             of(
-              addInterviewSuccess({ interviewData: data as Interview }),
+              addInterviewSuccess({ interviewData: data as IInterview }),
               showAlert({
                 message: 'Interview added successfully',
                 alertType: 'success',
@@ -246,14 +245,21 @@ export class interviewEffects {
 
 // Custom sorting function for timeSlots
 function compareTimeSlots(a: string, b: string): number {
+  // Null check for a and b
+  if (a === null || b === null) {
+    console.error('Error: time is null');
+    return 0; // or some default value
+  }
+
   const parseTime = (time: string): number => {
     const [hour, minute] = time.match(/\d+/g)!.map(Number);
     const isPM = time.includes('PM');
     return (hour % 12) * 60 + minute + (isPM ? 720 : 0); // Add 12 hours (720 minutes) if it's PM
   };
 
-  const [startA] = a.split('-').map(parseTime);
-  const [startB] = b.split('-').map(parseTime);
+  // Splitting after null check
+  const [startA] = a.split('-')?.map(parseTime) || [0]; // Default to [0] if split returns null
+  const [startB] = b.split('-')?.map(parseTime) || [0]; // Default to [0] if split returns null
 
   return startA - startB;
 }

@@ -33,16 +33,16 @@ export interface Experience {
   endDate?: Date; // Optional if the candidate is still working there
 }
 
-export interface Interview {
+export interface IInterview {
   id?: string;
   candidateName: string;
   candidateEmail: string;
   candidatePhoneNo: string;
   date: string;
-  timeSlot: string;
-  interviewer: string;
+  time: string;
+  interviewersList: IInterviewer[];
   additionalInfo?: string;
-  status: boolean;
+  status: string;
 }
 
 export interface TimeSlot {
@@ -53,11 +53,11 @@ export interface TimeSlot {
 export interface InterviewModel {
   TimeSlotsList: string[];
   TimeSlotList: TimeSlot[];
-  InterviewObj: Interview;
-  InterviewList: Interview[];
+  InterviewObj: IInterview;
+  InterviewList: IInterview[];
   TimeAllocation: ITimeAllocation[];
 
-  InterviewBoard: IInterviewBoard[];
+  InterviewBoardList: IInterviewBoard[];
 }
 
 export interface IInterviewBoard {
