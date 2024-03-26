@@ -65,7 +65,7 @@ export class schedularEffects {
     )
   );
 
-  _loadInterview = createEffect(() =>
+  _loadRoomBooking = createEffect(() =>
     this.action$.pipe(
       ofType(loadRoomBookingList),
       exhaustMap((action) => {
@@ -86,7 +86,7 @@ export class schedularEffects {
     )
   );
 
-  _addInterView = createEffect(() =>
+  _addRoomBooking = createEffect(() =>
     this.action$.pipe(
       ofType(addRoomBooking),
       switchMap((action) =>
@@ -113,7 +113,7 @@ export class schedularEffects {
     )
   );
 
-  _updateInterview = createEffect(() =>
+  _updateRoomBooking = createEffect(() =>
     this.action$.pipe(
       ofType(updateRoomBooking),
       switchMap((action) =>
