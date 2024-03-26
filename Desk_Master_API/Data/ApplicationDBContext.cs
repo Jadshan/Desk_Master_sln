@@ -18,8 +18,5 @@ namespace Desk_Master_API.Data
      public DbSet<InterviewBoardModel> InterviewBoardTbl {get; set;}
      public DbSet<InterviewModel> InterviewsTbl {get; set;}
      public DbSet<InterviewersListModel> InterviewersListTbl {get; set;}
-
-
-
     }
 }
