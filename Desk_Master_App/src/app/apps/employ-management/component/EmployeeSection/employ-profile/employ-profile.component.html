@@ -1,0 +1,84 @@
+<section class="example-container mat-elevation-z8" tabindex="0">
+ <div class="container">
+  <mat-tab-group animationDuration="800ms">
+   <!-- First Tab: Account General Settings -->
+   <mat-tab label="Account General Settings">
+    <div class="custom-tab-content">
+
+     <form [formGroup]="generalSettingsForm">
+      <!-- User Photo Upload -->
+      <div class="row">
+       <div class="col-4">
+        <div class="form-group">
+         <label for="photo">Profile Photo</label>
+         <input type="file" (change)="onPhotoSelected($event)" id="photo" accept="image/*" style="display: none">
+         <button mat-raised-button color="primary" (click)="selectPhoto()">Upload Photo</button>
+         <img [src]="photoPreview"
+          alt="https://img.freepik.com/premium-vector/people-icon-person-symbol-vector-illustration_276184-166.jpg?size=338&ext=jpg&ga=GA1.1.735520172.1711238400&semt=ais"
+          class="photo-preview">
+        </div>
+       </div>
+       <div class="col-8">
+
+        <div class="form-group">
+         <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" id="username">
+         </mat-form-field>
+        </div>
+        <div class="form-group">
+         <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+         </mat-form-field>
+        </div>
+        <div class="form-group">
+         <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+         </mat-form-field>
+        </div>
+        <div class="form-group">
+         <mat-form-field appearance="outline">
+          <mat-label>PhoneNo</mat-label>
+          <input matInput formControlName="phoneNo">
+         </mat-form-field>
+        </div>
+
+       </div>
+      </div>
+
+
+     </form>
+    </div>
+   </mat-tab>
+
+   <mat-tab label="Change Password">
+    <div class="custom-tab-content">
+     <form [formGroup]="changePasswordForm" (ngSubmit)="submitChangePassword()">
+      <div class="form-group">
+       <mat-form-field appearance="outline">
+        <mat-label>Current Password</mat-label>
+        <input matInput type="password" formControlName="currentPassword" required>
+       </mat-form-field>
+      </div>
+      <div class="form-group">
+       <mat-form-field appearance="outline">
+        <mat-label>New Password</mat-label>
+        <input matInput type="password" formControlName="newPassword" required>
+       </mat-form-field>
+      </div>
+      <div class="form-group">
+       <mat-form-field appearance="outline">
+        <mat-label>Repeat New Password</mat-label>
+        <input matInput type="password" formControlName="confirmPassword" required>
+       </mat-form-field>
+      </div>
+
+      <button mat-button type="submit" color="primary">Change Password</button>
+     </form>
+    </div>
+   </mat-tab>
+  </mat-tab-group>
+ </div>
+</section>

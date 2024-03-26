@@ -11,6 +11,7 @@ import { EmployHomeComponent } from './component/EmployeeSection/employ-home/emp
 import { EmployDataEntryComponent } from './component/EmployeeSection/employ-data-entry/employ-data-entry.component';
 import { AdminViewEmployDataComponent } from './component/AdminSection/admin-view-employ-data/admin-view-employ-data.component';
 import { MaterialModule } from '../../../Material.Module';
+import { EmployProfileComponent } from './component/EmployeeSection/employ-profile/employ-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MaterialModule } from '../../../Material.Module';
     EmployHomeComponent,
     EmployDataEntryComponent,
     AdminViewEmployDataComponent,
+    EmployProfileComponent,
   ],
   imports: [
     CommonModule,
