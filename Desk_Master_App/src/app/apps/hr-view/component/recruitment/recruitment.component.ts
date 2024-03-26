@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Interview } from '../../+store/Model';
-import { HrService } from '../../service/hr.service';
 
 @Component({
   selector: 'app-recruitment',
