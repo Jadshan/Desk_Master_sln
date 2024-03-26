@@ -40,12 +40,13 @@ import { IInterviewer } from '../../../employ-management/+Store/Model/employee.m
 })
 export class RecruitmentTeamComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl('');
+  interviewerCtrl = new FormControl('');
   filteredInterviewers!: Observable<IInterviewer[]>;
   selectedInterviewers: IInterviewer[] = [];
   interviewers: string[] = [];
   allInterviewers: IInterviewer[] = [];
-  @ViewChild('fruitInput') fruitInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('interviewerInput')
+  interviewerInput!: ElementRef<HTMLInputElement>;
 
   announcer = inject(LiveAnnouncer);
 
@@ -62,7 +63,7 @@ export class RecruitmentTeamComponent implements OnInit {
   selectedInterviewDate: any;
   interViewBoardList: IInterviewBoard[] = [];
 
-  constructor(private store: Store, private service: HrService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.selectedInterviewDate = this.interviewDate;
@@ -70,10 +71,10 @@ export class RecruitmentTeamComponent implements OnInit {
     this.store.select(getInterviewersList).subscribe((data) => {
       if (data) {
         this.allInterviewers = data;
-        this.filteredInterviewers = this.fruitCtrl.valueChanges.pipe(
+        this.filteredInterviewers = this.interviewerCtrl.valueChanges.pipe(
           startWith(null),
-          map((fruit: string | null) =>
-            fruit ? this._filter(fruit) : this.allInterviewers.slice()
+          map((intV: string | null) =>
+            intV ? this._filter(intV) : this.allInterviewers.slice()
           )
         );
       }
@@ -81,7 +82,6 @@ export class RecruitmentTeamComponent implements OnInit {
     this.store.dispatch(loadInterviewBoard());
     this.store.select(getInterviewBoardList).subscribe((data) => {
       this.interViewBoardList = data;
-      console.log(this.interViewBoardList);
     });
     this.store.dispatch(loadTimeAllocation());
     this.store.select(getTimeAllocation).subscribe((data) => {
@@ -98,15 +98,15 @@ export class RecruitmentTeamComponent implements OnInit {
         });
       }
     });
-    this.store.dispatch(loadUser());
-    this.store.select(getUserList).subscribe((list) => {
-      this.userList = list as user[];
-      if (this.userList.length > 1) {
-        this.employeeList = this.userList.filter((user) => {
-          return user.role === 'employee';
-        });
-      }
-    });
+    //this.store.dispatch(loadUser());
+    // this.store.select(getUserList).subscribe((list) => {
+    //   this.userList = list as user[];
+    //   if (this.userList.length > 1) {
+    //     this.employeeList = this.userList.filter((user) => {
+    //       return user.role === 'employee';
+    //     });
+    //   }
+    // });
   }
 
   add(event: MatChipInputEvent): void {
@@ -115,21 +115,21 @@ export class RecruitmentTeamComponent implements OnInit {
       this.interviewers.push(value);
     }
     event.chipInput!.clear();
-    this.fruitCtrl.setValue(null);
+    this.interviewerCtrl.setValue(null);
   }
 
-  remove(fruit: string): void {
-    const index = this.interviewers.indexOf(fruit);
+  remove(intV: string): void {
+    const index = this.interviewers.indexOf(intV);
     if (index >= 0) {
       this.interviewers.splice(index, 1);
-      this.announcer.announce(`Removed ${fruit}`);
+      this.announcer.announce(`Removed ${intV}`);
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.interviewers.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
+    this.interviewerInput.nativeElement.value = '';
+    this.interviewerCtrl.setValue(null);
   }
 
   private _filter(value: string): IInterviewer[] {
@@ -161,14 +161,15 @@ export class RecruitmentTeamComponent implements OnInit {
 
   onSubmit() {
     this.selectedInterviewers = this.allInterviewers.filter((all) => {
-      return this.interviewers.some((selInt) => selInt === all.name);
+      return this.interviewers.some(
+        (selInt) => selInt === all.name + ' - ' + all.role
+      );
     });
-
     const _interviewBoard: IInterviewBoard = {
       date: this.selectedInterviewDate.toISOString(),
       interviewers: this.selectedInterviewers,
     };
-    // this.service.addInterviewBoard(interviewBoard).subscribe((data) => {});
     this.store.dispatch(addInterviewBoard({ interviewBoard: _interviewBoard }));
+    this.interviewers = [];
   }
 }
