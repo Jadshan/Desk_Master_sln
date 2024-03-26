@@ -1,3 +1,6 @@
+<button mat-raised-button color="warn" routerLink="/Hr_View"> Back To DashBoard</button>
+<button mat-raised-button color="warn" routerLink="/interview"> Go for InterviewList</button>
+
 <div class="row">
  <div class="col-6">
   <mat-card class="board-card">
@@ -15,7 +18,7 @@
 
     <mat-form-field class="example-chip-list">
      <mat-label>Interviewers</mat-label>
-     <mat-chip-grid #chipGrid aria-label="Fruit selection">
+     <mat-chip-grid #chipGrid aria-label="Interviewer selection">
       <mat-chip-row (removed)="remove(interviewer)" *ngFor="let interviewer of interviewers">
        {{interviewer}}
        <button matChipRemove [attr.aria-label]="'remove ' + interviewer">
@@ -23,17 +26,17 @@
        </button>
       </mat-chip-row>
      </mat-chip-grid>
-     <input placeholder="New Fruit..." #fruitInput [formControl]="fruitCtrl" [matChipInputFor]="chipGrid"
-      [matAutocomplete]="auto" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+     <input placeholder="Select Interviewer..." #interviewerInput [formControl]="interviewerCtrl"
+      [matChipInputFor]="chipGrid" [matAutocomplete]="auto" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
       (matChipInputTokenEnd)="add($event)" />
      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
       <mat-option *ngFor="let interviewer of filteredInterviewers | async" [value]="interviewer.name">
-       {{interviewer.name}}
+       {{interviewer.name + ' - ' + interviewer.role}}
       </mat-option>
      </mat-autocomplete>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"> Add</button>
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"> Add Interviewer</button>
    </mat-card-content>
   </mat-card>
  </div>
