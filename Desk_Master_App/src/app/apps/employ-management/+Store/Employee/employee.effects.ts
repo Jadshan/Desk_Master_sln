@@ -44,11 +44,9 @@ export class employeeEffects {
             });
 
             basicDetailsList.forEach((employ) => {
-              // Filter basicDetails by role 'SE' or 'SSE'
               if (employ.role === 'SE' || employ.role === 'SSE') {
-                // Push relevant information to interviewersList
                 interviewersList.push({
-                  interviewerId: employ.id,
+                  employeeId: employ.id,
                   name: employ.firstName,
                   role: employ.role,
                 });
