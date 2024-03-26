@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Interview } from '../../+store/Model';
+import { IInterview } from '../../+store/Model';
 import { HrService } from '../../service/hr.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AddInterviewComponent } from '../add-interview/add-interview.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -28,13 +28,14 @@ export class InterviewListComponent implements OnInit {
     'action',
     'delete',
   ];
-  interviews: Interview[] = [];
+  interviews: IInterview[] = [];
   dataSource: any;
   @ViewChild('menuTrigger')
   menuTrigger!: MatMenuTrigger;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
+    //private dialogRef: MatDialogRef<AddInterviewComponent>,
     private service: HrService,
     private Dialog: MatDialog,
     private store: Store
@@ -43,8 +44,7 @@ export class InterviewListComponent implements OnInit {
     this.store.dispatch(loadInterview());
     this.store.select(getInterviewList).subscribe((list) => {
       this.interviews = list;
-
-      this.dataSource = new MatTableDataSource<Interview>(this.interviews);
+      this.dataSource = new MatTableDataSource<IInterview>(this.interviews);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
