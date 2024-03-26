@@ -19,6 +19,6 @@ namespace Desk_Master_API.Models
         public int TotalYears { get; set; } 
         public int TotalMonths { get; set; } 
         public  AddressModel CurrentAddress {get; set;} = new AddressModel();
-           public  AddressModel PermanentAddress {get; set;} = new AddressModel();
+        public  AddressModel PermanentAddress {get; set;} = new AddressModel();
     }
 }

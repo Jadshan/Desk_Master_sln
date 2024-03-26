@@ -13,7 +13,7 @@ namespace Desk_Master_API.Models
        public string EndDate { get; set; } = string.Empty;
        public string Designation { get; set; } = string.Empty;
        public string Project { get; set; } = string.Empty;
-         public int? EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
         public Employee? Employee { get; set; }
     }
 }
