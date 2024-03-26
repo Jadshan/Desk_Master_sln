@@ -19,6 +19,7 @@ import { EmployHomeComponent } from './apps/employ-management/component/Employee
 import { EmployDataEntryComponent } from './apps/employ-management/component/EmployeeSection/employ-data-entry/employ-data-entry.component';
 import { AdminViewEmployDataComponent } from './apps/employ-management/component/AdminSection/admin-view-employ-data/admin-view-employ-data.component';
 import { BlogDashboardComponent } from './apps/BlogApp/components/blog-dashboard/blog-dashboard.component';
+import { EmployProfileComponent } from './apps/employ-management/component/EmployeeSection/employ-profile/employ-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
@@ -46,11 +47,18 @@ const routes: Routes = [
     component: EmployDashboardComponent,
     canActivate: [authGuard],
   },
+
+  {
+    path: 'employ-profile',
+    component: EmployProfileComponent,
+    canActivate: [authGuard],
+  },
   {
     path: 'Hr_View/employ',
     component: EmployDashboardComponent,
     canActivate: [authGuard],
   },
+
   {
     path: 'employ/employlist',
     component: EmployListingComponent,
@@ -79,14 +87,25 @@ const routes: Routes = [
     component: RecruitmentComponent,
     canActivate: [authGuard],
   },
-  { path: 'Hr_View/recruitment/interview', component: InterviewListComponent },
   {
-    path: 'Hr_View/recruitment/recruitmentTeam',
+    path: 'interview',
+    component: InterviewListComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'Hr_View/recruitment/interview',
+    component: InterviewListComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'recruitmentTeam',
     component: RecruitmentTeamComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'Hr_View/recruitment/interview/recruitmentTeam',
     component: RecruitmentTeamComponent,
+    canActivate: [authGuard],
   },
 ];
 
