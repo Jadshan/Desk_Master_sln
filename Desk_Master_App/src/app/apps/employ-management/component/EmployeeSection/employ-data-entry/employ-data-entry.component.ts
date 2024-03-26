@@ -2,10 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { EmployService } from '../../../service/employ.service';
 import {
+  BankDetails,
   EmployeeData,
   Experience,
   Skills,
 } from '../../../+Store/Model/employee.model';
+import { Store } from '@ngrx/store';
+import { AppStateModel } from '../../../../../shared/store/AppState.Model';
+import { addEmployeeData } from '../../../+Store/Employee/employee.action';
 
 @Component({
   selector: 'app-employ-data-entry',
@@ -17,16 +21,23 @@ export class EmployDataEntryComponent implements OnInit {
   isLinear = true;
   isSameAddress = false;
   employeeData = new EmployeeData();
-  submittedEmployeeData: EmployeeData | undefined;
+  submittedEmployeeData = new EmployeeData();
   proficiencyList = ['Beginner', 'Intermediate', 'Advanced'];
   designationList = ['jaffna', 'colombo'];
   roleList = ['SE', 'ASE', 'SSE', 'QA', 'AQA'];
 
-  constructor(private FB: FormBuilder, private service: EmployService) {}
+  constructor(
+    private FB: FormBuilder,
+    private service: EmployService,
+    private store: Store<AppStateModel>
+  ) {}
 
   ngOnInit(): void {
     this.employeeData = new EmployeeData();
     this.buildForm();
+    this.service.getEmployeeData().subscribe((data) => {
+      console.log(data);
+    });
   }
 
   buildForm(): void {
@@ -100,6 +111,7 @@ export class EmployDataEntryComponent implements OnInit {
     if (this.empRegForm.valid) {
       this.submittedEmployeeData = {
         basicDetails: {
+          id: 0,
           firstName: this.basicDetailForm.value.firstName,
           secondName: this.basicDetailForm.value.secondName,
           email: this.basicDetailForm.value.email,
@@ -113,18 +125,23 @@ export class EmployDataEntryComponent implements OnInit {
           currentAddress: { ...this.currentAddressForm.value },
           permanentAddress: { ...this.permanentAddressForm.value },
         },
-        skillsArr: [...this.employeeData.skillsArr],
-        experienceArr: [...this.employeeData.experienceArr],
-        bankDetails: { ...this.bankDetailsForm.value },
+        skillList: [...this.employeeData.skillList],
+        experienceList: [...this.employeeData.experienceList],
+        bankDetailsList: [...this.employeeData.bankDetailsList],
       };
       console.log(this.submittedEmployeeData);
     }
   }
 
   onConfirm(): void {
-    // this.service.saveEmployeeData(this.submittedEmployeeData)
+    this.store.dispatch(
+      addEmployeeData({ employData: this.submittedEmployeeData })
+    );
+    // this.service
+    //   .saveEmployeeData(this.submittedEmployeeData)
     //   .subscribe((res) => {
     //     console.log(res);
+    //     alert('added success');
     //   });
   }
 
@@ -166,7 +183,7 @@ export class EmployDataEntryComponent implements OnInit {
       designation: '',
       project: '',
     };
-    this.employeeData.experienceArr.push(experienceObj);
+    this.employeeData.experienceList.push(experienceObj);
   }
 
   onPushSkill(): void {
@@ -179,8 +196,8 @@ export class EmployDataEntryComponent implements OnInit {
       certificationFile: skillFormGroup.get('project')?.value || '',
     };
 
-    this.employeeData.skillsArr.push(experienceObj);
-    console.log(this.employeeData.skillsArr);
+    this.employeeData.skillList.push(experienceObj);
+    console.log(this.employeeData.skillList);
 
     this.empRegForm.get('skillObj')?.reset();
   }
@@ -199,12 +216,17 @@ export class EmployDataEntryComponent implements OnInit {
     (this.empRegForm.get('ExperienceArr') as FormArray).push(
       this.FB.group(experienceObj)
     );
-    this.employeeData.experienceArr.push(experienceObj);
-    console.log(this.employeeData.experienceArr);
+    this.employeeData.experienceList.push(experienceObj);
+    console.log(this.employeeData.experienceList);
 
     this.empRegForm.get('ExperienceObj')?.reset();
   }
 
+  onPushBank() {
+    const _bankDetail: BankDetails = { ...this.bankDetailsForm.value };
+    this.employeeData.bankDetailsList.push(_bankDetail);
+    console.log(this.employeeData.bankDetailsList);
+  }
   onAddSkill(): void {
     const skillObj: Skills = {
       skill: '',
@@ -213,6 +235,6 @@ export class EmployDataEntryComponent implements OnInit {
       proficiency: '',
       certificationFile: '',
     };
-    this.employeeData.skillsArr.unshift(skillObj);
+    this.employeeData.skillList.unshift(skillObj);
   }
 }

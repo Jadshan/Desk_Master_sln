@@ -195,7 +195,7 @@
                             <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
                           </td>
                         </tr>
-                        <tr formGroupName="skillObj" *ngFor="let skill of employeeData.skillsArr">
+                        <tr formGroupName="skillObj" *ngFor="let skill of employeeData.skillList">
                           <td>
                             <input type="text" placeholder="Skill" class="form-control" value="{{skill.skill}}"
                               disabled>
@@ -290,7 +290,7 @@
                           </td>
                         </tr>
 
-                        <tr *ngFor="let data of employeeData.experienceArr ">
+                        <tr *ngFor="let data of employeeData.experienceList ">
                           <td>
                             <input type="text" class="form-control " placeholder="Company" value="{{data.company}}"
                               disabled>
@@ -360,7 +360,7 @@
 
             <div>
               <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+              <button mat-button matStepperNext (click)="onPushBank()">Next</button>
             </div>
           </div>
         </mat-step>
@@ -391,9 +391,9 @@
               P.NO: <br>
               Address: <br> <br>
               <h3>Bank Details</h3>
-              Bank: {{submittedEmployeeData.bankDetails.bankName}} <br>
+              <!-- Bank: {{submittedEmployeeData.bankDetails.bankName}} <br>
               Branch: {{submittedEmployeeData.bankDetails.branch}} <br>
-              AccNo: {{submittedEmployeeData.bankDetails.accountNo}} <br>
+              AccNo: {{submittedEmployeeData.bankDetails.accountNo}} <br> -->
 
 
             </mat-card-content>
