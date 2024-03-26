@@ -25,6 +25,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import { MatTabsModule } from '@angular/material/tabs';
 import {
   MatAutocompleteSelectedEvent,
   MatAutocompleteModule,
@@ -61,6 +62,7 @@ import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
     MatProgressBarModule,
     MatStepperModule,
     MatAutocompleteModule,
+    MatTabsModule,
   ],
 })
 export class MaterialModule {}
