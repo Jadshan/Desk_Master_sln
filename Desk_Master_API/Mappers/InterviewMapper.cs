@@ -42,11 +42,11 @@ namespace Desk_Master_API.Mappers
         {
             return new InterviewersListViewDTO
            {
-              Id = interviewersList.Id,
+              //Id = interviewersList.Id,
               Name = interviewersList.Name,
               Role = interviewersList.Role,
               EmployeeId  = interviewersList.EmployeeId,
-              InterviewId = interviewersList.InterviewId
+              //InterviewId = interviewersList.InterviewId
             };
         }
         public static InterviewsViewDTO ToInterviewViewDTO(this InterviewModel interview)
