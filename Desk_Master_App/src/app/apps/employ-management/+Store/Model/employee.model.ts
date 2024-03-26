@@ -98,7 +98,8 @@ export class EmployeeModel {
 }
 
 export interface IInterviewer {
-  interviewerId: number;
+  id?: number;
+  employeeId: number;
   name: string;
   role: string;
 }
