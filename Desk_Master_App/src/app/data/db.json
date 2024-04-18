@@ -245,6 +245,203 @@
       "additionalInfo": "",
       "status": true,
       "id": "116a"
+    },
+    {
+      "candidateName": "dffgdf",
+      "candidateEmail": "dfg@fdg",
+      "candidatePhoneNo": "546456",
+      "date": "Mar 19, 2024",
+      "timeSlot": "12:00 PM - 01:00 PM",
+      "interviewer": "df",
+      "additionalInfo": "dfgdfg",
+      "status": true,
+      "id": "48da"
+    },
+    {
+      "candidateName": "rert",
+      "candidateEmail": "ret@rt",
+      "candidatePhoneNo": "3454345",
+      "date": "Mar 19, 2024",
+      "timeSlot": "10:00 AM - 11:00 AM",
+      "interviewer": "JAN",
+      "additionalInfo": "",
+      "status": true,
+      "id": "5b5e"
+    },
+    {
+      "candidateName": "dsfds",
+      "candidateEmail": "sd@fdg",
+      "candidatePhoneNo": "4545",
+      "date": "Mar 19, 2024",
+      "timeSlot": "09:00 AM - 10:00 AM",
+      "interviewer": "MAC",
+      "additionalInfo": "dfdgdfdg",
+      "status": true,
+      "id": "641e"
+    },
+    {
+      "candidateName": "dfsd",
+      "candidateEmail": "sdf@df",
+      "candidatePhoneNo": "5456",
+      "date": "Mar 20, 2024",
+      "timeSlot": "11:00 AM - 12:00 PM",
+      "interviewers": [],
+      "additionalInfo": "sf",
+      "status": true,
+      "id": "54ae"
+    },
+    {
+      "id": "3408",
+      "candidateName": "df",
+      "candidateEmail": "sad@sdf",
+      "candidatePhoneNo": "4354",
+      "date": "Mar 20, 2024",
+      "timeSlot": "09:00 AM - 10:00 AM",
+      "interviewers": [
+        {
+          "id": 60,
+          "interviewerId": 1,
+          "name": "JAN",
+          "role": "SE"
+        },
+        {
+          "id": 62,
+          "interviewerId": 3,
+          "name": "COOS",
+          "role": "SSE"
+        }
+      ],
+      "additionalInfo": "etert",
+      "status": true
+    },
+    {
+      "id": "ca72",
+      "candidateName": "dff",
+      "candidateEmail": "sd@dgf",
+      "candidatePhoneNo": "345",
+      "date": "Mar 20, 2024",
+      "timeSlot": "10:00 AM - 11:00 AM",
+      "interviewers": [
+        {
+          "id": 60,
+          "interviewerId": 1,
+          "name": "JAN",
+          "role": "SE"
+        },
+        {
+          "id": 61,
+          "interviewerId": 2,
+          "name": "MAC",
+          "role": "SE"
+        }
+      ],
+      "additionalInfo": "sfd",
+      "status": true
+    },
+    {
+      "id": "c803",
+      "candidateName": "dffg",
+      "candidateEmail": "df@fg",
+      "candidatePhoneNo": "5456",
+      "date": "Mar 20, 2024",
+      "timeSlot": "12:00 PM - 01:00 PM",
+      "interviewers": [
+        {
+          "interviewerId": 1,
+          "name": "JAN",
+          "role": "SE"
+        },
+        {
+          "interviewerId": 3,
+          "name": "COOS",
+          "role": "SSE"
+        }
+      ],
+      "additionalInfo": "",
+      "status": true
+    },
+    {
+      "id": "65b1",
+      "candidateName": "dfdg",
+      "candidateEmail": "dg@dfdf",
+      "candidatePhoneNo": "456",
+      "date": "Mar 21, 2024",
+      "timeSlot": "09:00 AM - 10:00 AM",
+      "interviewers": [
+        {
+          "interviewerId": 1,
+          "name": "JAN",
+          "role": "SE"
+        },
+        {
+          "interviewerId": 2,
+          "name": "MAC",
+          "role": "SE"
+        }
+      ],
+      "additionalInfo": "ggggggggggggd",
+      "status": true
+    },
+    {
+      "id": "36c5",
+      "candidateName": "errg",
+      "candidateEmail": "dfdg@gdf",
+      "candidatePhoneNo": "45456",
+      "date": "Mar 21, 2024",
+      "timeSlot": "10:00 AM - 11:00 AM",
+      "interviewers": [
+        {
+          "interviewerId": 1,
+          "name": "JAN",
+          "role": "SE"
+        },
+        {
+          "interviewerId": 2,
+          "name": "MAC",
+          "role": "SE"
+        }
+      ],
+      "additionalInfo": "erter",
+      "status": ""
+    },
+    {
+      "id": "8f50",
+      "candidateName": "hfg",
+      "candidateEmail": "sdf@ed",
+      "candidatePhoneNo": "3454",
+      "date": "2024-03-21T11:39:46.964Z",
+      "timeSlot": "11:00 AM - 12:00 PM",
+      "interviewers": [
+        {
+          "interviewerId": 1,
+          "name": "JAN",
+          "role": "SE"
+        },
+        {
+          "interviewerId": 2,
+          "name": "MAC",
+          "role": "SE"
+        }
+      ],
+      "additionalInfo": "eretre",
+      "status": ""
+    },
+    {
+      "id": "bec9",
+      "candidateName": "fgdfg",
+      "candidateEmail": "sad@dfd",
+      "candidatePhoneNo": "4554",
+      "date": "2024-03-21T11:42:08.195Z",
+      "timeSlot": "11:00 AM - 12:00 PM",
+      "interviewers": [
+        {
+          "interviewerId": 1,
+          "name": "JAN",
+          "role": "SE"
+        }
+      ],
+      "additionalInfo": "rhfg",
+      "status": ""
     }
   ],
   "associate": [
@@ -333,7 +530,7 @@
     },
     {
       "id": "2",
-      "name": "e1",
+      "name": "b",
       "username": "e1",
       "password": "e1",
       "email": "nt@in.com",
@@ -344,7 +541,7 @@
     },
     {
       "id": "3",
-      "name": "e2",
+      "name": "c",
       "username": "e2",
       "password": "e2",
       "email": "nt1@in.com",
@@ -355,7 +552,7 @@
     },
     {
       "id": "4",
-      "name": "e3",
+      "name": "d",
       "username": "e3",
       "password": "e3",
       "email": "ad@in.com",
@@ -388,9 +585,9 @@
     },
     {
       "id": "0",
-      "name": "sdf",
-      "username": "sssssf",
-      "password": "45",
+      "name": "s",
+      "username": "",
+      "password": "",
       "email": "",
       "phone": "",
       "gender": "",
@@ -442,7 +639,15 @@
       "status": true
     },
     {
-      "id": "9c3e"
+      "id": "9c3e",
+      "name": "s",
+      "username": "",
+      "password": "",
+      "email": "",
+      "phone": "",
+      "gender": "",
+      "role": "",
+      "status": false
     }
   ],
   "role": [
@@ -758,27 +963,6 @@
   ],
   "bookingDetails": [
     {
-      "id": "abf1",
-      "roomId": "room2",
-      "userId": "a",
-      "bookingDate": "2024-02-15",
-      "fromTime": "8.00AM",
-      "toTime": "11:11 PM",
-      "seatCount": 2,
-      "createdDate": "2024-02-15T19:44:18+0530",
-      "updatedDate": "Feb 15, 2024"
-    },
-    {
-      "id": "d07e",
-      "roomId": "room1",
-      "userId": "a",
-      "bookingDate": "2024-02-15",
-      "fromTime": "8.00AM",
-      "toTime": "11:11 PM",
-      "seatCount": 2,
-      "updatedDate": "Feb 15, 2024"
-    },
-    {
       "id": "0125",
       "roomId": "room1",
       "userId": "a",
@@ -834,48 +1018,26 @@
       "updatedDate": "Feb 15, 2024"
     },
     {
-      "id": "94d1",
-      "roomId": "room2",
-      "userId": "a",
-      "bookingDate": "2024-02-15",
-      "fromTime": "10.00AM",
-      "toTime": "11:11 PM",
-      "seatCount": 2,
-      "createdDate": "Feb 15, 2024",
-      "updatedDate": "Feb 15, 2024"
-    },
-    {
-      "id": "89ae",
-      "roomId": "room3",
-      "userId": "a",
-      "bookingDate": "2024-02-15",
-      "fromTime": "8.00AM",
-      "toTime": "11:11 PM",
-      "seatCount": 2,
-      "createdDate": "Feb 15, 2024",
-      "updatedDate": "Feb 15, 2024"
-    },
-    {
-      "id": "f3f0",
-      "roomId": "room3",
-      "userId": "a",
-      "bookingDate": "2024-02-15",
-      "fromTime": "9.00AM",
-      "toTime": "11:11 PM",
-      "seatCount": 2,
-      "createdDate": "Feb 15, 2024",
-      "updatedDate": "Feb 15, 2024"
-    },
-    {
-      "id": "217f",
+      "id": "5296",
       "roomId": "room1",
       "userId": "a",
-      "bookingDate": "2024-03-05",
+      "bookingDate": "2024-04-16",
       "fromTime": "8.00AM",
       "toTime": "11:11 PM",
-      "seatCount": 5,
-      "createdDate": "Mar 05, 2024",
-      "updatedDate": "Mar 05, 2024"
+      "seatCount": 2,
+      "createdDate": "Apr 16, 2024",
+      "updatedDate": "Apr 16, 2024"
+    },
+    {
+      "id": "9b3e",
+      "roomId": "room1",
+      "userId": "a",
+      "bookingDate": "2024-04-18",
+      "fromTime": "8.00AM",
+      "toTime": "11:11 PM",
+      "seatCount": 2,
+      "createdDate": "Apr 18, 2024",
+      "updatedDate": "Apr 18, 2024"
     }
   ]
 }
