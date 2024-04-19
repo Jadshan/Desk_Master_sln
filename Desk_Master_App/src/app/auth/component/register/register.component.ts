@@ -12,7 +12,6 @@ import { Store } from '@ngrx/store';
 import { beginRegister, duplicateUser } from '../../+Store/user.action';
 import { user } from '../../+Store/user.model';
 import { isDuplicateUser } from '../../+Store/user.selector';
-import { AppStateModel } from '../../../shared/store/AppState.Model';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +22,7 @@ export class RegisterComponent {
   //userForm!: FormGroup;
   constructor(
     private FB: FormBuilder, // @Inject(MAT_DIALOG_DATA) public data: any
-    private store: Store<AppStateModel>
+    private store: Store
   ) {}
   userForm = this.FB.group(
     {

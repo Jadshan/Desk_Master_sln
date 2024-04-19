@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { getUserById } from '../../+store/user.selector';
 import { user } from '../../+store/user.model';
 import { addUser, updateUser } from '../../+store/user.action';
-import { AppStateModel } from '../../../../shared/store/AppState.Model';
 
 @Component({
   selector: 'app-user-handling',
@@ -22,7 +21,7 @@ export class UserHandlingComponent {
   constructor(
     private dialogRef: MatDialogRef<UserHandlingComponent>,
     private FB: FormBuilder,
-    private store: Store<AppStateModel>,
+    private store: Store,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     // this.userForm = FB.group({

@@ -9,7 +9,6 @@ import {
   updateEmployee,
 } from '../../../+Store/Employee/employee.action';
 import { Employee } from '../../../+Store/Model/employee.model';
-import { AppStateModel } from '../../../../../shared/store/AppState.Model';
 
 @Component({
   selector: 'app-employ-handling',
@@ -23,7 +22,7 @@ export class EmployHandlingComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<EmployHandlingComponent>,
     private FB: FormBuilder,
-    private store: Store<AppStateModel>,
+    private store: Store,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.employeeForm = FB.group({

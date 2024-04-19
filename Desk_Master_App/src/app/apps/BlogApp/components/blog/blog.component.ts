@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { blogModel, blogs } from '../../+Store/blog.model';
-import { AppStateModel } from '../../../../shared/store/AppState.Model';
 import { loadSpinner } from '../../../../shared/store/App.action';
 import { deleteBlog, loadBlog } from '../../+Store/blog.action';
 import { getBlogInfo } from '../../+Store/blog.selector';
@@ -16,7 +15,7 @@ import { Store } from '@ngrx/store';
 export class BlogComponent implements OnInit {
   blogList!: blogModel[];
   blogInfo!: blogs;
-  constructor(private store: Store<AppStateModel>, private Dialog: MatDialog) {}
+  constructor(private store: Store, private Dialog: MatDialog) {}
   ngOnInit(): void {
     this.store.dispatch(loadSpinner({ isLoading: true }));
     this.store.dispatch(loadBlog());

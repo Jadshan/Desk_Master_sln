@@ -3,7 +3,6 @@ import { Component, Inject, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { blogModel } from '../../+Store/blog.model';
-import { AppStateModel } from '../../../../shared/store/AppState.Model';
 import { getBlogById } from '../../+Store/blog.selector';
 import { isEqual } from 'lodash';
 import { loadSpinner } from '../../../../shared/store/App.action';
@@ -25,7 +24,7 @@ export class AddBlogComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<AddBlogComponent>,
     private FB: FormBuilder,
-    private store: Store<AppStateModel>,
+    private store: Store,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.blogForm = this.FB.group({

@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { AppStateModel } from './AppState.Model';
+import { GlobalStateModel } from './GlobalState.Model';
 
-const getAppState = createFeatureSelector<AppStateModel>('app');
+const getAppState = createFeatureSelector<GlobalStateModel>('app');
 
 export const getSpinnerState = createSelector(getAppState, (state) => {
   return state.isLoading;

@@ -4,7 +4,6 @@ import { userCredential } from '../../+Store/user.model';
 import { Store } from '@ngrx/store';
 
 import { beginLogin } from '../../+Store/user.action';
-import { AppStateModel } from '../../../shared/store/AppState.Model';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +11,7 @@ import { AppStateModel } from '../../../shared/store/AppState.Model';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private FB: FormBuilder, private store: Store<AppStateModel>) {}
+  constructor(private FB: FormBuilder, private store: Store) {}
   loginForm = this.FB.group({
     userName: this.FB.control('', Validators.required),
     password: this.FB.control('', Validators.required),

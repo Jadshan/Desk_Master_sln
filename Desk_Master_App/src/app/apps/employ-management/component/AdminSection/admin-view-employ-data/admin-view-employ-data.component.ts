@@ -12,7 +12,6 @@ import {
   trigger,
 } from '@angular/animations';
 import { Store } from '@ngrx/store';
-import { AppStateModel } from '../../../../../shared/store/AppState.Model';
 import { getBasicDetailList } from '../../../+Store/Employee/employee.selector';
 import { loadEmployeeData } from '../../../+Store/Employee/employee.action';
 
@@ -45,30 +44,12 @@ export class AdminViewEmployDataComponent implements OnInit {
   employeeData: BasicDetails[] = [];
   employColumns: string[] = ['firstName', 'role', 'email', 'contactNo'];
   employColumnsToDisplay: string[] = this.employColumns.slice();
-  // columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
-  // expandedElement!: EmployeeData | null;
-  // columnsWithContactDetails: string[] = ['address', 'phoneNo', 'email'];
-  // columnsWithBankDetails: string[] = ['bankName', 'branch', 'accountNo'];
-  constructor(
-    private service: EmployService,
-    private store: Store<AppStateModel>
-  ) {}
+  constructor(private service: EmployService, private store: Store) {}
   ngOnInit(): void {
-    // this.service.getEmployeeData().subscribe((data: EmployeeData[]) => {
-    //   data.map((employ) => {
-    //     this.employeeData.push(employ.basicDetails);
-    //   });
-
-    // });
     this.store.dispatch(loadEmployeeData());
     this.store.select(getBasicDetailList).subscribe((list) => {
       this.employeeData = list ? list : [];
       console.log(this.employeeData);
     });
   }
-
-  // toggle(element: EmployeeData) {
-  //   this.expandedElement = this.expandedElement === element ? null : element;
-  //   this.isExpanded = true;
-  // }
 }

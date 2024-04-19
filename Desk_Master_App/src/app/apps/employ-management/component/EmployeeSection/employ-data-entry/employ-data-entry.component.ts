@@ -8,7 +8,6 @@ import {
   Skills,
 } from '../../../+Store/Model/employee.model';
 import { Store } from '@ngrx/store';
-import { AppStateModel } from '../../../../../shared/store/AppState.Model';
 import { addEmployeeData } from '../../../+Store/Employee/employee.action';
 
 @Component({
@@ -29,7 +28,7 @@ export class EmployDataEntryComponent implements OnInit {
   constructor(
     private FB: FormBuilder,
     private service: EmployService,
-    private store: Store<AppStateModel>
+    private store: Store
   ) {}
 
   ngOnInit(): void {
