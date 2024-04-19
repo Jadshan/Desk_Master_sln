@@ -1,7 +1,7 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { UserService } from '../../../auth/service/user.service';
+import { UserService } from '../../auth/service/user.service';
 
 @Component({
   selector: 'app-menu-header',

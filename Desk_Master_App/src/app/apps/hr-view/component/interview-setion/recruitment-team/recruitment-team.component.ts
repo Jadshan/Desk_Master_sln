@@ -6,32 +6,28 @@ import {
   inject,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Store } from '@ngrx/store';
-import { loadUser } from '../../../user-management/+store/user.action';
-import { getUserList } from '../../../user-management/+store/user.selector';
-import { user } from '../../../../auth/+Store/user.model';
-import { HrService } from '../../service/hr.service';
-import { IInterviewBoard, ITimeAllocation } from '../../+store/Model';
+import { user } from '../../../../../auth/+Store/user.model';
+import { IInterviewBoard, ITimeAllocation } from '../../../+store/Model';
 import {
   addInterviewBoard,
   addTimeAllocation,
   loadInterviewBoard,
   loadTimeAllocation,
-} from '../../+store/hr.action';
+} from '../../../+store/hr.action';
 import {
   getInterviewBoardList,
   getTimeAllocation,
   getTimeSlotsList,
-} from '../../+store/hr.selector';
+} from '../../../+store/hr.selector';
 import { Observable, startWith, map } from 'rxjs';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { getInterviewersList } from '../../../employ-management/+Store/Employee/employee.selector';
-import { loadEmployeeData } from '../../../employ-management/+Store/Employee/employee.action';
-import { IInterviewer } from '../../../employ-management/+Store/Model/employee.model';
+import { getInterviewersList } from '../../../../employ-management/+Store/Employee/employee.selector';
+import { loadEmployeeData } from '../../../../employ-management/+Store/Employee/employee.action';
+import { IInterviewer } from '../../../../employ-management/+Store/Model/employee.model';
 
 @Component({
   selector: 'app-recruitment-team',

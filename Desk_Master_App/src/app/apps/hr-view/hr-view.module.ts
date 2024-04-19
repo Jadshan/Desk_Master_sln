@@ -4,11 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './component/hr-dashboard/hr-dashboard.component';
 import { RouterModule } from '@angular/router';
-import { RecruitmentComponent } from './component/recruitment/recruitment.component';
-import { AddInterviewComponent } from './component/add-interview/add-interview.component';
-import { InterviewListComponent } from './component/interview-list/interview-list.component';
+import { RecruitmentComponent } from './component/interview-setion/recruitment/recruitment.component';
+import { AddInterviewComponent } from './component/interview-setion/add-interview/add-interview.component';
+import { InterviewListComponent } from './component/interview-setion/interview-list/interview-list.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { RecruitmentTeamComponent } from './component/recruitment-team/recruitment-team.component';
+import { RecruitmentTeamComponent } from './component/interview-setion/recruitment-team/recruitment-team.component';
 import { MaterialModule } from '../../../Material.Module';
 import { MatDialogRef } from '@angular/material/dialog';
 

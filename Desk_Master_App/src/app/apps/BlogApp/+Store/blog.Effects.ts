@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { MasterService } from '../../../shared/master.service';
+import { BlogService } from '../Service/blog.service';
 import {
   actionTypes,
   addBlog,
@@ -25,7 +25,7 @@ import {
 export class BlogEffects {
   constructor(
     private action$: Actions,
-    private service: MasterService,
+    private service: BlogService,
     private _snackBar: MatSnackBar
   ) {}
 

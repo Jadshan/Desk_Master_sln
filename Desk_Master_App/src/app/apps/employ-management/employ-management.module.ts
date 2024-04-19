@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EmployListingComponent } from './component/employ-listing/employ-listing.component';
-import { EmployHandlingComponent } from './component/employ-handling/employ-handling.component';
+import { EmployListingComponent } from './component/AdminSection/employ-listing/employ-listing.component';
+import { EmployHandlingComponent } from './component/AdminSection/employ-handling/employ-handling.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';

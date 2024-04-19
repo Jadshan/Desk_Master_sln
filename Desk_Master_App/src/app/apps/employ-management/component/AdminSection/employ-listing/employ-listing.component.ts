@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { loadEmployee } from '../../+Store/Employee/employee.action';
+import { loadEmployee } from '../../../+Store/Employee/employee.action';
 import { Store } from '@ngrx/store';
-import { Employee } from '../../+Store/Model/employee.model';
-import { getEmployList } from '../../+Store/Employee/employee.selector';
+import { Employee } from '../../../+Store/Model/employee.model';
+import { getEmployList } from '../../../+Store/Employee/employee.selector';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployHandlingComponent } from '../employ-handling/employ-handling.component';
 import { MatPaginator } from '@angular/material/paginator';

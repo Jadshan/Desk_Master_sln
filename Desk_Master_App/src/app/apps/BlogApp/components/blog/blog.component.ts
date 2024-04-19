@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
-import { blogModel, blogs } from '../+Store/blog.model';
-import { AppStateModel } from '../../../shared/store/AppState.Model';
-import { loadSpinner } from '../../../shared/store/App.action';
-import { deleteBlog, loadBlog } from '../+Store/blog.action';
-import { getBlogInfo } from '../+Store/blog.selector';
+import { blogModel, blogs } from '../../+Store/blog.model';
+import { AppStateModel } from '../../../../shared/store/AppState.Model';
+import { loadSpinner } from '../../../../shared/store/App.action';
+import { deleteBlog, loadBlog } from '../../+Store/blog.action';
+import { getBlogInfo } from '../../+Store/blog.selector';
 import { AddBlogComponent } from '../add-blog/add-blog.component';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-blog',

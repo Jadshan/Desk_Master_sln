@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { blogModel } from '../apps/BlogApp/+Store/blog.model';
+import { blogModel } from '../+Store/blog.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MasterService {
+export class BlogService {
   url = 'https://localhost:7051/api/BlogAPI';
   constructor(private http: HttpClient) {}
 

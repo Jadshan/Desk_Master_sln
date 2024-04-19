@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getSpinnerState } from '../../store/App.Selector';
+import { getSpinnerState } from '../store/App.Selector';
 
 @Component({
   selector: 'app-loading-spinner',

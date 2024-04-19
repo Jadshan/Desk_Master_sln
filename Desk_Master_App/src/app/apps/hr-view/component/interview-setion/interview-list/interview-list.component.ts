@@ -1,16 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IInterview } from '../../+store/Model';
-import { HrService } from '../../service/hr.service';
+import { IInterview } from '../../../+store/Model';
+import { HrService } from '../../../service/hr.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddInterviewComponent } from '../add-interview/add-interview.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
-import { getInterviewList } from '../../+store/hr.selector';
-import { loadInterview } from '../../+store/hr.action';
+import { getInterviewList } from '../../../+store/hr.selector';
+import { loadInterview } from '../../../+store/hr.action';
 import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
-import { showAlert } from '../../../../shared/store/App.action';
+import { showAlert } from '../../../../../shared/store/App.action';
 @Component({
   selector: 'app-interview-list',
   templateUrl: './interview-list.component.html',

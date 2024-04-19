@@ -2,13 +2,13 @@ import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
-import { blogModel } from '../+Store/blog.model';
-import { AppStateModel } from '../../../shared/store/AppState.Model';
-import { getBlogById } from '../+Store/blog.selector';
+import { blogModel } from '../../+Store/blog.model';
+import { AppStateModel } from '../../../../shared/store/AppState.Model';
+import { getBlogById } from '../../+Store/blog.selector';
 import { isEqual } from 'lodash';
-import { loadSpinner } from '../../../shared/store/App.action';
-import { addBlog, updateBlog } from '../+Store/blog.action';
+import { loadSpinner } from '../../../../shared/store/App.action';
+import { addBlog, updateBlog } from '../../+Store/blog.action';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-add-blog',

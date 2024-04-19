@@ -3,13 +3,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 
-import { getEmployById } from '../../+Store/Employee/employee.selector';
+import { getEmployById } from '../../../+Store/Employee/employee.selector';
 import {
   addEmployee,
   updateEmployee,
-} from '../../+Store/Employee/employee.action';
-import { Employee } from '../../+Store/Model/employee.model';
-import { AppStateModel } from '../../../../shared/store/AppState.Model';
+} from '../../../+Store/Employee/employee.action';
+import { Employee } from '../../../+Store/Model/employee.model';
+import { AppStateModel } from '../../../../../shared/store/AppState.Model';
 
 @Component({
   selector: 'app-employ-handling',

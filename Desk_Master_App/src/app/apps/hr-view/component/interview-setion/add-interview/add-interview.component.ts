@@ -15,20 +15,20 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { IInterview, TimeSlot } from '../../+store/Model';
+import { IInterview, TimeSlot } from '../../../+store/Model';
 import {
   addInterview,
   loadInterviewBoard,
   loadTimeAllocation,
   updateInterview,
-} from '../../+store/hr.action';
+} from '../../../+store/hr.action';
 import {
   getInterviewById,
   getInterviewersListByDate,
   getTimeSlotListByDate,
-} from '../../+store/hr.selector';
+} from '../../../+store/hr.selector';
 import { DateAdapter } from '@angular/material/core';
-import { IInterviewer } from '../../../employ-management/+Store/Model/employee.model';
+import { IInterviewer } from '../../../../employ-management/+Store/Model/employee.model';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import moment from 'moment';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
