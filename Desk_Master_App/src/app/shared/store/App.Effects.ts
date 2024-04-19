@@ -3,14 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { emptyAction, showAlert } from './App.action';
-import { Route } from '@angular/router';
-
-import * as fromActions from './PopUp/popup.action';
-import {
-  MatDialog,
-  MatDialogConfig,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Injectable()
 export class AppEffects {
@@ -31,18 +24,6 @@ export class AppEffects {
             })
           );
       })
-    )
-  );
-
-  openDialog$ = createEffect(() =>
-    this.action$.pipe(
-      ofType(fromActions.OpenDialog),
-      switchMap((action) =>
-        of(this.matDialog.open(action.component, action.config))
-      ),
-      map((dialogRef: MatDialogRef<any>) =>
-        fromActions.OpenDialogSuccess({ dialogRef })
-      )
     )
   );
 
